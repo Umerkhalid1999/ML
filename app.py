@@ -6,15 +6,16 @@ import numpy as np
 import pickle
 import pandas as pd
 
+# Function to generate OTP
 def generate_otp():
     return ''.join(random.choices(string.digits, k=6))
 
+# Function to send OTP via email
 def send_otp(sender_email, recipient_email):
-    # Replace these values with your SMTP server details
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
     smtp_username = 'ummeronatis7890@gmail.com'
-    smtp_password = 'udrv urcr kkrs zzti'  # Add your Gmail password here
+    smtp_password = 'udrv urcr kkrs zzti'
 
     otp = generate_otp()
     message = f'Subject: Your OTP\n\nYour OTP is: {otp}'
@@ -34,7 +35,7 @@ def send_otp(sender_email, recipient_email):
         if server is not None:
             server.quit()
 
-# Load your models using pickle
+# Load ML models
 with open('BAI_score.pkl', 'rb') as file:
     anxiety_model = pickle.load(file)
 with open('standard_score.pkl', 'rb') as file:
@@ -42,44 +43,79 @@ with open('standard_score.pkl', 'rb') as file:
 with open('ridge.pkl', 'rb') as file:
     depression_model = pickle.load(file)
 
+# Predict anxiety level
 def predict_anxiety(responses):
     new_individual = np.array([responses])
     new_individual_scaled = anxiety_standard.transform(new_individual)
     predicted_score = anxiety_model.predict(new_individual_scaled)[0]
     return predicted_score
 
+# Categorize anxiety level
 def categorize_anxiety(predicted_score):
     if predicted_score <= 21:
-        return 'Low Anxiety', []
+        return 'Low Anxiety', [
+            'https://www.youtube.com/watch?v=ZidGozDhOjg',
+            'https://www.youtube.com/watch?v=VRxOmosteCc',
+            'https://www.youtube.com/watch?v=8vfLmShk7MM'
+        ]
     elif 22 <= predicted_score <= 35:
-        return 'Moderate Anxiety', ['https://www.youtube.com/watch?v=zUx5kLFyx-M']
+        return 'Moderate Anxiety', [
+            'https://www.youtube.com/watch?v=_eWEGVE8f4w',
+            'https://www.youtube.com/watch?v=HRkGYNZdlDw',
+            'https://www.youtube.com/watch?v=JA86YOd4zx4'
+        ]
     else:
-        return 'Potentially Concerning Levels of Anxiety', ['https://www.youtube.com/watch?v=1XCObQjSHIs']
+        return 'Potentially Concerning Levels of Anxiety', [
+            'https://www.youtube.com/watch?v=QLjPrNe63kk',
+            'https://www.youtube.com/watch?v=MdHXlAgUe9Y'
+        ]
 
+# Predict depression level
 def predict_depression(depression_responses):
     response_values = [response for response in depression_responses.values()]
     new_individual = np.array([response_values])
     predicted_score = depression_model.predict(new_individual)[0]
     return predicted_score
 
+# Categorize depression level
 def categorize_depression(predicted_score):
     if predicted_score <= 1 or predicted_score <= 10:
-        return 'Normal or no depression'
+        return 'Normal or no depression', [
+            'https://www.youtube.com/watch?v=Bk0lzv8hEU8',
+            'https://www.youtube.com/watch?v=TEwoWxLwCfA',
+            'https://www.youtube.com/watch?v=OVJL850rAD8'
+        ]
     elif predicted_score <= 11 or predicted_score <= 16:
-        return 'Mild depression'
+        return 'Mild depression', [
+            'https://www.youtube.com/watch?v=Y8qJ_0J2qKo',
+            'https://www.youtube.com/watch?v=7sTWbgcuP2w',
+            'https://www.youtube.com/watch?v=7DoQMnmo0v8'
+        ]
     elif predicted_score <= 17 or predicted_score <= 20:
-        return 'Borderline clinical depression'
+        return 'Borderline clinical depression', [
+            'https://www.youtube.com/watch?v=qzTbEraKIOI',
+            'https://www.youtube.com/watch?v=KSClXw4Wfxs'
+        ]
     elif predicted_score <= 21 or predicted_score <= 30:
-        return 'Moderate depression'
+        return 'Moderate depression', [
+            'https://www.youtube.com/watch?v=KSClXw4Wfxs',
+            'https://www.youtube.com/watch?v=KSClXw4Wfxs'
+        ]
     elif predicted_score <= 31 or predicted_score <= 40:
-        return 'Severe depression'
+        return 'Severe depression', [
+            'https://www.youtube.com/watch?v=KSClXw4Wfxs',
+            'https://www.youtube.com/watch?v=KSClXw4Wfxs'
+        ]
     else:
-        return 'Extreme depression'
+        return 'Extreme depression', [
+            'https://www.youtube.com/watch?v=KSClXw4Wfxs',
+            'https://www.youtube.com/watch?v=KSClXw4Wfxs'
+        ]
 
+# Main function for Streamlit app
 def main():
     st.title("Mental Health Assessment")
 
-    # Initialize session state variables
     if 'step' not in st.session_state:
         st.session_state.step = 1
 
@@ -167,63 +203,61 @@ def main():
             "Q3 Inner Tension": {
                 0: 'Placid. Only fleeting inner tension',
                 2: 'Occasional feelings of edginess and ill-defined discomfort',
-                4: 'Continuous feelings of inner tension or intermittent panic which the patient can only master with some difficulty',
+                4: 'Continuous feelings of inner tension or intermittent panic which the patient can only master with difficulty',
                 6: 'Unrelenting dread or anguish. Overwhelming panic'
             },
             "Q4 Reduced Sleep": {
                 0: 'Sleeps as usual',
-                2: 'Slight difficulty dropping off to sleep or slightly reduced, light or fitful sleep',
-                4: 'Sleep reduced or broken by at least two hours',
-                6: 'Less than two or three hours sleep'
+                1: 'Slight difficulty in falling asleep or slightly reduced sleep',
+                2: 'Sleep reduced or broken by at least two hours',
+                3: 'Less than two or three hours of sleep'
             },
             "Q5 Reduced Appetite": {
                 0: 'Normal or increased appetite',
-                2: 'Slightly reduced appetite',
-                4: 'No appetite. Food is tasteless',
-                6: 'Needs persuasion to eat at all'
+                1: 'Slightly reduced appetite',
+                2: 'No appetite. Food is tasteless',
+                3: 'Needs persuasion to eat at all'
             },
             "Q6 Concentration Difficulties": {
                 0: 'No difficulties in concentrating',
-                2: 'Occasional difficulties in collecting one\'s thoughts',
+                2: 'Occasional difficulties in collecting one’s thoughts',
                 4: 'Difficulties in concentrating and sustaining thought which reduces ability to read or hold a conversation',
                 6: 'Unable to read or converse without great difficulty'
             },
             "Q7 Lassitude": {
-                0: 'Hardly any difficulty in getting started. No sluggishness',
+                0: 'Hardly any difficulties in getting started. No sluggishness',
                 2: 'Difficulties in starting activities',
                 4: 'Difficulties in starting simple routine activities which are carried out with effort',
                 6: 'Complete lassitude. Unable to do anything without help'
             },
             "Q8 Inability to Feel": {
-                0: 'Normal interest in the surroundings and in other people',
+                0: 'Normal interest in the surroundings and other people',
                 2: 'Reduced ability to enjoy usual interests',
                 4: 'Loss of interest in the surroundings. Loss of feelings for friends and acquaintances',
-                6: 'The experience of being emotionally paralyzed, inability to feel anger, grief or pleasure and a complete or even painful failure to feel for close relatives and friends'
+                6: 'The experience of being emotionally paralyzed, inability to feel anger, grief, or pleasure and a complete or even painful failure to feel for close relatives and friends'
             },
             "Q9 Pessimistic Thoughts": {
                 0: 'No pessimistic thoughts',
-                2: 'Fluctuating ideas of failure, self-reproach or self-depreciation',
-                4: 'Persistent self-accusations, or definite but still rational ideas of guilt or sin. Increasingly pessimistic about the future',
-                6: 'Delusions of ruin, remorse or unredeemable sin. Self-accusations which are absurd and unshakable'
+                1: 'Fluctuating ideas of failure, self-reproach, or self-depreciation',
+                2: 'Persistent self-accusations, or definite but still rational ideas of guilt or sin. Increasingly pessimistic about the future',
+                3: 'Delusions of ruin, remorse, or unredeemable sin. Self-accusations which are absurd and unshakable'
             },
             "Q10 Suicidal Thoughts": {
-                0: 'Enjoys life or takes it as it comes',
-                2: 'Weary of life. Only fleeting suicidal thoughts',
-                4: 'Probably better off dead. Suicidal thoughts are common, and suicide is considered as a possible solution, but without specific plans or intention',
-                6: 'Explicit plans for suicide when there is an opportunity. Active preparation for suicide'
+                0: 'Dismisses thoughts of suicide',
+                1: 'Occasional thoughts of suicide',
+                2: 'Suicidal thoughts are common, and the patient finds them difficult to control',
+                3: 'Explicit plans for suicide when there is an opportunity'
             }
         }
+        
         depression_responses = {}
         for question, options in depression_questions.items():
             st.markdown(f"**<span style='font-size:20px'>{question}</span>**", unsafe_allow_html=True)
-            response = st.radio(
-                f"Select the severity for '{question}'", options.values(),
-                format_func=lambda x: x
-            )
-            depression_responses[question] = {v: k for k, v in options.items()}[response]
+            response = st.radio(f"Select the severity for '{question}'", list(options.keys()), format_func=lambda x: options[x])
+            depression_responses[question] = response
 
-        if st.button('Predict Mental Health Levels'):
-            if len(depression_responses) == len(depression_questions):
+        if st.button('Submit'):
+            if len(depression_responses) == 10:
                 st.session_state.depression_responses = depression_responses
                 st.session_state.step = 6
                 st.experimental_rerun()
@@ -232,38 +266,25 @@ def main():
 
     elif st.session_state.step == 6:
         st.write("### Results")
-        st.markdown(f"**Name:** {st.session_state.name}")
-        st.markdown(f"**Age:** {st.session_state.age}")
-        st.markdown(f"**Gender:** {st.session_state.gender}")
 
+        # Anxiety results
         anxiety_score = predict_anxiety(st.session_state.anxiety_responses)
-        anxiety_category, anxiety_videos = categorize_anxiety(anxiety_score)
-        st.markdown(f"**Your predicted anxiety level is: <span style='font-size:25px'>{anxiety_category}</span>**", unsafe_allow_html=True)
+        anxiety_level, anxiety_links = categorize_anxiety(anxiety_score)
+        st.subheader("Anxiety Level:")
+        st.write(f"**Your Anxiety Level:** {anxiety_level}")
+        st.write("**Recommended Videos:**")
+        for link in anxiety_links:
+            st.write(f"- [Video]({link})")
 
+        # Depression results
         depression_score = predict_depression(st.session_state.depression_responses)
-        depression_category = categorize_depression(depression_score)
-        st.markdown(f"**Your predicted anxiety level is: <span style='font-size:25px'>{depression_category}</span>**", unsafe_allow_html=True)
+        depression_level, depression_links = categorize_depression(depression_score)
+        st.subheader("Depression Level:")
+        st.write(f"**Your Depression Level:** {depression_level}")
+        st.write("**Recommended Videos:**")
+        for link in depression_links:
+            st.write(f"- [Video]({link})")
 
-
-        for url in anxiety_videos:
-            st.video(url)
-
-        result_data = {
-            "Name": st.session_state.name,
-            "Age": st.session_state.age,
-            "Gender": st.session_state.gender,
-            "Anxiety Level": anxiety_category,
-            "Depression Level": depression_category,
-        }
-        df = pd.DataFrame([result_data])
-        csv = df.to_csv(index=False)
-        st.download_button(
-            label="Download Results",
-            data=csv,
-            file_name='mental_health_results.csv',
-            mime='text/csv'
-        )
-
+# Run the Streamlit app
 if __name__ == "__main__":
     main()
-

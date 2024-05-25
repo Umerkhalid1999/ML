@@ -54,9 +54,9 @@ def predict_anxiety(responses):
 def categorize_anxiety(predicted_score):
     if predicted_score <= 21:
         return 'Low Anxiety', [
-            "[video1](https://www.youtube.com/watch?v=ZidGozDhOjg)",
-            "[video2](https://www.youtube.com/watch?v=VRxOmosteCc)",
-            "[video3](https://www.youtube.com/watch?v=8vfLmShk7MM)"
+            'https://www.youtube.com/watch?v=ZidGozDhOjg',
+            'https://www.youtube.com/watch?v=VRxOmosteCc',
+            'https://www.youtube.com/watch?v=8vfLmShk7MM'
         ]
     elif 22 <= predicted_score <= 35:
         return 'Moderate Anxiety', [

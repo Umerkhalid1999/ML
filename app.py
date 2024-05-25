@@ -54,9 +54,9 @@ def predict_anxiety(responses):
 def categorize_anxiety(predicted_score):
     if predicted_score <= 21:
         return 'Low Anxiety', [
-            'https://www.youtube.com/watch?v=ZidGozDhOjg',
-            'https://www.youtube.com/watch?v=VRxOmosteCc',
-            'https://www.youtube.com/watch?v=8vfLmShk7MM'
+            "[video1](https://www.youtube.com/watch?v=ZidGozDhOjg)",
+            "[video2](https://www.youtube.com/watch?v=VRxOmosteCc)",
+            "[video3](https://www.youtube.com/watch?v=8vfLmShk7MM)"
         ]
     elif 22 <= predicted_score <= 35:
         return 'Moderate Anxiety', [
@@ -274,7 +274,7 @@ def main():
         st.write(f"**Your Anxiety Level:** {anxiety_level}")
         st.write("**Recommended Videos:**")
         for link in anxiety_links:
-            st.write(f"- [Video]({link})")
+            st.markdown(link, unsafe_allow_html=True)
 
         # Depression results
         depression_score = predict_depression(st.session_state.depression_responses)

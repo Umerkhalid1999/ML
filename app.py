@@ -283,7 +283,30 @@ def main():
         st.write(f"**Your Depression Level:** {depression_level}")
         st.write("**Recommended Videos:**")
         for link in depression_links:
-            st.write(f"- [Video]({link})")
+            st.write(f"- [Video]({link})")  
+            
+        st.write("### Physical Exercises:")
+            for url in [
+                "https://www.youtube.com/watch?v=fb3lDTS5IS4",
+                "https://www.youtube.com/watch?v=6EysBiKaKmk",
+                "https://www.youtube.com/watch?v=e9B3QWESkLI",
+                "https://www.youtube.com/watch?v=LHLVgNBnFso",
+                "https://www.youtube.com/watch?v=QevFo8wsXZ4"
+            ]:
+                st.write(f"- [{url}]({url})")
+
+            st.write("### Reading Articles:")
+            for url in [
+                "https://communitymindset.org/",
+                "https://peoplehouse.org/",
+                "https://www.medicalnewstoday.com/articles/8933",
+                "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3181767/",
+                "https://www.healthline.com/health/can-you-cure-depression",
+                "https://emedicine.medscape.com/article/286759-treatment?form=fpf",
+                "https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2022.988648/full",
+                "https://www.thelancet.com/journals/lanpsy/article/PIIS2215-0366(20)30036-5/fulltext"
+            ]:
+                st.write(f"- [{url}]({url})")
 
 # Run the Streamlit app
 if __name__ == "__main__":

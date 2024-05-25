@@ -293,9 +293,9 @@ def main():
                 "https://www.youtube.com/watch?v=LHLVgNBnFso",
                 "https://www.youtube.com/watch?v=QevFo8wsXZ4"
             ]:
-            st.write(f"- [{url}]({url})")
+        st.write(f"- [{url}]({url})")
 
-            st.write("### Reading Articles:")
+        st.write("### Reading Articles:")
         for url in [
                 "https://communitymindset.org/",
                 "https://peoplehouse.org/",

@@ -286,7 +286,7 @@ def main():
             st.write(f"- [Video]({link})")  
             
         st.write("### Physical Exercises:")
-            for url in [
+        for url in [
                 "https://www.youtube.com/watch?v=fb3lDTS5IS4",
                 "https://www.youtube.com/watch?v=6EysBiKaKmk",
                 "https://www.youtube.com/watch?v=e9B3QWESkLI",
@@ -296,7 +296,7 @@ def main():
                 st.write(f"- [{url}]({url})")
 
             st.write("### Reading Articles:")
-            for url in [
+        for url in [
                 "https://communitymindset.org/",
                 "https://peoplehouse.org/",
                 "https://www.medicalnewstoday.com/articles/8933",

@@ -274,7 +274,7 @@ def main():
         st.write(f"**Your Anxiety Level:** {anxiety_level}")
         st.write("**Recommended Videos:**")
         for link in anxiety_links:
-            st.markdown(link, unsafe_allow_html=True)
+            st.write(f"- [Video]({link})")
 
         # Depression results
         depression_score = predict_depression(st.session_state.depression_responses)

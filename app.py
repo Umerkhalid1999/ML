@@ -293,7 +293,7 @@ def main():
                 "https://www.youtube.com/watch?v=LHLVgNBnFso",
                 "https://www.youtube.com/watch?v=QevFo8wsXZ4"
             ]:
-        st.write(f"- [{url}]({url})")
+            st.write(f"- [{url}]({url})")
 
             st.write("### Reading Articles:")
         for url in [
@@ -306,7 +306,7 @@ def main():
                 "https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2022.988648/full",
                 "https://www.thelancet.com/journals/lanpsy/article/PIIS2215-0366(20)30036-5/fulltext"
             ]:
-        st.write(f"- [{url}]({url})")
+            st.write(f"- [{url}]({url})")
 
 # Run the Streamlit app
 if __name__ == "__main__":

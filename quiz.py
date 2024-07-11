@@ -23,10 +23,10 @@ def implementation():
 
     Q3 = "Question 3: What is Machine learning a subset of?"
     ch3 = '''
-                       1) gence
-                       2) De
-                       3) vi
-                       4) Rei
+                       1) Artificial Intelligence
+                       2) Deep learning 
+                       3) Django framework
+                       4) Python
                         '''
     op3 = 4
 

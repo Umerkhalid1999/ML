@@ -87,7 +87,29 @@ def calculate_body_fat(bmi, gender, age):
 
 
 # Streamlit app title
-st.title("Your Nutritionist Coach")
+st.title("Your Nutritionist Coach") 
+# Add custom styles for larger text
+st.markdown(
+    """
+    <style>
+    input, select {
+        font-size: 20px !important;
+    }
+    .stButton button {
+        font-size: 40px !important;
+    }
+    .stMarkdown {
+        font-size: 10px !important;
+    }
+    .stTable {
+        font-size: 40px !important;
+    }
+    .stHeader, .stSubheader {
+        font-size: 25px !important;
+    }
+    </style>
+    """, unsafe_allow_html=True
+)
 
 # Input Section
 st.header("Enter Your Details")

@@ -22,7 +22,7 @@ def add_bg_from_local(image_path):
 
 
 # Adding the background image
-add_bg_from_local('/Users/macvision/PycharmProjects/Quiz.py/istockphoto-879557418-612x612.jpg')
+add_bg_from_local('dumbles.jpg')
 
 
 # Function to calculate BMR

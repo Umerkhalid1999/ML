@@ -20,7 +20,7 @@ medical_records = [
 
 # Streamlit App
 def main():
-    global patients, physicians, medical_records  # Use global data
+    global patients, physicians, medical_records
     st.title("Virtual Healthcare Record Management System (VHRMS)")
     menu = st.sidebar.selectbox("Select Section", ["Home", "Patients", "Physicians", "Medical Records"])
 
@@ -63,7 +63,6 @@ def main():
                 }
                 patients.append(new_patient)
                 st.success(f"Patient {patient_name} added successfully!")
-                st.experimental_rerun()  # Refresh to show the updated list
 
     # Physicians Section
     elif menu == "Physicians":
@@ -93,7 +92,6 @@ def main():
                 }
                 physicians.append(new_physician)
                 st.success(f"Physician {physician_name} added successfully!")
-                st.experimental_rerun()  # Refresh to show the updated list
 
     # Medical Records Section
     elif menu == "Medical Records":

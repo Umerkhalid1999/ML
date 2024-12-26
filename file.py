@@ -13,7 +13,7 @@ patients = [
 def main():
     global patients  # Use the global patients list
     st.title("Virtual Healthcare Record Management System (VHRMS)")
-    menu = st.sidebar.selectbox("Select Section", ["Home", "Patients", "Physicians", "Appointments", "Medical Records"])
+    menu = st.sidebar.selectbox("Select Section", ["Home", "Patients", "Delete Patient"])
 
     # Home Section
     if menu == "Home":
@@ -24,23 +24,10 @@ def main():
     elif menu == "Patients":
         st.header("Patient Management")
 
-        # Display Patients
+        # Display Patients in Tabular Format
         st.subheader("Patient List")
         patients_df = pd.DataFrame(patients)
-        if not patients_df.empty:
-            for index, row in patients_df.iterrows():
-                col1, col2, col3 = st.columns([4, 1, 1])
-                with col1:
-                    st.write(f"**{row['Patient_Name']}**")
-                    st.write(f"**Gender:** {row['Gender']}, **DOB:** {row['DateOfBirth']}")
-                    st.write(f"**Address:** {row['Address']}, **Contact:** {row['ContactInformation']}")
-                with col2:
-                    if st.button(f"Delete #{row['PatientID']}", key=f"delete_{row['PatientID']}"):
-                        patients = [p for p in patients if p["PatientID"] != row["PatientID"]]
-                        st.experimental_rerun()
-
-        else:
-            st.write("No patient records found.")
+        st.dataframe(patients_df)
 
         # Add Patient
         st.subheader("Add Patient")
@@ -68,6 +55,19 @@ def main():
                 patients.append(new_patient)
                 st.success(f"Patient {patient_name} added successfully!")
                 st.experimental_rerun()  # Refresh to show the updated list
+
+    # Delete Patient Section
+    elif menu == "Delete Patient":
+        st.header("Delete Patient Record")
+
+        # Select Patient to Delete
+        patient_ids = [p["PatientID"] for p in patients]
+        patient_to_delete = st.selectbox("Select Patient ID to Delete", options=patient_ids)
+
+        if st.button("Delete Patient"):
+            patients = [p for p in patients if p["PatientID"] != patient_to_delete]
+            st.success(f"Patient with ID {patient_to_delete} deleted successfully!")
+            st.experimental_rerun()  # Refresh to show the updated list
 
 if __name__ == "__main__":
     main()

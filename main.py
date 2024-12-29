@@ -3,11 +3,33 @@ import requests
 from PIL import Image
 import numpy as np
 import tensorflow as tf
+import os
+import base64
+
+def add_bg_image(image_file_path):
+    with open(image_file_path, "rb") as image_file:
+        encoded_image = base64.b64encode(image_file.read()).decode('utf-8')  # Correct encoding and decoding
+    b64_image = f"data:image/jpg;base64,{encoded_image}"
+    # Include the Streamlit code to set the background (this assumes you're using Streamlit)
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("{b64_image}");
+            background-size: cover;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+# Example usage:
+# Make sure to provide the correct path to the image file
+add_bg_image("food - Copy.jpg")
 
 # Load your pre-trained model
 @st.cache_resource
 def load_custom_model():
-    # Replace 'food_classifier_model.h5' with the actual path to your model
     model = tf.keras.models.load_model("food_recognition_subset_model.h5")
     return model
 
@@ -39,55 +61,27 @@ def classify_image(uploaded_file):
     predicted_category = categories[predicted_index]
     return predicted_category, confidence
 
-# Spoonacular API settings for fetching recipes
-API_KEY = "ed20cd1e0a5e4e83831f587399444f6c"
-API_URL = "https://api.spoonacular.com/recipes/complexSearch"
-RECIPE_DETAIL_URL = "https://api.spoonacular.com/recipes/{}/information"
+# Sidebar for categories
+st.sidebar.title("Food Categories")
+categories = [
+    "baklava", "carrot_cake", "chicken_curry", "clam_chowder", "club_sandwich",
+    "donuts", "falafel", "french_onion_soup", "frozen_yogurt", "greek_salad",
+    "lobster_bisque", "macarons", "nachos", "onion_rings", "peking_duck",
+    "pizza", "red_velvet_cake", "samosa", "spaghetti_carbonara"
+]
+st.sidebar.write("Explore the categories recognized by the model:")
+for category in categories:
+    st.sidebar.write(f"- {category}")
 
-# Function to fetch recipes
-def fetch_recipes(food_item):
-    params = {
-        "query": food_item,
-        "number": 1,  # Number of recipes to fetch
-        "apiKey": API_KEY
-    }
-
-    try:
-        response = requests.get(API_URL, params=params)
-        response.raise_for_status()  # Will raise an exception for 4xx/5xx status codes
-
-        # Check if response is valid JSON
-        try:
-            data = response.json()
-        except ValueError:
-            st.error("Error: The API response is not in valid JSON format.")
-            return []
-
-        # Check if recipes are found
-        if "results" in data and len(data["results"]) > 0:
-            recipes = []
-            for recipe in data["results"]:
-                recipe_id = recipe['id']
-                recipe_detail_response = requests.get(RECIPE_DETAIL_URL.format(recipe_id), params={"apiKey": API_KEY})
-                recipe_detail = recipe_detail_response.json()
-
-                ingredients = [ingredient['name'] for ingredient in recipe_detail.get('extendedIngredients', [])]
-                instructions = recipe_detail.get('instructions', "Instructions not available")
-
-                recipes.append({
-                    "recipe_name": recipe.get("title", "N/A"),
-                    "ingredients": ingredients,
-                    "instructions": instructions
-                })
-            return recipes
-        else:
-            return []
-    except requests.exceptions.RequestException as e:
-        st.error(f"Error fetching data from Spoonacular API: {e}")
-        return []
+# Add the background image (update the path to your local file)
 
 # Streamlit App
 st.title("AI-Powered Recipe Finder")
+
+# Add a disclaimer
+st.markdown(
+    "**Note:** This model is currently under development and is trained only 35%. The predictions may not be fully accurate."
+)
 
 # Upload an image
 uploaded_file = st.file_uploader("Upload a food image", type=["jpg", "jpeg", "png"])
@@ -99,15 +93,3 @@ if uploaded_file is not None:
     st.write("Classifying...")
     food_item, confidence = classify_image(uploaded_file)
     st.write(f"Identified Food Item: {food_item} (Confidence: {confidence:.2f})")
-
-    # Fetch and display recipes based on the predicted food item
-    st.write("Fetching Recipes...")
-    recipes = fetch_recipes(food_item)
-    if recipes:
-        st.write("Suggested Recipes:")
-        for recipe in recipes:
-            st.write(f"**{recipe['recipe_name']}**")
-            st.write(f"Ingredients: {', '.join(recipe['ingredients'])}")
-            st.write(f"Instructions: {recipe['instructions']}")
-    else:
-        st.write("No recipes found for this food item.")

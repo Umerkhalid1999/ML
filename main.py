@@ -80,16 +80,16 @@ st.title("AI-Powered Recipe Finder")
 
 # Add a disclaimer
 st.markdown(
-    "**Note:** This model is currently under development and is trained only 35%. The predictions may not be fully accurate."
+    "**Note:** This model is currently under development and is trained only 28%. The predictions may not be fully accurate."
 )
 
 # Upload an image
 uploaded_file = st.file_uploader("Upload a food image", type=["jpg", "jpeg", "png"])
 if uploaded_file is not None:
     # Show the uploaded image
-    st.image(uploaded_file, caption="Uploaded Image", use_container_width=True)
+    st.image(uploaded_file, caption="Uploaded Image (from food Categories)", use_container_width=True)
 
     # Predict food item from the uploaded image
-    st.write("Classifying...")
+    st.write("Classifying.....")
     food_item, confidence = classify_image(uploaded_file)
     st.write(f"Identified Food Item: {food_item} (Confidence: {confidence:.2f})")

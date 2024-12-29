@@ -84,10 +84,10 @@ st.markdown(
 )
 
 # Upload an image
-uploaded_file = st.file_uploader("Upload a food image", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("Upload a food image (from Food Categories)", type=["jpg", "jpeg", "png"])
 if uploaded_file is not None:
     # Show the uploaded image
-    st.image(uploaded_file, caption="Uploaded Image (from food Categories)", use_container_width=True)
+    st.image(uploaded_file, caption="Uploaded Image", use_container_width=True)
 
     # Predict food item from the uploaded image
     st.write("Classifying.....")

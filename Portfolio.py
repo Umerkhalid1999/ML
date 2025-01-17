@@ -1,11 +1,13 @@
 import streamlit as st
 import base64
+
 # Set page config
 st.set_page_config(
     page_title="Umar Khalid Mirza - Portfolio",
     page_icon="🌐",
     layout="wide"
 )
+
 # Function to add a background image
 def add_bg_from_local(image_path):
     with open(image_path, "rb") as image_file:
@@ -23,39 +25,46 @@ def add_bg_from_local(image_path):
         unsafe_allow_html=True
     )
 
-
 # Adding the background image
-add_bg_from_local('backgroud.jpeg')
-# Custom CSS for background and button transitions
+add_bg_from_local('background.jpeg')
+
+# Custom CSS for responsiveness
 st.markdown(
     """
     <style>
-    /* Set background image */
+    /* General body styling */
     body {
-        background-image: 'backgroud.jpeg';
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
     }
 
-    /* Button styling and hover transition */
+    /* Responsive columns */
+    @media screen and (max-width: 768px) {
+        .stApp .stColumns {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    /* Button styling */
     .stButton button {
         background-color: #4CAF50;
         color: black;
+        font-weight: bold;
         border: none;
         padding: 10px 20px;
         text-align: center;
-        text-decoration: none;
-        display: inline-block;
         font-size: 16px;
-        margin: 4px 2px;
+        margin: 10px auto;
         cursor: pointer;
         border-radius: 8px;
-        transition: transform 0.2s, background-color 0.2s;
+        transition: transform 0.2s, backgroud-color 0.2s;
     }
     .stButton button:hover {
         background-color: #45a049;
-        transform: scale(1.5);
+        transform: scale(1.1);
     }
     </style>
     """,
@@ -81,11 +90,11 @@ categories = {
 }
 
 # Layout for category buttons
-cols = st.columns(3)
+cols = st.columns(3 if st.sidebar.button('Web') else 1)
 
 # Generate buttons for each category
 for i, (category, description) in enumerate(categories.items()):
-    with cols[i % 3]:
+    with cols[i % len(cols)]:
         if st.button(category):
             st.subheader(f"{category} Projects")
             st.write(description)

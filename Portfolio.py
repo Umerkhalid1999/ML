@@ -26,7 +26,7 @@ def add_bg_from_local(image_path):
     )
 
 # Adding the background image
-add_bg_from_local('background.jpeg')
+add_bg_from_local('backgrouc.jpeg')
 
 # Custom CSS for responsiveness
 st.markdown(

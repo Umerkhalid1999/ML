@@ -22,7 +22,7 @@ st.markdown(
     /* Button styling and hover transition */
     .stButton button {
         background-color: #4CAF50;
-        color: white;
+        color: black;
         border: none;
         padding: 10px 20px;
         text-align: center;

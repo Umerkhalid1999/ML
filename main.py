@@ -1,12 +1,31 @@
 import streamlit as st
-
+import base64
 # Set page config
 st.set_page_config(
     page_title="Umar Khalid Mirza - Portfolio",
     page_icon="🌐",
     layout="wide"
 )
+# Function to add a background image
+def add_bg_from_local(image_path):
+    with open(image_path, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url(data:image/jpeg;base64,{encoded_string.decode()});
+            background-size: cover;
+            background-position: center;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
+
+# Adding the background image
+add_bg_from_local('backgroud.jpeg')
 # Custom CSS for background and button transitions
 st.markdown(
     """

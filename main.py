@@ -7,6 +7,42 @@ st.set_page_config(
     layout="wide"
 )
 
+# Custom CSS for background and button transitions
+st.markdown(
+    """
+    <style>
+    /* Set background image */
+    body {
+        background-image: url('background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    /* Button styling and hover transition */
+    .stButton button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: transform 0.2s, background-color 0.3s;
+    }
+    .stButton button:hover {
+        background-color: #45a049;
+        transform: scale(1.05);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Header section
 st.title("Welcome to Umar Khalid Mirza's Portfolio")
 st.markdown(
@@ -38,4 +74,3 @@ for i, (category, description) in enumerate(categories.items()):
 # Footer
 st.markdown("---")
 st.write("Thank you for visiting my portfolio. Feel free to [contact me](https://example.com/contact) for collaborations or inquiries!")
-

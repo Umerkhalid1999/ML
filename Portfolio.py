@@ -26,7 +26,7 @@ def add_bg_from_local(image_path):
     )
 
 # Adding the background image
-add_bg_from_local('backgrouc.jpeg')
+add_bg_from_local('backgroud.jpeg')
 
 # Custom CSS for responsiveness
 st.markdown(
@@ -60,7 +60,7 @@ st.markdown(
         margin: 10px auto;
         cursor: pointer;
         border-radius: 8px;
-        transition: transform 0.2s, backgroud-color 0.2s;
+        transition: transform 0.2s, background-color 0.2s;
     }
     .stButton button:hover {
         background-color: #45a049;

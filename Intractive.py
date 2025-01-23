@@ -86,7 +86,7 @@ def main():
         language="python",
         theme="dracula",
         placeholder="Write your Python code here...",
-        height=500,
+        height=300,
         key="ace_editor",
     )
 

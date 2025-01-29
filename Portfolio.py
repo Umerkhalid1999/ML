@@ -70,7 +70,7 @@ st.markdown(
 
 # Define categories
 categories = {
-    "Machine Learning": "Machine Learning projects involving supervised and unsupervised learning, predictive modeling, and optimization. [View Projects](https://example.com/ml-projects)",
+    "Machine Learning": "Machine Learning projects involving supervised and unsupervised learning, predictive modeling, and optimization. [View Projects](https://example.com/ml-projects)(https://synthetic-data-gen.streamlit.app/)",
     "Deep Learning": "Deep Learning projects utilizing neural networks like CNNs, RNNs, and transformers for advanced AI tasks. [View Projects](https://synthetic-data-gen.streamlit.app/)",
     "Data Science": "Comprehensive data science projects including EDA, feature engineering, and model deployment. [View Projects](https://example.com/data-science-projects)",
     "Data Analysis": "Insights derived from data through statistical analysis, visualization, and business intelligence tools. [View Projects](https://example.com/data-analysis-projects)",

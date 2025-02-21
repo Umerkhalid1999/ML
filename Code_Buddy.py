@@ -1,258 +1,294 @@
 import streamlit as st
+import streamlit.components.v1 as components
 from streamlit_ace import st_ace
+import json
+import time
 
-# Style configurations
+# Configure page settings
+st.set_page_config(layout="wide", page_title="PythonPractice")
+
+# Custom CSS for LeetCode-like styling
 st.markdown("""
 <style>
-    .difficulty-easy { color: #00b8a3; }
-    .difficulty-medium { color: #ffc01e; }
-    .difficulty-hard { color: #ff375f; }
-    .test-case { background-color: #f0f2f5; padding: 10px; margin: 5px 0; border-radius: 5px; }
+    .problem-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .difficulty-easy {
+        color: #00b8a3;
+        font-weight: bold;
+    }
+    .difficulty-medium {
+        color: #ffc01e;
+        font-weight: bold;
+    }
+    .difficulty-hard {
+        color: #ff375f;
+        font-weight: bold;
+    }
+    .success-text {
+        color: #00b8a3;
+    }
+    .failed-text {
+        color: #ff375f;
+    }
+    .stats-box {
+        background-color: #f7f9fa;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 5px;
+    }
+    .example-box {
+        background-color: #f7f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+    .markdown-text {
+        font-size: 16px;
+        line-height: 1.6;
+    }
 </style>
 """, unsafe_allow_html=True)
 
-# Python Basic Problems (15 problems)
-PYTHON_BASIC = [
-    {
-        "id": 1,
-        "title": "Sum of Two Numbers",
-        "difficulty": "Easy",
-        "description": """Write a function that returns the sum of two numbers.
-        
-Example:
-Input: a = 3, b = 5
-Output: 8
+# Problem database
+PROBLEMS = {
+    "arrays": [
+        {
+            "id": 1,
+            "title": "Two Sum",
+            "difficulty": "Easy",
+            "category": "Arrays & Hashing",
+            "acceptance_rate": "49.2%",
+            "description": """Given an array of integers `nums` and an integer `target`, return indices of the two numbers such that they add up to `target`.
 
-Input: a = -1, b = 1
-Output: 0""",
-        "template": """def add_numbers(a, b):
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.""",
+            "examples": [
+                {
+                    "input": "nums = [2,7,11,15], target = 9",
+                    "output": "[0,1]",
+                    "explanation": "Because nums[0] + nums[1] == 9, we return [0, 1]."
+                },
+                {
+                    "input": "nums = [3,2,4], target = 6",
+                    "output": "[1,2]",
+                    "explanation": "Because nums[1] + nums[2] == 6, we return [1, 2]."
+                }
+            ],
+            "constraints": [
+                "2 <= nums.length <= 104",
+                "-109 <= nums[i] <= 109",
+                "-109 <= target <= 109",
+                "Only one valid answer exists."
+            ],
+            "template": """def twoSum(nums, target):
     # Write your code here
     pass""",
-        "test_cases": [
-            ((3, 5), 8),
-            ((-1, 1), 0),
-            ((100, 200), 300)
-        ]
-    },
-    {
-        "id": 2,
-        "title": "Find Maximum",
-        "difficulty": "Easy",
-        "description": """Write a function that finds the maximum number in a list.
-        
-Example:
-Input: nums = [1, 3, 2, 5, 4]
-Output: 5
+            "test_cases": [
+                {"input": {"nums": [2,7,11,15], "target": 9}, "output": [0,1]},
+                {"input": {"nums": [3,2,4], "target": 6}, "output": [1,2]},
+                {"input": {"nums": [3,3], "target": 6}, "output": [0,1]}
+            ],
+            "hint": "Try using a hash map to store the complement of each number."
+        },
+        # Add more array problems here
+    ],
+    "strings": [
+        {
+            "id": 2,
+            "title": "Valid Palindrome",
+            "difficulty": "Easy",
+            "category": "Strings",
+            "acceptance_rate": "43.8%",
+            "description": """A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward.
 
-Input: nums = [-1, -5, -2, -8]
-Output: -1""",
-        "template": """def find_max(nums):
+Alphanumeric characters include letters and numbers.""",
+            "examples": [
+                {
+                    "input": 's = "A man, a plan, a canal: Panama"',
+                    "output": "true",
+                    "explanation": '"amanaplanacanalpanama" is a palindrome.'
+                },
+                {
+                    "input": 's = "race a car"',
+                    "output": "false",
+                    "explanation": '"raceacar" is not a palindrome.'
+                }
+            ],
+            "constraints": [
+                "1 <= s.length <= 2 * 105",
+                "s consists only of printable ASCII characters"
+            ],
+            "template": """def isPalindrome(s):
     # Write your code here
     pass""",
-        "test_cases": [
-            (([1, 3, 2, 5, 4],), 5),
-            (([1],), 1),
-            (([-1, -5, -2, -8],), -1)
-        ]
-    },
-    {
-        "id": 3,
-        "title": "Count Vowels",
-        "difficulty": "Easy",
-        "description": """Write a function that counts the number of vowels in a string.
-        
-Example:
-Input: text = "hello"
-Output: 2
+            "test_cases": [
+                {"input": {"s": "A man, a plan, a canal: Panama"}, "output": True},
+                {"input": {"s": "race a car"}, "output": False},
+                {"input": {"s": " "}, "output": True}
+            ],
+            "hint": "Consider using two pointers from the start and end of the string."
+        }
+        # Add more string problems here
+    ]
+}
 
-Input: text = "PYTHON"
-Output: 1""",
-        "template": """def count_vowels(text):
-    # Write your code here
-    pass""",
-        "test_cases": [
-            (("hello",), 2),
-            (("PYTHON",), 1),
-            (("aeiou",), 5)
-        ]
-    }
-]
-
-# Python Intermediate Problems (15 problems)
-PYTHON_INTERMEDIATE = [
-    {
-        "id": 1,
-        "title": "Fibonacci Sequence",
-        "difficulty": "Medium",
-        "description": """Write a function that returns the nth number in the Fibonacci sequence.
-        
-Example:
-Input: n = 4
-Output: 3
-Explanation: Fibonacci sequence: 0, 1, 1, 2, 3
-
-Input: n = 7
-Output: 13
-Explanation: Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13""",
-        "template": """def fibonacci(n):
-    # Write your code here
-    pass""",
-        "test_cases": [
-            ((4,), 3),
-            ((7,), 13),
-            ((1,), 1)
-        ]
-    },
-    {
-        "id": 2,
-        "title": "Anagram Check",
-        "difficulty": "Medium",
-        "description": """Write a function that checks if two strings are anagrams.
-        
-Example:
-Input: s1 = "listen", s2 = "silent"
-Output: True
-
-Input: s1 = "hello", s2 = "world"
-Output: False""",
-        "template": """def is_anagram(s1, s2):
-    # Write your code here
-    pass""",
-        "test_cases": [
-            (("listen", "silent"), True),
-            (("hello", "world"), False),
-            (("python", "typhon"), True)
-        ]
-    }
-]
-
-# Python Advanced Problems (15 problems)
-PYTHON_ADVANCED = [
-    {
-        "id": 1,
-        "title": "LRU Cache",
-        "difficulty": "Hard",
-        "description": """Implement a Least Recently Used (LRU) cache with get and put methods.
-        
-Example:
-lru = LRUCache(2)  # capacity = 2
-lru.put(1, 1)
-lru.put(2, 2)
-lru.get(1)    # returns 1
-lru.put(3, 3) # evicts key 2
-lru.get(2)    # returns -1 (not found)""",
-        "template": """class LRUCache:
-    def __init__(self, capacity):
-        # Write your code here
-        pass
-        
-    def get(self, key):
-        # Write your code here
-        pass
-        
-    def put(self, key, value):
-        # Write your code here
-        pass""",
-        "test_cases": [
-            ((2, ["put", "put", "get", "put", "get"], [(1, 1), (2, 2), (1,), (3, 3), (2,)]), [None, None, 1, None, -1]),
-        ]
-    }
-]
-
-def run_test(code: str, test_case) -> dict:
-    """Run a single test case and return the result"""
+def run_test_cases(code, test_cases):
+    """Execute test cases and return results"""
+    results = []
+    namespace = {}
+    
     try:
-        # Create namespace for code execution
-        namespace = {}
+        # Execute the code in a new namespace
         exec(code, namespace)
         
-        # Get function name
+        # Get function name from the code
         func_name = code.split('def ')[1].split('(')[0]
         
-        # Execute test
-        args, expected = test_case
-        result = namespace[func_name](*args)
-        passed = result == expected
-        
-        return {
-            'passed': passed,
-            'expected': expected,
-            'result': result,
-            'error': None
-        }
+        # Run each test case
+        for test in test_cases:
+            start_time = time.time()
+            try:
+                result = namespace[func_name](**test['input'])
+                execution_time = (time.time() - start_time) * 1000  # Convert to ms
+                
+                passed = result == test['output']
+                results.append({
+                    'passed': passed,
+                    'input': test['input'],
+                    'expected': test['output'],
+                    'result': result,
+                    'execution_time': execution_time
+                })
+            except Exception as e:
+                results.append({
+                    'passed': False,
+                    'input': test['input'],
+                    'expected': test['output'],
+                    'result': f"Error: {str(e)}",
+                    'execution_time': 0
+                })
     except Exception as e:
-        return {
+        results.append({
             'passed': False,
-            'expected': expected,
-            'result': None,
-            'error': str(e)
-        }
+            'input': "Code compilation",
+            'expected': "Valid Python code",
+            'result': f"Error: {str(e)}",
+            'execution_time': 0
+        })
+    
+    return results
 
 def main():
-    st.title("Python Coding Practice")
-    
-    # Level selection
-    level = st.selectbox(
-        "Select difficulty level:",
-        ["Basic", "Intermediate", "Advanced"]
+    # Sidebar navigation
+    st.sidebar.title("Problem Categories")
+    category = st.sidebar.selectbox(
+        "Select Category",
+        ["Arrays & Hashing", "Strings", "Two Pointers", "Stack", "Binary Search", 
+         "Sliding Window", "Trees", "Dynamic Programming"]
     )
     
-    # Get problems based on level
-    if level == "Basic":
-        problems = PYTHON_BASIC
-        color_class = "difficulty-easy"
-    elif level == "Intermediate":
-        problems = PYTHON_INTERMEDIATE
-        color_class = "difficulty-medium"
-    else:
-        problems = PYTHON_ADVANCED
-        color_class = "difficulty-hard"
-    
-    # Problem selection
-    problem_titles = [f"{p['id']}. {p['title']}" for p in problems]
-    selected_problem = st.selectbox("Select problem:", problem_titles)
-    problem = problems[problem_titles.index(selected_problem)]
-    
-    # Display problem details
-    st.markdown(f"<h3 class='{color_class}'>{problem['title']}</h3>", unsafe_allow_html=True)
-    st.markdown(f"**Difficulty:** {problem['difficulty']}")
-    st.markdown("### Problem Description")
-    st.markdown(problem['description'])
-    
-    # Code editor
-    st.markdown("### Your Solution")
-    code = st_ace(
-        value=problem['template'],
-        language="python",
-        theme="monokai",
-        height=300,
-        font_size=14
+    difficulty = st.sidebar.selectbox(
+        "Difficulty",
+        ["All", "Easy", "Medium", "Hard"]
     )
     
-    # Run tests button
-    if st.button("Submit Solution"):
-        with st.spinner("Running tests..."):
-            all_passed = True
-            
-            for i, test_case in enumerate(problem['test_cases'], 1):
-                result = run_test(code, test_case)
+    # Main content area
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        if category == "Arrays & Hashing":
+            problems = PROBLEMS["arrays"]
+        elif category == "Strings":
+            problems = PROBLEMS["strings"]
+        else:
+            st.info("More problems coming soon!")
+            return
+        
+        # Select problem
+        problem = problems[0]  # For demo, using first problem
+        
+        # Problem header
+        st.markdown(f"<h1 class='problem-title'>{problem['id']}. {problem['title']}</h1>", unsafe_allow_html=True)
+        
+        difficulty_class = f"difficulty-{problem['difficulty'].lower()}"
+        st.markdown(f"<span class='{difficulty_class}'>{problem['difficulty']}</span> · Acceptance Rate: {problem['acceptance_rate']}", unsafe_allow_html=True)
+        
+        # Problem description
+        st.markdown("### Description")
+        st.markdown(f"<div class='markdown-text'>{problem['description']}</div>", unsafe_allow_html=True)
+        
+        # Examples
+        st.markdown("### Examples")
+        for i, example in enumerate(problem['examples'], 1):
+            st.markdown(f"""<div class='example-box'>
+            <strong>Example {i}:</strong><br>
+            <strong>Input:</strong> {example['input']}<br>
+            <strong>Output:</strong> {example['output']}<br>
+            <strong>Explanation:</strong> {example['explanation']}
+            </div>""", unsafe_allow_html=True)
+        
+        # Constraints
+        st.markdown("### Constraints")
+        for constraint in problem['constraints']:
+            st.markdown(f"• {constraint}")
+        
+        # Code editor
+        st.markdown("### Solution")
+        code = st_ace(
+            value=problem['template'],
+            language="python",
+            theme="monokai",
+            height=300,
+            font_size=14,
+            key="solution_editor"
+        )
+        
+        # Submit button and test results
+        if st.button("Submit", key="submit_solution"):
+            with st.spinner("Running tests..."):
+                results = run_test_cases(code, problem['test_cases'])
                 
-                if result['passed']:
-                    st.success(f"✅ Test Case {i} Passed")
+                # Display results
+                all_passed = all(r['passed'] for r in results)
+                total_time = sum(r['execution_time'] for r in results)
+                
+                if all_passed:
+                    st.success(f"✅ All test cases passed! ({total_time:.1f}ms)")
                 else:
-                    all_passed = False
-                    st.error(f"❌ Test Case {i} Failed")
+                    st.error("❌ Some test cases failed")
                 
-                st.markdown(f"""<div class='test-case'>
-                Input: {test_case[0]}<br>
-                Expected: {result['expected']}<br>
-                Got: {result['result']}<br>
-                {f"Error: {result['error']}" if result['error'] else ''}
-                </div>""", unsafe_allow_html=True)
-            
-            if all_passed:
-                st.balloons()
-                st.success("🎉 Congratulations! All test cases passed!")
+                # Detailed results
+                for i, result in enumerate(results, 1):
+                    with st.expander(f"Test Case {i}", expanded=not all_passed):
+                        st.markdown(f"""```python
+Input: {result['input']}
+Expected: {result['expected']}
+Output: {result['result']}
+Time: {result['execution_time']:.1f}ms
+```""")
+    
+    # Right sidebar for problem stats and hints
+    with col2:
+        st.markdown("### Problem Stats")
+        col_a, col_b = st.columns(2)
+        with col_a:
+            st.markdown(f"""<div class='stats-box'>
+            Acceptance<br>
+            <strong>{problem['acceptance_rate']}</strong>
+            </div>""", unsafe_allow_html=True)
+        with col_b:
+            st.markdown(f"""<div class='stats-box'>
+            Difficulty<br>
+            <strong class='{difficulty_class}'>{problem['difficulty']}</strong>
+            </div>""", unsafe_allow_html=True)
+        
+        # Hints
+        with st.expander("Hint"):
+            st.write(problem['hint'])
 
 if __name__ == "__main__":
     main()

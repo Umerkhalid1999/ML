@@ -5,9 +5,9 @@ import json
 import time
 
 # Configure page settings
-st.set_page_config(layout="wide", page_title="PythonPractice")
+st.set_page_config(layout="wide", page_title="Python Fundamentals Practice")
 
-# Custom CSS for LeetCode-like styling
+# Custom CSS for styling
 st.markdown("""
 <style>
     .problem-title {
@@ -52,87 +52,145 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Problem database
+# Python Fundamentals Problems Database
 PROBLEMS = {
-    "arrays": [
+    "basic_syntax": [
         {
             "id": 1,
-            "title": "Two Sum",
+            "title": "Hello World Function",
             "difficulty": "Easy",
-            "category": "Arrays & Hashing",
-            "acceptance_rate": "49.2%",
-            "description": """Given an array of integers `nums` and an integer `target`, return indices of the two numbers such that they add up to `target`.
+            "category": "Basic Syntax",
+            "acceptance_rate": "98%",
+            "description": """Write a function that returns the string 'Hello, World!'.
 
-You may assume that each input would have exactly one solution, and you may not use the same element twice.
-
-You can return the answer in any order.""",
+This problem teaches:
+1. Basic function definition
+2. Return statements
+3. String literals""",
             "examples": [
                 {
-                    "input": "nums = [2,7,11,15], target = 9",
-                    "output": "[0,1]",
-                    "explanation": "Because nums[0] + nums[1] == 9, we return [0, 1]."
-                },
-                {
-                    "input": "nums = [3,2,4], target = 6",
-                    "output": "[1,2]",
-                    "explanation": "Because nums[1] + nums[2] == 6, we return [1, 2]."
+                    "input": "hello_world()",
+                    "output": '"Hello, World!"',
+                    "explanation": "Function returns the greeting string"
                 }
             ],
             "constraints": [
-                "2 <= nums.length <= 104",
-                "-109 <= nums[i] <= 109",
-                "-109 <= target <= 109",
-                "Only one valid answer exists."
+                "Return type must be string",
+                "Must match exact output including punctuation"
             ],
-            "template": """def twoSum(nums, target):
+            "template": """def hello_world():
     # Write your code here
     pass""",
             "test_cases": [
-                {"input": {"nums": [2,7,11,15], "target": 9}, "output": [0,1]},
-                {"input": {"nums": [3,2,4], "target": 6}, "output": [1,2]},
-                {"input": {"nums": [3,3], "target": 6}, "output": [0,1]}
+                {"input": {}, "output": "Hello, World!"}
             ],
-            "hint": "Try using a hash map to store the complement of each number."
-        },
-        # Add more array problems here
+            "hint": "Use the return statement with a string literal"
+        }
+    ],
+    "variables_types": [
+        {
+            "id": 2,
+            "title": "Python Data Types",
+            "difficulty": "Easy",
+            "category": "Variables & Types",
+            "acceptance_rate": "95%",
+            "description": """Create a function that demonstrates Python's basic data types.
+
+Your function should:
+1. Create variables of different types
+2. Perform basic operations with them
+3. Return results in a tuple""",
+            "examples": [
+                {
+                    "input": "create_variables()",
+                    "output": "(42, 3.14, 'Python', True)",
+                    "explanation": "Returns different variable types in a tuple"
+                }
+            ],
+            "constraints": [
+                "Must use int, float, string, and boolean types",
+                "Return must be in tuple format"
+            ],
+            "template": """def create_variables():
+    # Create variables of different types
+    # Return them in a tuple
+    pass""",
+            "test_cases": [
+                {"input": {}, "output": (42, 3.14, "Python", True)}
+            ],
+            "hint": "Remember to use appropriate data types for each variable"
+        }
     ],
     "strings": [
         {
-            "id": 2,
-            "title": "Valid Palindrome",
+            "id": 3,
+            "title": "String Operations",
             "difficulty": "Easy",
             "category": "Strings",
-            "acceptance_rate": "43.8%",
-            "description": """A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward.
+            "acceptance_rate": "92%",
+            "description": """Write a function that performs basic string operations.
 
-Alphanumeric characters include letters and numbers.""",
+The function should:
+1. Convert a string to uppercase
+2. Get string length
+3. Slice the first 3 characters
+4. Return all results in a tuple""",
             "examples": [
                 {
-                    "input": 's = "A man, a plan, a canal: Panama"',
-                    "output": "true",
-                    "explanation": '"amanaplanacanalpanama" is a palindrome.'
-                },
-                {
-                    "input": 's = "race a car"',
-                    "output": "false",
-                    "explanation": '"raceacar" is not a palindrome.'
+                    "input": 'process_string("python")',
+                    "output": '("PYTHON", 6, "pyt")',
+                    "explanation": "Returns uppercase, length, and first 3 chars"
                 }
             ],
             "constraints": [
-                "1 <= s.length <= 2 * 105",
-                "s consists only of printable ASCII characters"
+                "Input will be a non-empty string",
+                "Return tuple must contain all three operations"
             ],
-            "template": """def isPalindrome(s):
+            "template": """def process_string(text):
     # Write your code here
     pass""",
             "test_cases": [
-                {"input": {"s": "A man, a plan, a canal: Panama"}, "output": True},
-                {"input": {"s": "race a car"}, "output": False},
-                {"input": {"s": " "}, "output": True}
+                {"input": {"text": "python"}, "output": ("PYTHON", 6, "pyt")},
+                {"input": {"text": "code"}, "output": ("CODE", 4, "cod")}
             ],
-            "hint": "Consider using two pointers from the start and end of the string."
+            "hint": "Use string methods like .upper() and string slicing"
         }
-        # Add more string problems here
+    ],
+    "control_flow": [
+        {
+            "id": 4,
+            "title": "If-Else Practice",
+            "difficulty": "Easy",
+            "category": "Control Flow",
+            "acceptance_rate": "90%",
+            "description": """Write a function that uses if-else statements to categorize numbers.
+
+The function should:
+1. Take a number as input
+2. Return "Positive" if number > 0
+3. Return "Negative" if number < 0
+4. Return "Zero" if number = 0""",
+            "examples": [
+                {
+                    "input": "categorize_number(5)",
+                    "output": '"Positive"',
+                    "explanation": "5 is greater than 0"
+                }
+            ],
+            "constraints": [
+                "Input will be an integer",
+                "Return must be one of three strings"
+            ],
+            "template": """def categorize_number(num):
+    # Write your code here
+    pass""",
+            "test_cases": [
+                {"input": {"num": 5}, "output": "Positive"},
+                {"input": {"num": -3}, "output": "Negative"},
+                {"input": {"num": 0}, "output": "Zero"}
+            ],
+            "hint": "Use if-elif-else statements to check number properties"
+        }
     ]
 }
 
@@ -184,11 +242,12 @@ def run_test_cases(code, test_cases):
 
 def main():
     # Sidebar navigation
-    st.sidebar.title("Problem Categories")
+    st.sidebar.title("Python Fundamentals")
     category = st.sidebar.selectbox(
         "Select Category",
-        ["Arrays & Hashing", "Strings", "Two Pointers", "Stack", "Binary Search", 
-         "Sliding Window", "Trees", "Dynamic Programming"]
+        ["Basic Syntax", "Variables & Types", "Strings", "Control Flow", 
+         "Functions", "Lists", "Dictionaries", "OOP Basics", 
+         "File Handling", "Exception Handling"]
     )
     
     difficulty = st.sidebar.selectbox(
@@ -196,83 +255,90 @@ def main():
         ["All", "Easy", "Medium", "Hard"]
     )
     
+    # Track progress (you can expand this with session state)
+    if 'problems_completed' not in st.session_state:
+        st.session_state.problems_completed = set()
+    
     # Main content area
     col1, col2 = st.columns([2, 1])
     
     with col1:
-        if category == "Arrays & Hashing":
-            problems = PROBLEMS["arrays"]
-        elif category == "Strings":
-            problems = PROBLEMS["strings"]
-        else:
-            st.info("More problems coming soon!")
-            return
-        
-        # Select problem
-        problem = problems[0]  # For demo, using first problem
-        
-        # Problem header
-        st.markdown(f"<h1 class='problem-title'>{problem['id']}. {problem['title']}</h1>", unsafe_allow_html=True)
-        
-        difficulty_class = f"difficulty-{problem['difficulty'].lower()}"
-        st.markdown(f"<span class='{difficulty_class}'>{problem['difficulty']}</span> · Acceptance Rate: {problem['acceptance_rate']}", unsafe_allow_html=True)
-        
-        # Problem description
-        st.markdown("### Description")
-        st.markdown(f"<div class='markdown-text'>{problem['description']}</div>", unsafe_allow_html=True)
-        
-        # Examples
-        st.markdown("### Examples")
-        for i, example in enumerate(problem['examples'], 1):
-            st.markdown(f"""<div class='example-box'>
-            <strong>Example {i}:</strong><br>
-            <strong>Input:</strong> {example['input']}<br>
-            <strong>Output:</strong> {example['output']}<br>
-            <strong>Explanation:</strong> {example['explanation']}
-            </div>""", unsafe_allow_html=True)
-        
-        # Constraints
-        st.markdown("### Constraints")
-        for constraint in problem['constraints']:
-            st.markdown(f"• {constraint}")
-        
-        # Code editor
-        st.markdown("### Solution")
-        code = st_ace(
-            value=problem['template'],
-            language="python",
-            theme="monokai",
-            height=300,
-            font_size=14,
-            key="solution_editor"
-        )
-        
-        # Submit button and test results
-        if st.button("Submit", key="submit_solution"):
-            with st.spinner("Running tests..."):
-                results = run_test_cases(code, problem['test_cases'])
-                
-                # Display results
-                all_passed = all(r['passed'] for r in results)
-                total_time = sum(r['execution_time'] for r in results)
-                
-                if all_passed:
-                    st.success(f"✅ All test cases passed! ({total_time:.1f}ms)")
-                else:
-                    st.error("❌ Some test cases failed")
-                
-                # Detailed results
-                for i, result in enumerate(results, 1):
-                    with st.expander(f"Test Case {i}", expanded=not all_passed):
-                        st.markdown(f"""```python
+        # Map selected category to problems dictionary key
+        category_key = category.lower().replace(" ", "_")
+        if category_key in PROBLEMS:
+            problems = PROBLEMS[category_key]
+            
+            # Select problem (for now using first problem in category)
+            problem = problems[0]
+            
+            # Problem header
+            st.markdown(f"<h1 class='problem-title'>{problem['id']}. {problem['title']}</h1>", unsafe_allow_html=True)
+            
+            difficulty_class = f"difficulty-{problem['difficulty'].lower()}"
+            st.markdown(f"<span class='{difficulty_class}'>{problem['difficulty']}</span> · Acceptance Rate: {problem['acceptance_rate']}", unsafe_allow_html=True)
+            
+            # Problem description
+            st.markdown("### Description")
+            st.markdown(f"<div class='markdown-text'>{problem['description']}</div>", unsafe_allow_html=True)
+            
+            # Examples
+            st.markdown("### Examples")
+            for i, example in enumerate(problem['examples'], 1):
+                st.markdown(f"""<div class='example-box'>
+                <strong>Example {i}:</strong><br>
+                <strong>Input:</strong> {example['input']}<br>
+                <strong>Output:</strong> {example['output']}<br>
+                <strong>Explanation:</strong> {example['explanation']}
+                </div>""", unsafe_allow_html=True)
+            
+            # Constraints
+            st.markdown("### Constraints")
+            for constraint in problem['constraints']:
+                st.markdown(f"• {constraint}")
+            
+            # Code editor
+            st.markdown("### Solution")
+            code = st_ace(
+                value=problem['template'],
+                language="python",
+                theme="monokai",
+                height=300,
+                font_size=14,
+                key="solution_editor"
+            )
+            
+            # Submit button and test results
+            if st.button("Submit", key="submit_solution"):
+                with st.spinner("Running tests..."):
+                    results = run_test_cases(code, problem['test_cases'])
+                    
+                    # Display results
+                    all_passed = all(r['passed'] for r in results)
+                    total_time = sum(r['execution_time'] for r in results)
+                    
+                    if all_passed:
+                        st.success(f"✅ All test cases passed! ({total_time:.1f}ms)")
+                        st.session_state.problems_completed.add(problem['id'])
+                    else:
+                        st.error("❌ Some test cases failed")
+                    
+                    # Detailed results
+                    for i, result in enumerate(results, 1):
+                        with st.expander(f"Test Case {i}", expanded=not all_passed):
+                            st.markdown(f"""```python
 Input: {result['input']}
 Expected: {result['expected']}
 Output: {result['result']}
 Time: {result['execution_time']:.1f}ms
 ```""")
+        else:
+            st.info("More problems coming soon for this category!")
     
     # Right sidebar for problem stats and hints
     with col2:
+        st.markdown("### Your Progress")
+        st.markdown(f"Problems Completed: {len(st.session_state.problems_completed)}")
+        
         st.markdown("### Problem Stats")
         col_a, col_b = st.columns(2)
         with col_a:

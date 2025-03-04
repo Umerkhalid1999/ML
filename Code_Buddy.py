@@ -228,2542 +228,1551 @@ def save_submission(user_id, problem_id, code, passed, execution_time):
 
 # Problem database
 # Complete Python Curriculum with 20 Levels
+# Complete Python Curriculum with 20 Levels - Simplified
 LEVELS = {
     1: {
         "name": "Introduction to Python",
         "description": "Learn the very basics of Python programming and execution.",
-        "min_problems_to_complete": 3,
+        "min_problems_to_complete": 2,
         "problems": [
             {
                 "id": "hello_world",
                 "title": "Hello, World!",
                 "difficulty": "Easy",
-                "description": "Write a 'Hello, World!' program and explain the Python execution process.",
+                "description": "Write a function that returns the string 'Hello, World!'",
                 "examples": [
                     {
                         "input": "",
                         "output": "'Hello, World!'",
-                        "explanation": "Your function should print the string 'Hello, World!'"
+                        "explanation": "Your function should return the string 'Hello, World!'"
                     }
                 ],
                 "template": """def hello_world():
-    # Write your code here to print "Hello, World!"
-    # Also add a comment explaining the Python execution process
+    # Write your code here to return "Hello, World!"
     pass""",
                 "test_cases": [
                     {"input": {}, "output": "Hello, World!"}
                 ],
-                "hint": "Use the print() function to display the text."
+                "hint": "Use the return statement to return the string."
             },
             {
-                "id": "py_versions",
-                "title": "Python 2 vs Python 3",
+                "id": "name_greeting",
+                "title": "Name Greeting",
                 "difficulty": "Easy",
-                "description": "Write a function that returns a string explaining the key differences between Python 2 and Python 3 with examples.",
+                "description": "Write a function that takes a name as input and returns a greeting.",
                 "examples": [
                     {
-                        "input": "",
-                        "output": "A string explaining differences",
-                        "explanation": "Your function should return a string with key differences."
+                        "input": "name='John'",
+                        "output": "'Hello, John!'",
+                        "explanation": "Returns a greeting with the provided name."
                     }
                 ],
-                "template": """def python_differences():
-    # Return a string explaining key differences between Python 2 and 3
-    # Include at least 3 examples of syntax or feature differences
+                "template": """def greet(name):
+    # Return a greeting with the name
     pass""",
                 "test_cases": [
-                    {"input": {}, "output": lambda x: len(x) > 100 and "print" in x and "division" in x.lower()},
-                    {"input": {}, "output": lambda x: "Python 2" in x and "Python 3" in x}
+                    {"input": {"name": "John"}, "output": "Hello, John!"},
+                    {"input": {"name": "Alice"}, "output": "Hello, Alice!"}
                 ],
-                "hint": "Consider differences in print syntax, division behavior, and string handling."
+                "hint": "Use string concatenation or f-strings to include the name in the greeting."
             },
             {
-                "id": "intro_profile",
-                "title": "Personal Introduction",
+                "id": "sum_two_numbers",
+                "title": "Sum Two Numbers",
                 "difficulty": "Easy",
-                "description": "Create a function that returns your name, age, and a fun fact about yourself.",
+                "description": "Write a function that calculates the sum of two numbers.",
                 "examples": [
                     {
-                        "input": "",
-                        "output": "Name: John Doe, Age: 25, Fun Fact: I love hiking!",
-                        "explanation": "Returns formatted personal information."
+                        "input": "a=5, b=3",
+                        "output": "8",
+                        "explanation": "Returns the sum of 5 and 3, which is 8."
                     }
                 ],
-                "template": """def personal_info():
-    # Return a string with your name, age, and a fun fact
-    # Format: "Name: [name], Age: [age], Fun Fact: [fact]"
+                "template": """def add(a, b):
+    # Calculate and return the sum of a and b
     pass""",
                 "test_cases": [
-                    {"input": {}, "output": lambda x: "Name:" in x and "Age:" in x and "Fun Fact:" in x},
-                    {"input": {}, "output": lambda x: isinstance(x, str) and len(x) > 20}
+                    {"input": {"a": 5, "b": 3}, "output": 8},
+                    {"input": {"a": -1, "b": 1}, "output": 0}
                 ],
-                "hint": "Use string formatting to create the output in the required format."
-            },
-            {
-                "id": "code_comments",
-                "title": "Code Comments",
-                "difficulty": "Easy",
-                "description": "Write a simple function that calculates the area of a rectangle and includes proper comments explaining what the code does.",
-                "examples": [
-                    {
-                        "input": "length=5, width=3",
-                        "output": "15",
-                        "explanation": "Area = length × width = 5 × 3 = 15"
-                    }
-                ],
-                "template": """def rectangle_area(length, width):
-    # Write your code here with detailed comments
-    # explaining what the function does and how it works
-    pass""",
-                "test_cases": [
-                    {"input": {"length": 5, "width": 3}, "output": 15},
-                    {"input": {"length": 7, "width": 2}, "output": 14}
-                ],
-                "hint": "Use multiplication to calculate the area and add comments explaining each step."
-            },
-            {
-                "id": "print_function",
-                "title": "Print Function",
-                "difficulty": "Medium",
-                "description": "Create a function that demonstrates the use of print() with different separators and end parameters.",
-                "examples": [
-                    {
-                        "input": "",
-                        "output": "Custom output with different separators and end parameters",
-                        "explanation": "Should demonstrate different print() configurations"
-                    }
-                ],
-                "template": """def print_demo():
-    # Demonstrate the print() function with different 
-    # separator and end parameters
-    # Return a string containing the output
-    pass""",
-                "test_cases": [
-                    {"input": {}, "output": lambda x: "sep" in x and "end" in x and len(x) > 20},
-                    {"input": {}, "output": lambda x: isinstance(x, str) and "print" in x}
-                ],
-                "hint": "Try using print(a, b, sep='X', end='Y') to customize output format."
+                "hint": "Use the + operator to add the two numbers."
             }
         ]
     },
     2: {
         "name": "Variables & Data Types",
         "description": "Learn about different data types in Python and how to use variables.",
-        "min_problems_to_complete": 3,
+        "min_problems_to_complete": 2,
         "problems": [
             {
-                "id": "data_types",
-                "title": "Data Types",
+                "id": "check_type",
+                "title": "Check Type",
                 "difficulty": "Easy",
-                "description": "Create a function that demonstrates different data types (int, float, string, boolean) and returns their types.",
+                "description": "Write a function that returns the type of the input as a string.",
                 "examples": [
                     {
-                        "input": "",
-                        "output": "Demonstrates variable types",
-                        "explanation": "The function should create variables of different types and show their types."
+                        "input": "value=42",
+                        "output": "'int'",
+                        "explanation": "Returns 'int' because 42 is an integer."
                     }
                 ],
-                "template": """def data_types_demo():
-    # Create variables of different types (int, float, string, boolean)
-    # Return a string showing each variable and its type
+                "template": """def get_type(value):
+    # Return the type of the value as a string
     pass""",
                 "test_cases": [
-                    {"input": {}, "output": lambda x: "int" in x and "float" in x and "str" in x and "bool" in x},
-                    {"input": {}, "output": lambda x: isinstance(x, str) and "type" in x}
+                    {"input": {"value": 42}, "output": "int"},
+                    {"input": {"value": "hello"}, "output": "str"},
+                    {"input": {"value": 3.14}, "output": "float"}
                 ],
-                "hint": "Use the type() function to get the type of each variable."
+                "hint": "Use the type() function and convert the result to a string."
             },
             {
-                "id": "type_conversion",
-                "title": "Type Conversion",
+                "id": "convert_to_int",
+                "title": "Convert to Integer",
                 "difficulty": "Easy",
-                "description": "Convert a string '123' to an integer and float, then perform arithmetic operations.",
+                "description": "Write a function that converts a string to an integer.",
                 "examples": [
                     {
-                        "input": "",
-                        "output": "Integer: 123, Float: 123.0, Sum: 246",
-                        "explanation": "Converting the string to numbers and performing operations."
+                        "input": "text='42'",
+                        "output": "42",
+                        "explanation": "Converts the string '42' to the integer 42."
                     }
                 ],
-                "template": """def convert_and_calculate():
-    # Convert string "123" to int and float
-    # Perform arithmetic operations and return the results
+                "template": """def to_integer(text):
+    # Convert the string to an integer and return it
     pass""",
                 "test_cases": [
-                    {"input": {}, "output": lambda x: "123" in x and "246" in x},
-                    {"input": {}, "output": lambda x: isinstance(x, str) and "Integer" in x and "Float" in x}
+                    {"input": {"text": "42"}, "output": 42},
+                    {"input": {"text": "-10"}, "output": -10}
                 ],
-                "hint": "Use int() and float() functions for type conversion."
+                "hint": "Use the int() function to convert a string to an integer."
             },
             {
-                "id": "rectangle_calculator",
-                "title": "Rectangle Calculator",
+                "id": "area_calculator",
+                "title": "Area Calculator",
                 "difficulty": "Easy",
-                "description": "Calculate the area and perimeter of a rectangle using variables.",
+                "description": "Write a function that calculates the area of a rectangle.",
                 "examples": [
                     {
                         "input": "length=5, width=3",
-                        "output": "Area: 15, Perimeter: 16",
-                        "explanation": "Area = 5×3=15, Perimeter = 2×(5+3)=16"
+                        "output": "15",
+                        "explanation": "The area of a rectangle with length 5 and width 3 is 15."
                     }
                 ],
-                "template": """def rectangle_calculator(length, width):
-    # Calculate and return the area and perimeter of a rectangle
-    # Return as a formatted string
+                "template": """def calculate_area(length, width):
+    # Calculate and return the area of the rectangle
     pass""",
                 "test_cases": [
-                    {"input": {"length": 5, "width": 3}, "output": lambda x: "Area: 15" in x and "Perimeter: 16" in x},
-                    {"input": {"length": 10, "width": 4}, "output": lambda x: "Area: 40" in x and "Perimeter: 28" in x}
+                    {"input": {"length": 5, "width": 3}, "output": 15},
+                    {"input": {"length": 4, "width": 4}, "output": 16}
                 ],
-                "hint": "Area = length × width, Perimeter = 2 × (length + width)"
-            },
-            {
-                "id": "temperature_converter",
-                "title": "Temperature Converter",
-                "difficulty": "Medium",
-                "description": "Create a function that converts a Fahrenheit temperature to Celsius.",
-                "examples": [
-                    {
-                        "input": "fahrenheit=68",
-                        "output": "20.0°C",
-                        "explanation": "68°F = 20°C using the formula (F - 32) × 5/9"
-                    }
-                ],
-                "template": """def fahrenheit_to_celsius(fahrenheit):
-    # Convert Fahrenheit to Celsius and return the result
-    # Round to 1 decimal place
-    pass""",
-                "test_cases": [
-                    {"input": {"fahrenheit": 68}, "output": "20.0°C"},
-                    {"input": {"fahrenheit": 32}, "output": "0.0°C"}
-                ],
-                "hint": "The formula is C = (F - 32) × 5/9. Don't forget to format the output with the degree symbol."
-            },
-            {
-                "id": "time_calculator",
-                "title": "Time Calculator",
-                "difficulty": "Medium",
-                "description": "Write a function that calculates days, hours, minutes, and seconds from a given number of seconds.",
-                "examples": [
-                    {
-                        "input": "total_seconds=90061",
-                        "output": "1 day, 1 hour, 1 minute, 1 second",
-                        "explanation": "90061 seconds = 1 day + 1 hour + 1 minute + 1 second"
-                    }
-                ],
-                "template": """def time_breakdown(total_seconds):
-    # Calculate days, hours, minutes, and seconds
-    # Return a formatted string with the breakdown
-    pass""",
-                "test_cases": [
-                    {"input": {"total_seconds": 90061}, "output": "1 day, 1 hour, 1 minute, 1 second"},
-                    {"input": {"total_seconds": 3661}, "output": "0 days, 1 hour, 1 minute, 1 second"}
-                ],
-                "hint": "Use floor division and modulo to break down the total seconds into days, hours, minutes, and seconds."
+                "hint": "Multiply the length by the width to calculate the area."
             }
         ]
     },
     3: {
         "name": "String Operations",
         "description": "Learn about string manipulation and operations in Python.",
-        "min_problems_to_complete": 3,
+        "min_problems_to_complete": 2,
         "problems": [
             {
-                "id": "greeting",
-                "title": "Greeting Generator",
+                "id": "concat_strings",
+                "title": "Concatenate Strings",
                 "difficulty": "Easy",
-                "description": "Create a function that takes a user's first and last name and returns a greeting with their full name.",
+                "description": "Write a function that concatenates two strings with a space between them.",
                 "examples": [
                     {
-                        "input": "first_name='John', last_name='Doe'",
-                        "output": "Hello, John Doe! Welcome to Python programming.",
-                        "explanation": "Combines first and last name in a greeting message."
+                        "input": "str1='Hello', str2='World'",
+                        "output": "'Hello World'",
+                        "explanation": "Concatenates 'Hello' and 'World' with a space in between."
                     }
                 ],
-                "template": """def create_greeting(first_name, last_name):
-    # Create and return a greeting with the user's full name
+                "template": """def concatenate(str1, str2):
+    # Concatenate the strings with a space between them
     pass""",
                 "test_cases": [
-                    {"input": {"first_name": "John", "last_name": "Doe"}, "output": "Hello, John Doe! Welcome to Python programming."},
-                    {"input": {"first_name": "Jane", "last_name": "Smith"}, "output": "Hello, Jane Smith! Welcome to Python programming."}
+                    {"input": {"str1": "Hello", "str2": "World"}, "output": "Hello World"},
+                    {"input": {"str1": "Python", "str2": "Programming"}, "output": "Python Programming"}
                 ],
-                "hint": "Concatenate the strings or use string formatting."
+                "hint": "Use the + operator with strings and include a space character between them."
             },
             {
-                "id": "string_concatenation",
-                "title": "String Concatenation",
+                "id": "string_length",
+                "title": "String Length",
                 "difficulty": "Easy",
-                "description": "Write a function that demonstrates different methods of string concatenation in Python.",
+                "description": "Write a function that returns the length of a string.",
                 "examples": [
                     {
-                        "input": "",
-                        "output": "Combined output showing different concatenation methods",
-                        "explanation": "Shows various ways to join strings in Python."
+                        "input": "text='Python'",
+                        "output": "6",
+                        "explanation": "The string 'Python' has 6 characters."
                     }
                 ],
-                "template": """def concatenation_methods():
-    # Demonstrate at least 3 different ways to concatenate strings
-    # Return a string showing each method and its result
+                "template": """def get_length(text):
+    # Return the length of the string
     pass""",
                 "test_cases": [
-                    {"input": {}, "output": lambda x: "+" in x and "format" in x.lower() and "join" in x.lower()},
-                    {"input": {}, "output": lambda x: isinstance(x, str) and len(x) > 30}
-                ],
-                "hint": "Try using the + operator, the format() method, f-strings, and the join() method."
-            },
-            {
-                "id": "char_counter",
-                "title": "Character Counter",
-                "difficulty": "Easy",
-                "description": "Create a function that counts and returns the number of characters in a string.",
-                "examples": [
-                    {
-                        "input": "text='Python Programming'",
-                        "output": "18",
-                        "explanation": "The string 'Python Programming' has 18 characters (including the space)."
-                    }
-                ],
-                "template": """def count_characters(text):
-    # Count the number of characters in the given text
-    # Return the count as an integer
-    pass""",
-                "test_cases": [
-                    {"input": {"text": "Python Programming"}, "output": 18},
-                    {"input": {"text": "Hello, World!"}, "output": 13}
+                    {"input": {"text": "Python"}, "output": 6},
+                    {"input": {"text": "Hello World"}, "output": 11}
                 ],
                 "hint": "Use the len() function to get the length of a string."
             },
             {
-                "id": "word_replacer",
-                "title": "Word Replacer",
-                "difficulty": "Medium",
-                "description": "Build a function that takes a sentence and replaces all occurrences of a specific word.",
+                "id": "reverse_string",
+                "title": "Reverse String",
+                "difficulty": "Easy",
+                "description": "Write a function that reverses a string.",
                 "examples": [
                     {
-                        "input": "sentence='I like apples, apples are my favorite fruit', old_word='apples', new_word='oranges'",
-                        "output": "'I like oranges, oranges are my favorite fruit'",
-                        "explanation": "All occurrences of 'apples' are replaced with 'oranges'."
+                        "input": "text='Python'",
+                        "output": "'nohtyP'",
+                        "explanation": "Returns 'Python' in reverse order."
                     }
                 ],
-                "template": """def replace_word(sentence, old_word, new_word):
-    # Replace all occurrences of old_word with new_word in the sentence
-    # Return the modified sentence
+                "template": """def reverse(text):
+    # Return the reversed string
     pass""",
                 "test_cases": [
-                    {
-                        "input": {"sentence": "I like apples, apples are my favorite fruit", "old_word": "apples", "new_word": "oranges"},
-                        "output": "I like oranges, oranges are my favorite fruit"
-                    },
-                    {
-                        "input": {"sentence": "Hello world", "old_word": "world", "new_word": "Python"},
-                        "output": "Hello Python"
-                    }
+                    {"input": {"text": "Python"}, "output": "nohtyP"},
+                    {"input": {"text": "Hello"}, "output": "olleH"}
                 ],
-                "hint": "Use the replace() method or split and join operations."
-            },
-            {
-                "id": "palindrome_checker",
-                "title": "Palindrome Checker",
-                "difficulty": "Medium",
-                "description": "Create a function that checks if a string is a palindrome (reads the same forwards and backwards).",
-                "examples": [
-                    {
-                        "input": "text='racecar'",
-                        "output": "True",
-                        "explanation": "'racecar' reads the same forwards and backwards, so it's a palindrome."
-                    }
-                ],
-                "template": """def is_palindrome(text):
-    # Check if the text is a palindrome
-    # Return True if it is, False otherwise
-    # Ignore case and non-alphanumeric characters
-    pass""",
-                "test_cases": [
-                    {"input": {"text": "racecar"}, "output": True},
-                    {"input": {"text": "A man, a plan, a canal: Panama"}, "output": True}
-                ],
-                "hint": "Remove spaces and special characters, convert to lowercase, and compare the string with its reverse."
+                "hint": "You can use string slicing with a negative step: text[::-1]"
             }
         ]
     },
     4: {
         "name": "Operators",
-        "description": "Learn about different operators in Python including arithmetic, assignment, comparison, and logical operators.",
-        "min_problems_to_complete": 3,
+        "description": "Learn about arithmetic, comparison, and logical operators in Python.",
+        "min_problems_to_complete": 2,
         "problems": [
             {
-                "id": "arithmetic_ops",
-                "title": "Arithmetic Operators",
+                "id": "basic_math",
+                "title": "Basic Math Operations",
                 "difficulty": "Easy",
-                "description": "Write a function that calculates and returns the result of all arithmetic operators on two numbers.",
+                "description": "Write a function that performs addition, subtraction, multiplication, and division on two numbers.",
                 "examples": [
                     {
-                        "input": "a=10, b=3",
-                        "output": "Addition: 13, Subtraction: 7, Multiplication: 30, Division: 3.333, Integer Division: 3, Modulus: 1, Exponentiation: 1000",
-                        "explanation": "Shows the result of applying all arithmetic operators to 10 and 3."
+                        "input": "a=10, b=5",
+                        "output": "{'sum': 15, 'difference': 5, 'product': 50, 'quotient': 2.0}",
+                        "explanation": "Returns a dictionary with the results of each operation."
                     }
                 ],
-                "template": """def arithmetic_operations(a, b):
-    # Calculate and return the results of all arithmetic operations
-    # Format the output as shown in the example
+                "template": """def math_operations(a, b):
+    # Return a dictionary with the results of basic math operations
     pass""",
                 "test_cases": [
-                    {"input": {"a": 10, "b": 3}, "output": lambda x: "Addition: 13" in x and "Division: 3.333" in x and "Exponentiation: 1000" in x},
-                    {"input": {"a": 5, "b": 2}, "output": lambda x: "Addition: 7" in x and "Division: 2.5" in x and "Exponentiation: 25" in x}
+                    {"input": {"a": 10, "b": 5}, "output": {"sum": 15, "difference": 5, "product": 50, "quotient": 2.0}},
+                    {"input": {"a": 8, "b": 4}, "output": {"sum": 12, "difference": 4, "product": 32, "quotient": 2.0}}
                 ],
-                "hint": "The arithmetic operators are: +, -, *, /, //, %, and **."
+                "hint": "Perform each operation and store the results in a dictionary."
             },
             {
-                "id": "assignment_ops",
-                "title": "Assignment Operators",
+                "id": "compare_nums",
+                "title": "Compare Numbers",
                 "difficulty": "Easy",
-                "description": "Create a function that demonstrates the use of assignment operators in Python.",
+                "description": "Write a function that returns True if the first number is greater than the second number, otherwise False.",
                 "examples": [
                     {
-                        "input": "initial_value=10",
-                        "output": "=: 10, +=: 15, -=: 5, *=: 50, /=: 5.0",
-                        "explanation": "Shows the result of applying different assignment operators starting with 10."
+                        "input": "a=10, b=5",
+                        "output": "True",
+                        "explanation": "Returns True because 10 is greater than 5."
                     }
                 ],
-                "template": """def assignment_operations(initial_value):
-    # Demonstrate the use of assignment operators
-    # Return a string showing the results of each operation
+                "template": """def is_greater(a, b):
+    # Return True if a > b, otherwise False
     pass""",
                 "test_cases": [
-                    {"input": {"initial_value": 10}, "output": lambda x: "=: 10" in x and "+=: 15" in x and "*=: 50" in x},
-                    {"input": {"initial_value": 5}, "output": lambda x: "=: 5" in x and "+=: 10" in x and "*=: 25" in x}
+                    {"input": {"a": 10, "b": 5}, "output": True},
+                    {"input": {"a": 5, "b": 10}, "output": False},
+                    {"input": {"a": 5, "b": 5}, "output": False}
                 ],
-                "hint": "Assignment operators include =, +=, -=, *=, /=, etc."
+                "hint": "Use the > operator to compare the two numbers."
             },
             {
-                "id": "comparison_ops",
-                "title": "Comparison Operators",
+                "id": "logical_and",
+                "title": "Logical AND",
                 "difficulty": "Easy",
-                "description": "Write a function that compares two numbers using all comparison operators and returns the results.",
+                "description": "Write a function that returns True if both inputs are True, otherwise False.",
                 "examples": [
                     {
-                        "input": "a=5, b=3",
-                        "output": "Equal: False, Not Equal: True, Greater Than: True, Less Than: False, Greater Than or Equal: True, Less Than or Equal: False",
-                        "explanation": "Shows the results of comparing 5 and 3 using all comparison operators."
+                        "input": "a=True, b=True",
+                        "output": "True",
+                        "explanation": "Returns True because both inputs are True."
                     }
                 ],
-                "template": """def comparison_operations(a, b):
-    # Compare the two numbers using all comparison operators
-    # Return a string showing the results
+                "template": """def logical_and(a, b):
+    # Return True if both a and b are True, otherwise False
     pass""",
                 "test_cases": [
-                    {"input": {"a": 5, "b": 3}, "output": lambda x: "Equal: False" in x and "Greater Than: True" in x},
-                    {"input": {"a": 10, "b": 10}, "output": lambda x: "Equal: True" in x and "Greater Than: False" in x}
+                    {"input": {"a": True, "b": True}, "output": True},
+                    {"input": {"a": True, "b": False}, "output": False},
+                    {"input": {"a": False, "b": False}, "output": False}
                 ],
-                "hint": "Comparison operators include ==, !=, >, <, >=, and <=."
-            },
-            {
-                "id": "logical_ops",
-                "title": "Logical Operators",
-                "difficulty": "Medium",
-                "description": "Create a function that demonstrates the use of logical operators (and, or, not) with various conditions.",
-                "examples": [
-                    {
-                        "input": "a=True, b=False",
-                        "output": "a and b: False, a or b: True, not a: False, not b: True",
-                        "explanation": "Shows the results of logical operations on True and False values."
-                    }
-                ],
-                "template": """def logical_operations(a, b):
-    # Demonstrate the use of logical operators
-    # Return a string showing the results
-    pass""",
-                "test_cases": [
-                    {"input": {"a": True, "b": False}, "output": lambda x: "and" in x and "or" in x and "not" in x},
-                    {"input": {"a": False, "b": False}, "output": lambda x: "and: False" in x and "or: False" in x}
-                ],
-                "hint": "Logical operators are and, or, and not. They work with boolean values."
-            },
-            {
-                "id": "bitwise_ops",
-                "title": "Bitwise Operators",
-                "difficulty": "Hard",
-                "description": "Write a function that performs bitwise operations on two numbers and displays the results in binary format.",
-                "examples": [
-                    {
-                        "input": "a=10, b=3",
-                        "output": "a = 1010, b = 0011, a & b = 0010, a | b = 1011, a ^ b = 1001, ~a = -1011, a << 1 = 10100, a >> 1 = 0101",
-                        "explanation": "Shows the results of bitwise operations on 10 (1010) and 3 (0011)."
-                    }
-                ],
-                "template": """def bitwise_operations(a, b):
-    # Perform bitwise operations and display results in binary
-    # Return a formatted string with all operations
-    pass""",
-                "test_cases": [
-                    {"input": {"a": 10, "b": 3}, "output": lambda x: "1010" in x and "0011" in x and "&" in x and "|" in x},
-                    {"input": {"a": 5, "b": 7}, "output": lambda x: "0101" in x and "0111" in x}
-                ],
-                "hint": "Use bin() to convert numbers to binary strings, then use bitwise operators: &, |, ^, ~, <<, >>."
+                "hint": "Use the 'and' keyword to combine the two conditions."
             }
         ]
     },
     5: {
         "name": "Conditional Statements",
-        "description": "Learn about if, elif, and else statements to control the flow of your Python programs.",
-        "min_problems_to_complete": 3,
+        "description": "Learn to use if, elif, and else statements for decision making.",
+        "min_problems_to_complete": 2,
         "problems": [
             {
-                "id": "number_sign",
-                "title": "Number Sign Checker",
+                "id": "check_even",
+                "title": "Check Even",
                 "difficulty": "Easy",
-                "description": "Write a function that checks if a number is positive, negative, or zero.",
+                "description": "Write a function that checks if a number is even.",
                 "examples": [
                     {
-                        "input": "num=5",
-                        "output": "'Positive'",
-                        "explanation": "5 is greater than 0, so it's positive."
-                    }
-                ],
-                "template": """def check_number_sign(num):
-    # Check if the number is positive, negative, or zero
-    # Return "Positive", "Negative", or "Zero"
-    pass""",
-                "test_cases": [
-                    {"input": {"num": 5}, "output": "Positive"},
-                    {"input": {"num": -3}, "output": "Negative"}
-                ],
-                "hint": "Use if, elif, and else statements to check the value of the number."
-            },
-            {
-                "id": "leap_year",
-                "title": "Leap Year Checker",
-                "difficulty": "Easy",
-                "description": "Create a function that determines if a given year is a leap year.",
-                "examples": [
-                    {
-                        "input": "year=2020",
+                        "input": "num=4",
                         "output": "True",
-                        "explanation": "2020 is divisible by 4 and not by 100, or it's divisible by 400, so it's a leap year."
+                        "explanation": "Returns True because 4 is an even number."
                     }
                 ],
-                "template": """def is_leap_year(year):
-    # Check if the year is a leap year
-    # Return True if it is, False otherwise
+                "template": """def is_even(num):
+    # Return True if num is even, otherwise False
     pass""",
                 "test_cases": [
-                    {"input": {"year": 2020}, "output": True},
-                    {"input": {"year": 2100}, "output": False}
+                    {"input": {"num": 4}, "output": True},
+                    {"input": {"num": 7}, "output": False},
+                    {"input": {"num": 0}, "output": True}
                 ],
-                "hint": "A leap year is divisible by 4, except for years divisible by 100 but not by 400."
+                "hint": "A number is even if it's divisible by 2 (i.e., num % 2 == 0)."
             },
             {
-                "id": "grade_calculator",
-                "title": "Grade Calculator",
-                "difficulty": "Medium",
-                "description": "Build a function that calculates the grade (A, B, C, D, F) based on a score from 0-100.",
+                "id": "max_of_three",
+                "title": "Maximum of Three Numbers",
+                "difficulty": "Easy",
+                "description": "Write a function that returns the largest of three numbers.",
+                "examples": [
+                    {
+                        "input": "a=5, b=10, c=3",
+                        "output": "10",
+                        "explanation": "Returns 10 because it's the largest number among 5, 10, and 3."
+                    }
+                ],
+                "template": """def find_max(a, b, c):
+    # Return the largest of the three numbers
+    pass""",
+                "test_cases": [
+                    {"input": {"a": 5, "b": 10, "c": 3}, "output": 10},
+                    {"input": {"a": 15, "b": 5, "c": 8}, "output": 15},
+                    {"input": {"a": 5, "b": 5, "c": 10}, "output": 10}
+                ],
+                "hint": "Use if-elif-else statements to compare the three numbers."
+            },
+            {
+                "id": "grade_letter",
+                "title": "Grade Letter",
+                "difficulty": "Easy",
+                "description": "Write a function that converts a numerical score to a letter grade.",
                 "examples": [
                     {
                         "input": "score=85",
                         "output": "'B'",
-                        "explanation": "A score of 85 falls in the B range (80-89)."
+                        "explanation": "Returns 'B' for a score of 85 (80-89)."
                     }
                 ],
-                "template": """def calculate_grade(score):
-    # Calculate the grade based on the score
-    # A: 90-100, B: 80-89, C: 70-79, D: 60-69, F: 0-59
-    # Return the letter grade
+                "template": """def get_grade(score):
+    # Convert score to letter grade: A (90-100), B (80-89), C (70-79), D (60-69), F (0-59)
     pass""",
                 "test_cases": [
                     {"input": {"score": 95}, "output": "A"},
-                    {"input": {"score": 75}, "output": "C"}
+                    {"input": {"score": 85}, "output": "B"},
+                    {"input": {"score": 75}, "output": "C"},
+                    {"input": {"score": 65}, "output": "D"},
+                    {"input": {"score": 55}, "output": "F"}
                 ],
-                "hint": "Use if/elif/else statements to check the score ranges."
-            },
-            {
-                "id": "triangle_type",
-                "title": "Triangle Type",
-                "difficulty": "Medium",
-                "description": "Create a function that determines if a triangle is equilateral, isosceles, or scalene based on sides.",
-                "examples": [
-                    {
-                        "input": "a=5, b=5, c=5",
-                        "output": "'Equilateral'",
-                        "explanation": "All sides are equal, so it's an equilateral triangle."
-                    }
-                ],
-                "template": """def triangle_type(a, b, c):
-    # Determine the type of triangle
-    # Return "Equilateral", "Isosceles", or "Scalene"
-    # First verify it's a valid triangle
-    pass""",
-                "test_cases": [
-                    {"input": {"a": 5, "b": 5, "c": 5}, "output": "Equilateral"},
-                    {"input": {"a": 5, "b": 5, "c": 3}, "output": "Isosceles"}
-                ],
-                "hint": "Check if it's a valid triangle first (sum of any two sides > third side). Then compare the sides."
-            },
-            {
-                "id": "simple_calculator",
-                "title": "Simple Calculator",
-                "difficulty": "Medium",
-                "description": "Write a function that implements a simple calculator (add, subtract, multiply, divide) using if-elif-else.",
-                "examples": [
-                    {
-                        "input": "a=10, b=5, operation='+'",
-                        "output": "15",
-                        "explanation": "10 + 5 = 15"
-                    }
-                ],
-                "template": """def simple_calculator(a, b, operation):
-    # Implement a calculator with basic operations
-    # Return the result of the operation
-    # Handle division by zero
-    pass""",
-                "test_cases": [
-                    {"input": {"a": 10, "b": 5, "operation": "+"}, "output": 15},
-                    {"input": {"a": 10, "b": 0, "operation": "/"}, "output": "Error: Division by zero"}
-                ],
-                "hint": "Use if/elif/else to handle different operations. Check for division by zero."
+                "hint": "Use if-elif-else statements to check the score ranges."
             }
         ]
     },
     6: {
         "name": "Loops",
-        "description": "Learn about for and while loops to repeat actions in Python.",
-        "min_problems_to_complete": 3,
+        "description": "Learn to use for and while loops for repetitive tasks.",
+        "min_problems_to_complete": 2,
         "problems": [
             {
-                "id": "multiplication_table",
-                "title": "Multiplication Table",
+                "id": "sum_list",
+                "title": "Sum of List",
                 "difficulty": "Easy",
-                "description": "Write a function that displays the multiplication table of a given number.",
+                "description": "Write a function that calculates the sum of all numbers in a list.",
                 "examples": [
                     {
-                        "input": "num=5, range=10",
-                        "output": "5 x 1 = 5\n5 x 2 = 10\n...\n5 x 10 = 50",
-                        "explanation": "Shows the multiplication table for 5, up to 5 x 10."
+                        "input": "numbers=[1, 2, 3, 4, 5]",
+                        "output": "15",
+                        "explanation": "Returns the sum of all numbers in the list: 1 + 2 + 3 + 4 + 5 = 15."
                     }
                 ],
-                "template": """def multiplication_table(num, range_limit=10):
-    # Generate the multiplication table for the given number
-    # Return the table as a string
+                "template": """def sum_numbers(numbers):
+    # Calculate and return the sum of all numbers in the list
     pass""",
                 "test_cases": [
-                    {"input": {"num": 5, "range_limit": 5}, "output": lambda x: "5 x 1 = 5" in x and "5 x 5 = 25" in x and x.count("\n") == 4},
-                    {"input": {"num": 3, "range_limit": 3}, "output": lambda x: "3 x 1 = 3" in x and "3 x 3 = 9" in x}
+                    {"input": {"numbers": [1, 2, 3, 4, 5]}, "output": 15},
+                    {"input": {"numbers": [10, 20, 30]}, "output": 60},
+                    {"input": {"numbers": []}, "output": 0}
                 ],
-                "hint": "Use a for loop with range() to iterate through the numbers 1 to range_limit."
+                "hint": "Use a for loop to iterate through the list and add each number to a running total."
             },
             {
-                "id": "factorial",
-                "title": "Factorial Calculator",
+                "id": "count_down",
+                "title": "Countdown",
                 "difficulty": "Easy",
-                "description": "Create a function that calculates the factorial of a number using a loop.",
+                "description": "Write a function that returns a list of numbers counting down from n to 1.",
                 "examples": [
                     {
                         "input": "n=5",
-                        "output": "120",
-                        "explanation": "5! = 5 × 4 × 3 × 2 × 1 = 120"
+                        "output": "[5, 4, 3, 2, 1]",
+                        "explanation": "Returns a list counting down from 5 to 1."
                     }
                 ],
-                "template": """def factorial(n):
-    # Calculate the factorial of n
-    # Return the result
+                "template": """def countdown(n):
+    # Return a list counting down from n to 1
     pass""",
                 "test_cases": [
-                    {"input": {"n": 5}, "output": 120},
-                    {"input": {"n": 0}, "output": 1}
+                    {"input": {"n": 5}, "output": [5, 4, 3, 2, 1]},
+                    {"input": {"n": 3}, "output": [3, 2, 1]},
+                    {"input": {"n": 1}, "output": [1]}
                 ],
-                "hint": "Initialize a result variable to 1, then multiply it by each number from 1 to n."
+                "hint": "Use a for loop with the range function to generate the countdown sequence."
             },
             {
-                "id": "fibonacci",
-                "title": "Fibonacci Sequence",
-                "difficulty": "Medium",
-                "description": "Build a function that generates the Fibonacci sequence up to a specified number of terms.",
+                "id": "multiply_list",
+                "title": "Multiply List",
+                "difficulty": "Easy",
+                "description": "Write a function that multiplies each number in a list by a given factor.",
                 "examples": [
                     {
-                        "input": "terms=8",
-                        "output": "[0, 1, 1, 2, 3, 5, 8, 13]",
-                        "explanation": "The first 8 numbers in the Fibonacci sequence."
+                        "input": "numbers=[1, 2, 3, 4], factor=2",
+                        "output": "[2, 4, 6, 8]",
+                        "explanation": "Returns a new list where each number is multiplied by 2."
                     }
                 ],
-                "template": """def fibonacci_sequence(terms):
-    # Generate the Fibonacci sequence up to the specified number of terms
-    # Return the sequence as a list
+                "template": """def multiply_by(numbers, factor):
+    # Multiply each number in the list by the factor
+    # Return the new list
     pass""",
                 "test_cases": [
-                    {"input": {"terms": 8}, "output": [0, 1, 1, 2, 3, 5, 8, 13]},
-                    {"input": {"terms": 5}, "output": [0, 1, 1, 2, 3]}
+                    {"input": {"numbers": [1, 2, 3, 4], "factor": 2}, "output": [2, 4, 6, 8]},
+                    {"input": {"numbers": [5, 10, 15], "factor": 3}, "output": [15, 30, 45]},
+                    {"input": {"numbers": [], "factor": 5}, "output": []}
                 ],
-                "hint": "Initialize with the first two numbers (0 and 1), then use a loop to generate subsequent numbers by adding the previous two."
-            },
-            {
-                "id": "prime_check",
-                "title": "Prime Number Checker",
-                "difficulty": "Medium",
-                "description": "Write a function that checks if a number is prime.",
-                "examples": [
-                    {
-                        "input": "num=11",
-                        "output": "True",
-                        "explanation": "11 is a prime number as it's only divisible by 1 and itself."
-                    }
-                ],
-                "template": """def is_prime(num):
-    # Check if the number is prime
-    # Return True if it is, False otherwise
-    pass""",
-                "test_cases": [
-                    {"input": {"num": 11}, "output": True},
-                    {"input": {"num": 4}, "output": False}
-                ],
-                "hint": "A prime number is greater than 1 and has no divisors other than 1 and itself. Check all numbers from 2 to the square root of the number."
-            },
-            {
-                "id": "pyramid_pattern",
-                "title": "Pyramid Pattern",
-                "difficulty": "Medium",
-                "description": "Create a function that prints a pyramid pattern of stars (*) with a given height.",
-                "examples": [
-                    {
-                        "input": "height=3",
-                        "output": "  *  \n *** \n*****",
-                        "explanation": "A pyramid with height 3, where each row has 2*height - 1 characters (spaces and stars)."
-                    }
-                ],
-                "template": """def pyramid(height):
-    # Generate a pyramid pattern of stars (*)
-    # Return the pattern as a string
-    pass""",
-                "test_cases": [
-                    {"input": {"height": 3}, "output": "  *  \n *** \n*****"},
-                    {"input": {"height": 1}, "output": "*"}
-                ],
-                "hint": "Use nested loops to handle rows and columns. For each row, print the right number of spaces and stars."
+                "hint": "Use a for loop to iterate through the list and create a new list with the multiplied values."
             }
         ]
     },
     7: {
-        "name": "String Manipulation",
-        "description": "Learn advanced string manipulation techniques in Python.",
-        "min_problems_to_complete": 3,
+        "name": "Lists",
+        "description": "Learn to work with lists in Python.",
+        "min_problems_to_complete": 2,
         "problems": [
             {
-                "id": "string_reverse",
-                "title": "String Reverser",
+                "id": "find_max",
+                "title": "Find Maximum",
                 "difficulty": "Easy",
-                "description": "Write a function that takes a string and returns it in reverse order.",
+                "description": "Write a function that finds the maximum value in a list.",
                 "examples": [
                     {
-                        "input": "text='Python'",
-                        "output": "'nohtyP'",
-                        "explanation": "The string 'Python' reversed is 'nohtyP'."
+                        "input": "numbers=[5, 8, 3, 10, 2]",
+                        "output": "10",
+                        "explanation": "Returns 10, which is the largest number in the list."
                     }
                 ],
-                "template": """def reverse_string(text):
-    # Reverse the given string
-    # Return the reversed string
+                "template": """def find_maximum(numbers):
+    # Find and return the maximum value in the list
     pass""",
                 "test_cases": [
-                    {"input": {"text": "Python"}, "output": "nohtyP"},
-                    {"input": {"text": "Hello World"}, "output": "dlroW olleH"}
+                    {"input": {"numbers": [5, 8, 3, 10, 2]}, "output": 10},
+                    {"input": {"numbers": [-5, -10, -3]}, "output": -3},
+                    {"input": {"numbers": [7]}, "output": 7}
                 ],
-                "hint": "You can use string slicing with a negative step: text[::-1]."
+                "hint": "Use a for loop to iterate through the list and keep track of the maximum value found so far, or use the built-in max() function."
             },
             {
-                "id": "vowel_consonant_count",
-                "title": "Vowel and Consonant Counter",
+                "id": "filter_evens",
+                "title": "Filter Even Numbers",
                 "difficulty": "Easy",
-                "description": "Create a function that counts the number of vowels and consonants in a string.",
+                "description": "Write a function that filters out all the even numbers from a list.",
                 "examples": [
                     {
-                        "input": "text='Python'",
-                        "output": "Vowels: 1, Consonants: 5",
-                        "explanation": "'Python' has 1 vowel ('o') and 5 consonants ('P', 'y', 't', 'h', 'n')."
+                        "input": "numbers=[1, 2, 3, 4, 5, 6]",
+                        "output": "[2, 4, 6]",
+                        "explanation": "Returns a list containing only the even numbers from the input list."
                     }
                 ],
-                "template": """def count_vowels_consonants(text):
-    # Count the vowels and consonants in the text
-    # Return a formatted string with the counts
+                "template": """def get_even_numbers(numbers):
+    # Return a list containing only the even numbers from the input list
     pass""",
                 "test_cases": [
-                    {"input": {"text": "Python"}, "output": "Vowels: 1, Consonants: 5"},
-                    {"input": {"text": "Hello"}, "output": "Vowels: 2, Consonants: 3"}
+                    {"input": {"numbers": [1, 2, 3, 4, 5, 6]}, "output": [2, 4, 6]},
+                    {"input": {"numbers": [1, 3, 5]}, "output": []},
+                    {"input": {"numbers": [2, 4, 6]}, "output": [2, 4, 6]}
                 ],
-                "hint": "Define a set of vowels and check each character in the string against this set. Remember to handle both uppercase and lowercase letters."
+                "hint": "Use a for loop to iterate through the list and check if each number is even (num % 2 == 0)."
             },
             {
-                "id": "extract_digits",
-                "title": "Digit Extractor",
-                "difficulty": "Medium",
-                "description": "Build a function that extracts and displays all digits from a string.",
+                "id": "join_lists",
+                "title": "Join Lists",
+                "difficulty": "Easy",
+                "description": "Write a function that combines two lists into one.",
                 "examples": [
                     {
-                        "input": "text='abc123xyz456'",
-                        "output": "'123456'",
-                        "explanation": "The function extracts only the digits (123456) from the string 'abc123xyz456'."
+                        "input": "list1=[1, 2, 3], list2=[4, 5, 6]",
+                        "output": "[1, 2, 3, 4, 5, 6]",
+                        "explanation": "Returns a new list containing all elements from both input lists."
                     }
                 ],
-                "template": """def extract_digits(text):
-    # Extract all digits from the given string
-    # Return a string containing only the digits
+                "template": """def combine_lists(list1, list2):
+    # Combine the two lists into one and return it
     pass""",
                 "test_cases": [
-                    {"input": {"text": "abc123xyz456"}, "output": "123456"},
-                    {"input": {"text": "Python 3.9.0"}, "output": "390"}
+                    {"input": {"list1": [1, 2, 3], "list2": [4, 5, 6]}, "output": [1, 2, 3, 4, 5, 6]},
+                    {"input": {"list1": [], "list2": [1, 2, 3]}, "output": [1, 2, 3]},
+                    {"input": {"list1": [1, 2, 3], "list2": []}, "output": [1, 2, 3]}
                 ],
-                "hint": "Use the isdigit() method to check if each character is a digit, or use regular expressions with re.findall(r'\\d', text)."
-            },
-            {
-                "id": "title_case",
-                "title": "Title Case Converter",
-                "difficulty": "Medium",
-                "description": "Write a function that capitalizes the first letter of each word in a sentence.",
-                "examples": [
-                    {
-                        "input": "text='welcome to python programming'",
-                        "output": "'Welcome To Python Programming'",
-                        "explanation": "Capitalizes the first letter of each word in the sentence."
-                    }
-                ],
-                "template": """def title_case(text):
-    # Capitalize the first letter of each word in the text
-    # Return the modified string
-    pass""",
-                "test_cases": [
-                    {"input": {"text": "welcome to python programming"}, "output": "Welcome To Python Programming"},
-                    {"input": {"text": "hello world"}, "output": "Hello World"}
-                ],
-                "hint": "Split the string into words, capitalize each word, and then join them back together. You can also use the title() method."
-            },
-            {
-                "id": "anagram_checker",
-                "title": "Anagram Checker",
-                "difficulty": "Medium",
-                "description": "Create a function that checks if two strings are anagrams of each other.",
-                "examples": [
-                    {
-                        "input": "str1='listen', str2='silent'",
-                        "output": "True",
-                        "explanation": "'listen' and 'silent' are anagrams because they use the same characters in different orders."
-                    }
-                ],
-                "template": """def is_anagram(str1, str2):
-    # Check if str1 and str2 are anagrams
-    # Return True if they are, False otherwise
-    pass""",
-                "test_cases": [
-                    {"input": {"str1": "listen", "str2": "silent"}, "output": True},
-                    {"input": {"str1": "hello", "str2": "world"}, "output": False}
-                ],
-                "hint": "Sort the characters in both strings and compare them, or count the occurrences of each character in both strings and compare the counts."
+                "hint": "Use the + operator to concatenate the lists, or extend one list with the other."
             }
         ]
     },
     8: {
-        "name": "Lists",
-        "description": "Learn about Python lists, their operations, and manipulations.",
-        "min_problems_to_complete": 3,
+        "name": "List Comprehension",
+        "description": "Learn to use list comprehensions for concise list creation.",
+        "min_problems_to_complete": 2,
         "problems": [
             {
-                "id": "min_max_finder",
-                "title": "Minimum and Maximum Finder",
+                "id": "squares_list",
+                "title": "List of Squares",
                 "difficulty": "Easy",
-                "description": "Write a function that finds the smallest and largest numbers in a list.",
+                "description": "Write a function that returns a list of squares of numbers from 1 to n.",
                 "examples": [
                     {
-                        "input": "numbers=[7, 2, 9, 3, 5]",
-                        "output": "Min: 2, Max: 9",
-                        "explanation": "The smallest number in the list is 2, and the largest is 9."
+                        "input": "n=5",
+                        "output": "[1, 4, 9, 16, 25]",
+                        "explanation": "Returns a list containing the squares of numbers from 1 to 5."
                     }
                 ],
-                "template": """def find_min_max(numbers):
-    # Find the minimum and maximum values in the list
-    # Return a formatted string with the results
+                "template": """def get_squares(n):
+    # Return a list of squares of numbers from 1 to n using list comprehension
     pass""",
                 "test_cases": [
-                    {"input": {"numbers": [7, 2, 9, 3, 5]}, "output": "Min: 2, Max: 9"},
-                    {"input": {"numbers": [-5, 0, 10]}, "output": "Min: -5, Max: 10"}
+                    {"input": {"n": 5}, "output": [1, 4, 9, 16, 25]},
+                    {"input": {"n": 3}, "output": [1, 4, 9]},
+                    {"input": {"n": 1}, "output": [1]}
                 ],
-                "hint": "Use the built-in min() and max() functions, or iterate through the list tracking the current minimum and maximum values."
+                "hint": "Use a list comprehension with the format [x**2 for x in range(1, n+1)]."
             },
             {
-                "id": "remove_duplicates",
-                "title": "Remove Duplicates",
+                "id": "filter_positive",
+                "title": "Filter Positive Numbers",
                 "difficulty": "Easy",
-                "description": "Create a function that removes duplicates from a list while preserving the order.",
+                "description": "Write a function that filters out all positive numbers from a list.",
                 "examples": [
                     {
-                        "input": "items=[1, 2, 3, 2, 1, 4, 5, 5]",
-                        "output": "[1, 2, 3, 4, 5]",
-                        "explanation": "Removes all duplicates from the list while maintaining the original order."
+                        "input": "numbers=[-2, -1, 0, 1, 2]",
+                        "output": "[1, 2]",
+                        "explanation": "Returns a list containing only the positive numbers from the input list."
                     }
                 ],
-                "template": """def remove_duplicates(items):
-    # Remove duplicates from the list while preserving order
-    # Return the list with duplicates removed
+                "template": """def get_positives(numbers):
+    # Return a list containing only the positive numbers using list comprehension
     pass""",
                 "test_cases": [
-                    {"input": {"items": [1, 2, 3, 2, 1, 4, 5, 5]}, "output": [1, 2, 3, 4, 5]},
-                    {"input": {"items": ["a", "b", "a", "c", "b"]}, "output": ["a", "b", "c"]}
+                    {"input": {"numbers": [-2, -1, 0, 1, 2]}, "output": [1, 2]},
+                    {"input": {"numbers": [-3, -2, -1]}, "output": []},
+                    {"input": {"numbers": [1, 2, 3]}, "output": [1, 2, 3]}
                 ],
-                "hint": "Use a list comprehension with a seen set, or convert to a dictionary and back to a list."
+                "hint": "Use a list comprehension with a condition to filter for positive numbers: [x for x in numbers if x > 0]."
             },
             {
-                "id": "merge_sorted_lists",
-                "title": "Merge Sorted Lists",
-                "difficulty": "Medium",
-                "description": "Build a function that merges two sorted lists into a single sorted list.",
+                "id": "double_list",
+                "title": "Double Values",
+                "difficulty": "Easy",
+                "description": "Write a function that doubles all the values in a list.",
                 "examples": [
                     {
-                        "input": "list1=[1, 3, 5], list2=[2, 4, 6]",
-                        "output": "[1, 2, 3, 4, 5, 6]",
-                        "explanation": "Merges the two sorted lists into a single sorted list."
+                        "input": "numbers=[1, 2, 3, 4]",
+                        "output": "[2, 4, 6, 8]",
+                        "explanation": "Returns a list where each number is doubled."
                     }
                 ],
-                "template": """def merge_sorted_lists(list1, list2):
-    # Merge the two sorted lists into a single sorted list
-    # Return the merged list
+                "template": """def double_values(numbers):
+    # Return a list where each value is doubled using list comprehension
     pass""",
                 "test_cases": [
-                    {"input": {"list1": [1, 3, 5], "list2": [2, 4, 6]}, "output": [1, 2, 3, 4, 5, 6]},
-                    {"input": {"list1": [1, 2, 3], "list2": [4, 5, 6]}, "output": [1, 2, 3, 4, 5, 6]}
+                    {"input": {"numbers": [1, 2, 3, 4]}, "output": [2, 4, 6, 8]},
+                    {"input": {"numbers": [0, 5, 10]}, "output": [0, 10, 20]},
+                    {"input": {"numbers": []}, "output": []}
                 ],
-                "hint": "You can use the + operator to concatenate and then sort, or implement a proper merge algorithm that maintains the existing sorting."
-            },
-            {
-                "id": "rotate_list",
-                "title": "Rotate List",
-                "difficulty": "Medium",
-                "description": "Write a function that rotates elements of a list to the right by k steps.",
-                "examples": [
-                    {
-                        "input": "lst=[1, 2, 3, 4, 5], k=2",
-                        "output": "[4, 5, 1, 2, 3]",
-                        "explanation": "Rotating the list [1, 2, 3, 4, 5] by 2 steps to the right gives [4, 5, 1, 2, 3]."
-                    }
-                ],
-                "template": """def rotate_list(lst, k):
-    # Rotate the list to the right by k steps
-    # Return the rotated list
-    pass""",
-                "test_cases": [
-                    {"input": {"lst": [1, 2, 3, 4, 5], "k": 2}, "output": [4, 5, 1, 2, 3]},
-                    {"input": {"lst": [1, 2, 3, 4, 5], "k": 0}, "output": [1, 2, 3, 4, 5]}
-                ],
-                "hint": "Handle k > len(lst) using modulo. Use list slicing to rotate the list, or perform k individual right rotations."
-            },
-            {
-                "id": "stack_implementation",
-                "title": "Stack Implementation",
-                "difficulty": "Medium",
-                "description": "Create a function that implements a stack (push, pop, display) using a list.",
-                "examples": [
-                    {
-                        "input": "operations=['push 1', 'push 2', 'pop', 'push 3', 'display']",
-                        "output": "[1, 3]",
-                        "explanation": "Pushes 1, pushes 2, pops (removes 2), pushes 3, and displays the stack [1, 3]."
-                    }
-                ],
-                "template": """def stack_operations(operations):
-    # Implement a stack using a list
-    # Process the operations and return the final stack
-    pass""",
-                "test_cases": [
-                    {"input": {"operations": ["push 1", "push 2", "pop", "push 3", "display"]}, "output": [1, 3]},
-                    {"input": {"operations": ["push 5", "push 7", "push 9", "pop", "display"]}, "output": [5, 7]}
-                ],
-                "hint": "Use a list to represent the stack. For push, use append(). For pop, use pop(). Handle the case where pop is called on an empty stack."
+                "hint": "Use a list comprehension that multiplies each value by 2: [x * 2 for x in numbers]."
             }
         ]
     },
     9: {
-        "name": "List Comprehension",
-        "description": "Learn to use list comprehensions for more concise and readable code.",
-        "min_problems_to_complete": 3,
+        "name": "Dictionaries",
+        "description": "Learn to work with dictionaries in Python.",
+        "min_problems_to_complete": 2,
         "problems": [
             {
-                "id": "even_numbers",
-                "title": "Even Numbers Generator",
+                "id": "create_dict",
+                "title": "Create Dictionary",
                 "difficulty": "Easy",
-                "description": "Write a list comprehension to get all even numbers from 1 to 50.",
+                "description": "Write a function that creates a dictionary from two lists - one of keys and one of values.",
                 "examples": [
                     {
-                        "input": "",
-                        "output": "[2, 4, 6, 8, ..., 48, 50]",
-                        "explanation": "Returns all even numbers from 1 to 50 using a list comprehension."
+                        "input": "keys=['a', 'b', 'c'], values=[1, 2, 3]",
+                        "output": "{'a': 1, 'b': 2, 'c': 3}",
+                        "explanation": "Returns a dictionary with keys from the first list and corresponding values from the second list."
                     }
                 ],
-                "template": """def get_even_numbers():
-    # Use a list comprehension to generate all even numbers from 1 to 50
-    # Return the list of even numbers
+                "template": """def create_dictionary(keys, values):
+    # Create and return a dictionary from the two lists
     pass""",
                 "test_cases": [
-                    {"input": {}, "output": [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50]},
-                    {"input": {}, "output": lambda x: len(x) == 25 and all(i % 2 == 0 for i in x)}
+                    {"input": {"keys": ['a', 'b', 'c'], "values": [1, 2, 3]}, "output": {'a': 1, 'b': 2, 'c': 3}},
+                    {"input": {"keys": ['name', 'age'], "values": ['John', 25]}, "output": {'name': 'John', 'age': 25}},
+                    {"input": {"keys": [], "values": []}, "output": {}}
                 ],
-                "hint": "Use a list comprehension with a range from 1 to 51 and filter for numbers divisible by 2."
+                "hint": "Use the zip() function to pair up the keys and values, then convert to a dictionary."
             },
             {
-                "id": "square_numbers",
-                "title": "Number Squares",
+                "id": "dict_value",
+                "title": "Get Dictionary Value",
                 "difficulty": "Easy",
-                "description": "Create a list comprehension to get squares of numbers from 1 to 20.",
+                "description": "Write a function that returns the value for a given key in a dictionary, with a default value if the key doesn't exist.",
                 "examples": [
                     {
-                        "input": "",
-                        "output": "[1, 4, 9, 16, ..., 361, 400]",
-                        "explanation": "Returns squares of numbers from 1 to 20 using a list comprehension."
+                        "input": "dictionary={'a': 1, 'b': 2, 'c': 3}, key='b', default=0",
+                        "output": "2",
+                        "explanation": "Returns the value for key 'b', which is 2."
                     }
                 ],
-                "template": """def get_squares():
-    # Use a list comprehension to generate squares of numbers from 1 to 20
-    # Return the list of squares
+                "template": """def get_value(dictionary, key, default=None):
+    # Return the value for the key, or the default value if the key doesn't exist
     pass""",
                 "test_cases": [
-                    {"input": {}, "output": [1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361, 400]},
-                    {"input": {}, "output": lambda x: len(x) == 20 and x[4] == 25}
+                    {"input": {"dictionary": {'a': 1, 'b': 2, 'c': 3}, "key": 'b', "default": 0}, "output": 2},
+                    {"input": {"dictionary": {'a': 1, 'b': 2, 'c': 3}, "key": 'd', "default": 0}, "output": 0},
+                    {"input": {"dictionary": {}, "key": 'a', "default": 'Not found'}, "output": 'Not found'}
                 ],
-                "hint": "Use a list comprehension with a range from 1 to 21 and calculate the square of each number."
+                "hint": "Use the get() method of dictionaries, which accepts a default value."
             },
             {
-                "id": "long_words",
-                "title": "Long Word Filter",
-                "difficulty": "Medium",
-                "description": "Build a list comprehension to get all words with length greater than 5 from a given list of strings.",
+                "id": "count_items",
+                "title": "Count Items",
+                "difficulty": "Easy",
+                "description": "Write a function that counts the occurrence of each item in a list and returns a dictionary.",
                 "examples": [
                     {
-                        "input": "words=['apple', 'banana', 'cherry', 'date', 'elderberry', 'fig', 'grape']",
-                        "output": "['banana', 'elderberry']",
-                        "explanation": "Returns words with more than 5 characters from the list."
+                        "input": "items=['a', 'b', 'a', 'c', 'b', 'a']",
+                        "output": "{'a': 3, 'b': 2, 'c': 1}",
+                        "explanation": "Returns a dictionary with each item as a key and its count as the value."
                     }
                 ],
-                "template": """def filter_long_words(words):
-    # Use a list comprehension to filter words with length > 5
-    # Return the filtered list
+                "template": """def count_occurrences(items):
+    # Count occurrences of each item and return a dictionary
     pass""",
                 "test_cases": [
-                    {"input": {"words": ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape"]}, "output": ["banana", "elderberry"]},
-                    {"input": {"words": ["cat", "dog", "elephant", "fox", "giraffe"]}, "output": ["elephant", "giraffe"]}
+                    {"input": {"items": ['a', 'b', 'a', 'c', 'b', 'a']}, "output": {'a': 3, 'b': 2, 'c': 1}},
+                    {"input": {"items": [1, 2, 3, 1, 2, 1]}, "output": {1: 3, 2: 2, 3: 1}},
+                    {"input": {"items": []}, "output": {}}
                 ],
-                "hint": "Use a list comprehension with a condition to check if the length of each word is greater than 5."
-            },
-            {
-                "id": "flatten_list",
-                "title": "List Flattener",
-                "difficulty": "Medium",
-                "description": "Write a list comprehension to flatten a 2D list into a 1D list.",
-                "examples": [
-                    {
-                        "input": "nested_list=[[1, 2], [3, 4], [5, 6]]",
-                        "output": "[1, 2, 3, 4, 5, 6]",
-                        "explanation": "Flattens the nested list into a single-dimensional list."
-                    }
-                ],
-                "template": """def flatten_2d_list(nested_list):
-    # Use a list comprehension to flatten the 2D list
-    # Return the flattened list
-    pass""",
-                "test_cases": [
-                    {"input": {"nested_list": [[1, 2], [3, 4], [5, 6]]}, "output": [1, 2, 3, 4, 5, 6]},
-                    {"input": {"nested_list": [[1], [2, 3], [4, 5, 6]]}, "output": [1, 2, 3, 4, 5, 6]}
-                ],
-                "hint": "Use a nested list comprehension with two for loops - one for the outer list and one for the inner lists."
-            },
-            {
-                "id": "palindrome_filter",
-                "title": "Palindrome Filter",
-                "difficulty": "Medium",
-                "description": "Create a list comprehension to filter out non-palindrome strings from a list.",
-                "examples": [
-                    {
-                        "input": "strings=['radar', 'python', 'level', 'algorithm', 'civic']",
-                        "output": "['radar', 'level', 'civic']",
-                        "explanation": "Returns only the palindrome strings from the list."
-                    }
-                ],
-                "template": """def filter_palindromes(strings):
-    # Use a list comprehension to filter palindromes
-    # Return the filtered list
-    pass""",
-                "test_cases": [
-                    {"input": {"strings": ["radar", "python", "level", "algorithm", "civic"]}, "output": ["radar", "level", "civic"]},
-                    {"input": {"strings": ["hello", "world", "madam", "racecar"]}, "output": ["madam", "racecar"]}
-                ],
-                "hint": "Use a list comprehension with a condition to check if each string equals its reverse (s == s[::-1])."
+                "hint": "Initialize an empty dictionary, then iterate through the list, incrementing the count for each item."
             }
         ]
     },
     10: {
-        "name": "Dictionaries",
-        "description": "Learn about Python dictionaries and their various operations.",
-        "min_problems_to_complete": 3,
+        "name": "Functions",
+        "description": "Learn advanced function concepts in Python.",
+        "min_problems_to_complete": 2,
         "problems": [
             {
-                "id": "word_frequency",
-                "title": "Word Frequency Counter",
+                "id": "default_param",
+                "title": "Default Parameters",
                 "difficulty": "Easy",
-                "description": "Create a function that counts the frequency of each word in a sentence using a dictionary.",
+                "description": "Write a function that greets a person with an optional greeting.",
                 "examples": [
                     {
-                        "input": "sentence='the quick brown fox jumps over the lazy dog'",
-                        "output": "{'the': 2, 'quick': 1, 'brown': 1, 'fox': 1, 'jumps': 1, 'over': 1, 'lazy': 1, 'dog': 1}",
-                        "explanation": "Returns a dictionary with the count of each word in the sentence."
+                        "input": "name='John', greeting='Hello'",
+                        "output": "'Hello, John!'",
+                        "explanation": "Returns a greeting with the provided name and greeting."
                     }
                 ],
-                "template": """def word_frequency(sentence):
-    # Count the frequency of each word in the sentence
-    # Return a dictionary with words as keys and counts as values
+                "template": """def greet_person(name, greeting='Hello'):
+    # Return a greeting with the name and optional greeting
     pass""",
                 "test_cases": [
-                    {"input": {"sentence": "the quick brown fox jumps over the lazy dog"}, "output": {"the": 2, "quick": 1, "brown": 1, "fox": 1, "jumps": 1, "over": 1, "lazy": 1, "dog": 1}},
-                    {"input": {"sentence": "hello world hello"}, "output": {"hello": 2, "world": 1}}
+                    {"input": {"name": "John", "greeting": "Hello"}, "output": "Hello, John!"},
+                    {"input": {"name": "Alice"}, "output": "Hello, Alice!"},
+                    {"input": {"name": "Alice"}, "output": "Hello, Alice!"},
+                    {"input": {"name": "Bob", "greeting": "Hi"}, "output": "Hi, Bob!"}
                 ],
-                "hint": "Split the sentence into words, then use a dictionary to count occurrences. You could also use collections.Counter."
+                "hint": "Use string formatting or concatenation to combine the greeting and name."
             },
             {
-                "id": "phonebook",
-                "title": "Phone Book Application",
+                "id": "multiple_return",
+                "title": "Multiple Return Values",
                 "difficulty": "Easy",
-                "description": "Build a simple phone book application using dictionaries.",
+                "description": "Write a function that returns both the minimum and maximum values in a list.",
                 "examples": [
                     {
-                        "input": "operations=['add John 1234567890', 'add Jane 9876543210', 'get John', 'remove Jane', 'get Jane']",
-                        "output": "['Added John', 'Added Jane', '1234567890', 'Removed Jane', 'Not found']",
-                        "explanation": "Adds John and Jane to the phone book, gets John's number, removes Jane, then tries to get Jane's number again."
+                        "input": "numbers=[1, 5, 3, 9, 2]",
+                        "output": "(1, 9)",
+                        "explanation": "Returns a tuple with the minimum value (1) and maximum value (9) from the list."
                     }
                 ],
-                "template": """def phone_book(operations):
-    # Implement a phone book with add, get, and remove operations
-    # Return a list of results for each operation
+                "template": """def min_max(numbers):
+    # Return a tuple containing the minimum and maximum values
     pass""",
                 "test_cases": [
-                    {"input": {"operations": ["add John 1234567890", "add Jane 9876543210", "get John", "remove Jane", "get Jane"]},
-                     "output": ["Added John", "Added Jane", "1234567890", "Removed Jane", "Not found"]},
-                    {"input": {"operations": ["add Alice 5551234", "add Bob 5555678", "remove Charlie", "add Alice 5559876", "get Alice"]},
-                     "output": ["Added Alice", "Added Bob", "Not found", "Updated Alice", "5559876"]}
+                    {"input": {"numbers": [1, 5, 3, 9, 2]}, "output": (1, 9)},
+                    {"input": {"numbers": [5, 5, 5, 5]}, "output": (5, 5)},
+                    {"input": {"numbers": [-10, 0, 10]}, "output": (-10, 10)}
                 ],
-                "hint": "Use a dictionary to store names and phone numbers. Parse each operation string to determine the action (add, get, remove) and the parameters."
+                "hint": "Use the built-in min() and max() functions and return their results as a tuple."
             },
             {
-                "id": "merge_dicts",
-                "title": "Dictionary Merger",
+                "id": "recursive_sum",
+                "title": "Recursive Sum",
                 "difficulty": "Medium",
-                "description": "Write a function that merges two dictionaries.",
+                "description": "Write a recursive function that calculates the sum of all numbers from 1 to n.",
                 "examples": [
                     {
-                        "input": "dict1={'a': 1, 'b': 2}, dict2={'b': 3, 'c': 4}",
-                        "output": "{'a': 1, 'b': 3, 'c': 4}",
-                        "explanation": "Merges dict1 and dict2. When keys overlap, values from dict2 are used."
+                        "input": "n=5",
+                        "output": "15",
+                        "explanation": "Returns the sum 1 + 2 + 3 + 4 + 5 = 15, calculated recursively."
                     }
                 ],
-                "template": """def merge_dictionaries(dict1, dict2):
-    # Merge the two dictionaries
-    # When keys overlap, use the values from dict2
-    # Return the merged dictionary
+                "template": """def sum_to_n(n):
+    # Calculate the sum from 1 to n recursively
     pass""",
                 "test_cases": [
-                    {"input": {"dict1": {"a": 1, "b": 2}, "dict2": {"b": 3, "c": 4}}, "output": {"a": 1, "b": 3, "c": 4}},
-                    {"input": {"dict1": {"x": 10, "y": 20}, "dict2": {"z": 30}}, "output": {"x": 10, "y": 20, "z": 30}}
+                    {"input": {"n": 5}, "output": 15},
+                    {"input": {"n": 1}, "output": 1},
+                    {"input": {"n": 0}, "output": 0}
                 ],
-                "hint": "Create a copy of dict1, then update it with dict2. Alternatively, use the ** operator to merge dictionaries in Python 3.5+."
-            },
-            {
-                "id": "group_by_key",
-                "title": "Dictionary Grouper",
-                "difficulty": "Medium",
-                "description": "Create a function that groups a list of dictionaries based on a specific key.",
-                "examples": [
-                    {
-                        "input": "items=[{'name': 'Alice', 'age': 25}, {'name': 'Bob', 'age': 30}, {'name': 'Charlie', 'age': 25}], key='age'",
-                        "output": "{25: [{'name': 'Alice', 'age': 25}, {'name': 'Charlie', 'age': 25}], 30: [{'name': 'Bob', 'age': 30}]}",
-                        "explanation": "Groups the dictionaries by the 'age' key."
-                    }
-                ],
-                "template": """def group_by_key(items, key):
-    # Group the list of dictionaries by the specified key
-    # Return a dictionary with key values as keys and lists of matching dictionaries as values
-    pass""",
-                "test_cases": [
-                    {"input": {"items": [{"name": "Alice", "age": 25}, {"name": "Bob", "age": 30}, {"name": "Charlie", "age": 25}], "key": "age"},
-                     "output": {25: [{"name": "Alice", "age": 25}, {"name": "Charlie", "age": 25}], 30: [{"name": "Bob", "age": 30}]}},
-                    {"input": {"items": [{"type": "fruit", "name": "apple"}, {"type": "vegetable", "name": "carrot"}, {"type": "fruit", "name": "banana"}], "key": "type"},
-                     "output": {"fruit": [{"type": "fruit", "name": "apple"}, {"type": "fruit", "name": "banana"}], "vegetable": [{"type": "vegetable", "name": "carrot"}]}}
-                ],
-                "hint": "Create a dictionary where the keys are the values of the specified key in the dictionaries. Iterate through the items and append each dictionary to the appropriate list."
-            },
-            {
-                "id": "library_catalog",
-                "title": "Library Catalog",
-                "difficulty": "Hard",
-                "description": "Build a program that implements a nested dictionary to represent a simple library catalog.",
-                "examples": [
-                    {
-                        "input": "operations=['add Python101 Programming John_Doe 2020', 'add DataScience DataAnalysis Jane_Smith 2021', 'get Python101', 'update Python101 year 2022', 'get Python101']",
-                        "output": "['Added Python101', 'Added DataScience', {'title': 'Python101', 'category': 'Programming', 'author': 'John_Doe', 'year': 2020}, 'Updated Python101', {'title': 'Python101', 'category': 'Programming', 'author': 'John_Doe', 'year': 2022}]",
-                        "explanation": "Creates and manages a library catalog using nested dictionaries."
-                    }
-                ],
-                "template": """def library_catalog(operations):
-    # Implement a library catalog with add, get, update, and remove operations
-    # Return a list of results for each operation
-    pass""",
-                "test_cases": [
-                    {"input": {"operations": ["add Python101 Programming John_Doe 2020", "add DataScience DataAnalysis Jane_Smith 2021", "get Python101", "update Python101 year 2022", "get Python101"]},
-                     "output": ["Added Python101", "Added DataScience", {"title": "Python101", "category": "Programming", "author": "John_Doe", "year": 2020}, "Updated Python101", {"title": "Python101", "category": "Programming", "author": "John_Doe", "year": 2022}]},
-                    {"input": {"operations": ["add Book1 Fiction Author1 2019", "remove Book1", "get Book1", "add Book2 NonFiction Author2 2021", "list"]},
-                     "output": ["Added Book1", "Removed Book1", "Not found", "Added Book2", [{"title": "Book2", "category": "NonFiction", "author": "Author2", "year": 2021}]]}
-                ],
-                "hint": "Use a dictionary where keys are book titles and values are dictionaries with book details. Parse each operation string to handle add, get, update, remove, and list operations."
+                "hint": "Base case: if n is 0 or 1. Recursive case: n + sum_to_n(n-1)."
             }
         ]
     },
     11: {
-        "name": "Tuples",
-        "description": "Learn about Python tuples and their immutable nature.",
-        "min_problems_to_complete": 3,
+        "name": "Error Handling",
+        "description": "Learn how to handle errors and exceptions in Python.",
+        "min_problems_to_complete": 2,
         "problems": [
             {
-                "id": "tuple_swap",
-                "title": "Tuple Swap",
+                "id": "safe_divide",
+                "title": "Safe Division",
                 "difficulty": "Easy",
-                "description": "Write a function that swaps the values of two variables using tuples.",
+                "description": "Write a function that safely divides two numbers, handling division by zero.",
                 "examples": [
                     {
-                        "input": "a=5, b=10",
-                        "output": "a=10, b=5",
-                        "explanation": "The values of a and b are swapped using tuple packing and unpacking."
-                    }
-                ],
-                "template": """def swap_values(a, b):
-    # Swap the values of a and b using tuples
-    # Return the swapped values as a tuple (a, b)
-    pass""",
-                "test_cases": [
-                    {"input": {"a": 5, "b": 10}, "output": (10, 5)},
-                    {"input": {"a": "hello", "b": "world"}, "output": ("world", "hello")}
-                ],
-                "hint": "Use tuple packing and unpacking to swap values: a, b = b, a"
-            },
-            {
-                "id": "return_multiple",
-                "title": "Return Multiple Values",
-                "difficulty": "Easy",
-                "description": "Create a function that returns multiple values from a function using a tuple.",
-                "examples": [
-                    {
-                        "input": "num=10",
-                        "output": "(10, 100, 1000)",
-                        "explanation": "Returns the number, its square, and its cube as a tuple."
-                    }
-                ],
-                "template": """def get_number_info(num):
-    # Return the number, its square, and its cube as a tuple
-    pass""",
-                "test_cases": [
-                    {"input": {"num": 10}, "output": (10, 100, 1000)},
-                    {"input": {"num": 5}, "output": (5, 25, 125)}
-                ],
-                "hint": "Calculate the values and return them as a tuple: return (num, num**2, num**3)"
-            },
-            {
-                "id": "coordinate_calculator",
-                "title": "Coordinate Calculator",
-                "difficulty": "Medium",
-                "description": "Build a function that performs operations on (x, y) coordinates stored as tuples.",
-                "examples": [
-                    {
-                        "input": "coord1=(3, 4), coord2=(6, 8), operation='distance'",
+                        "input": "a=10, b=2",
                         "output": "5.0",
-                        "explanation": "Calculates the Euclidean distance between the coordinates (3, 4) and (6, 8), which is 5."
+                        "explanation": "Returns 10 divided by 2, which is 5.0."
                     }
                 ],
-                "template": """def coordinate_operation(coord1, coord2, operation):
-    # Perform the specified operation on the two coordinates
-    # Operations: 'distance', 'midpoint', 'vector_add'
-    # Return the result
+                "template": """def divide_safely(a, b):
+    # Divide a by b, handling division by zero by returning None
     pass""",
                 "test_cases": [
-                    {"input": {"coord1": (3, 4), "coord2": (6, 8), "operation": "distance"}, "output": 5.0},
-                    {"input": {"coord1": (1, 1), "coord2": (5, 5), "operation": "midpoint"}, "output": (3, 3)}
+                    {"input": {"a": 10, "b": 2}, "output": 5.0},
+                    {"input": {"a": 10, "b": 0}, "output": None},
+                    {"input": {"a": 0, "b": 5}, "output": 0.0}
                 ],
-                "hint": "Use distance = ((x2-x1)**2 + (y2-y1)**2)**0.5, midpoint = ((x1+x2)/2, (y1+y2)/2), and vector_add = (x1+x2, y1+y2)"
+                "hint": "Use a try-except block to catch ZeroDivisionError."
             },
             {
-                "id": "tuple_comparison",
-                "title": "Tuple Comparison",
-                "difficulty": "Medium",
-                "description": "Write a function that compares two tuples element by element.",
+                "id": "int_converter",
+                "title": "Integer Converter",
+                "difficulty": "Easy",
+                "description": "Write a function that converts a string to an integer, handling invalid inputs.",
                 "examples": [
                     {
-                        "input": "tuple1=(1, 'a', True), tuple2=(1, 'b', False)",
-                        "output": "[True, False, False]",
-                        "explanation": "Compares each element: 1==1 (True), 'a'=='b' (False), True==False (False)"
+                        "input": "text='123'",
+                        "output": "123",
+                        "explanation": "Returns the integer value of the string '123'."
                     }
                 ],
-                "template": """def compare_tuples(tuple1, tuple2):
-    # Compare the two tuples element by element
-    # Return a list of boolean values indicating equality
+                "template": """def convert_to_int(text):
+    # Convert the string to an integer, returning None if conversion fails
     pass""",
                 "test_cases": [
-                    {"input": {"tuple1": (1, 'a', True), "tuple2": (1, 'b', False)}, "output": [True, False, False]},
-                    {"input": {"tuple1": (5, 7, 9), "tuple2": (5, 7, 9)}, "output": [True, True, True]}
+                    {"input": {"text": "123"}, "output": 123},
+                    {"input": {"text": "-45"}, "output": -45},
+                    {"input": {"text": "abc"}, "output": None}
                 ],
-                "hint": "Use a list comprehension to compare corresponding elements from both tuples."
+                "hint": "Use a try-except block to catch ValueError when converting fails."
             },
             {
-                "id": "tuple_database",
-                "title": "Tuple Database",
+                "id": "file_reader",
+                "title": "Safe File Reader",
                 "difficulty": "Medium",
-                "description": "Create a function that uses a tuple of tuples to represent a simple database of students.",
+                "description": "Write a function that safely reads a file, handling file not found errors.",
                 "examples": [
                     {
-                        "input": "operations=['add John 25 CS', 'add Jane 22 Math', 'find name Jane', 'find age 25']",
-                        "output": "[(John, 25, CS), (Jane, 22, Math), [(Jane, 22, Math)], [(John, 25, CS)]]",
-                        "explanation": "Implements a simple database with add and find operations using tuples."
+                        "input": "filename='sample.txt'",
+                        "output": "'File contents...'",
+                        "explanation": "Returns the contents of the file, or an error message if the file doesn't exist."
                     }
                 ],
-                "template": """def tuple_database(operations):
-    # Implement a database with add and find operations
-    # Return a list of results for each operation
+                "template": """def read_file_safely(filename):
+    # Try to read and return the contents of the file
+    # Return 'File not found' if the file doesn't exist
     pass""",
                 "test_cases": [
-                    {"input": {"operations": ["add John 25 CS", "add Jane 22 Math", "find name Jane", "find age 25"]},
-                     "output": [("John", 25, "CS"), ("Jane", 22, "Math"), [("Jane", 22, "Math")], [("John", 25, "CS")]]},
-                    {"input": {"operations": ["add Alice 20 Physics", "add Bob 21 Chemistry", "find major Physics", "find age 21"]},
-                     "output": [("Alice", 20, "Physics"), ("Bob", 21, "Chemistry"), [("Alice", 20, "Physics")], [("Bob", 21, "Chemistry")]]}
+                    {"input": {"filename": "nonexistent.txt"}, "output": "File not found"},
+                    {"input": {"filename": "sample.txt"},
+                     "output": lambda x: isinstance(x, str) and x != "File not found"}
                 ],
-                "hint": "Use a tuple of tuples to store the database. Parse each operation string to handle add and find operations."
+                "hint": "Use a try-except block to catch FileNotFoundError when opening the file."
             }
         ]
     },
     12: {
-        "name": "Sets",
-        "description": "Learn about sets and set operations in Python.",
-        "min_problems_to_complete": 3,
+        "name": "File I/O",
+        "description": "Learn to read from and write to files in Python.",
+        "min_problems_to_complete": 2,
         "problems": [
             {
-                "id": "find_common",
-                "title": "Common Elements Finder",
+                "id": "write_file",
+                "title": "Write to File",
                 "difficulty": "Easy",
-                "description": "Write a function that finds common elements between two lists using sets.",
+                "description": "Write a function that writes content to a file.",
                 "examples": [
                     {
-                        "input": "list1=[1, 2, 3, 4, 5], list2=[4, 5, 6, 7, 8]",
-                        "output": "{4, 5}",
-                        "explanation": "The common elements between the two lists are 4 and 5."
-                    }
-                ],
-                "template": """def find_common_elements(list1, list2):
-    # Find common elements between the two lists using sets
-    # Return the common elements as a set
-    pass""",
-                "test_cases": [
-                    {"input": {"list1": [1, 2, 3, 4, 5], "list2": [4, 5, 6, 7, 8]}, "output": {4, 5}},
-                    {"input": {"list1": [1, 2, 3], "list2": [4, 5, 6]}, "output": set()}
-                ],
-                "hint": "Convert both lists to sets and use the intersection operator (&) or the intersection() method."
-            },
-            {
-                "id": "remove_dups_set",
-                "title": "Remove Duplicates with Sets",
-                "difficulty": "Easy",
-                "description": "Create a function that removes duplicates from a list using sets.",
-                "examples": [
-                    {
-                        "input": "items=[1, 2, 3, 2, 1, 4, 5, 5]",
-                        "output": "[1, 2, 3, 4, 5]",
-                        "explanation": "Removes all duplicates from the list using sets."
-                    }
-                ],
-                "template": """def remove_duplicates_set(items):
-    # Remove duplicates from the list using sets
-    # Return the list with duplicates removed (order may not be preserved)
-    pass""",
-                "test_cases": [
-                    {"input": {"items": [1, 2, 3, 2, 1, 4, 5, 5]}, "output": lambda x: set(x) == {1, 2, 3, 4, 5}},
-                    {"input": {"items": ["a", "b", "a", "c", "b"]}, "output": lambda x: set(x) == {"a", "b", "c"}}
-                ],
-                "hint": "Convert the list to a set to remove duplicates, then convert back to a list."
-            },
-            {
-                "id": "set_operations",
-                "title": "Set Operations",
-                "difficulty": "Medium",
-                "description": "Build a function that performs set operations (union, intersection, difference, symmetric difference).",
-                "examples": [
-                    {
-                        "input": "set1={1, 2, 3, 4}, set2={3, 4, 5, 6}, operation='union'",
-                        "output": "{1, 2, 3, 4, 5, 6}",
-                        "explanation": "Returns the union of set1 and set2."
-                    }
-                ],
-                "template": """def set_operation(set1, set2, operation):
-    # Perform the specified set operation
-    # Operations: 'union', 'intersection', 'difference', 'symmetric_difference'
-    # Return the resulting set
-    pass""",
-                "test_cases": [
-                    {"input": {"set1": {1, 2, 3, 4}, "set2": {3, 4, 5, 6}, "operation": "union"}, "output": {1, 2, 3, 4, 5, 6}},
-                    {"input": {"set1": {1, 2, 3, 4}, "set2": {3, 4, 5, 6}, "operation": "intersection"}, "output": {3, 4}}
-                ],
-                "hint": "Use set operations: | or union(), & or intersection(), - or difference(), ^ or symmetric_difference()."
-            },
-            {
-                "id": "subset_superset",
-                "title": "Subset and Superset Checker",
-                "difficulty": "Medium",
-                "description": "Write a program to check if a set is a subset or superset of another set.",
-                "examples": [
-                    {
-                        "input": "set1={1, 2}, set2={1, 2, 3, 4}, check_type='subset'",
+                        "input": "filename='output.txt', content='Hello, World!'",
                         "output": "True",
-                        "explanation": "set1 is a subset of set2 because all elements in set1 are also in set2."
+                        "explanation": "Writes 'Hello, World!' to a file named 'output.txt' and returns True if successful."
                     }
                 ],
-                "template": """def check_set_relation(set1, set2, check_type):
-    # Check if set1 is a subset or superset of set2
-    # Return True or False
+                "template": """def write_to_file(filename, content):
+    # Write the content to the file and return True if successful, False otherwise
     pass""",
                 "test_cases": [
-                    {"input": {"set1": {1, 2}, "set2": {1, 2, 3, 4}, "check_type": "subset"}, "output": True},
-                    {"input": {"set1": {1, 2, 3, 4}, "set2": {1, 2}, "check_type": "superset"}, "output": True}
+                    {"input": {"filename": "output.txt", "content": "Hello, World!"}, "output": True}
                 ],
-                "hint": "Use subset methods: issubset() or <= for subset, issuperset() or >= for superset."
+                "hint": "Use the open() function with mode 'w' to write to the file."
             },
             {
-                "id": "unique_characters",
-                "title": "Unique Characters",
-                "difficulty": "Medium",
-                "description": "Create a function that uses sets to find unique characters in a string.",
+                "id": "read_lines",
+                "title": "Read File Lines",
+                "difficulty": "Easy",
+                "description": "Write a function that reads a file and returns its contents as a list of lines.",
                 "examples": [
                     {
-                        "input": "text='hello world'",
-                        "output": "{'h', 'e', 'l', 'o', ' ', 'w', 'r', 'd'}",
-                        "explanation": "Returns a set of all unique characters in the string 'hello world'."
+                        "input": "filename='sample.txt'",
+                        "output": "['Line 1', 'Line 2', 'Line 3']",
+                        "explanation": "Reads the contents of 'sample.txt' and returns each line as an element in a list."
                     }
                 ],
-                "template": """def find_unique_characters(text):
-    # Find all unique characters in the text using sets
-    # Return the set of unique characters
+                "template": """def read_file_lines(filename):
+    # Read the file and return its contents as a list of lines
+    # Return an empty list if the file doesn't exist
     pass""",
                 "test_cases": [
-                    {"input": {"text": "hello world"}, "output": {"h", "e", "l", "o", " ", "w", "r", "d"}},
-                    {"input": {"text": "abracadabra"}, "output": {"a", "b", "r", "c", "d"}}
+                    {"input": {"filename": "sample.txt"}, "output": lambda x: isinstance(x, list)},
+                    {"input": {"filename": "nonexistent.txt"}, "output": []}
                 ],
-                "hint": "Convert the string to a set to get all unique characters."
+                "hint": "Use the open() function with mode 'r' and the readlines() method to read the file."
+            },
+            {
+                "id": "file_stats",
+                "title": "File Statistics",
+                "difficulty": "Medium",
+                "description": "Write a function that counts the number of characters, words, and lines in a file.",
+                "examples": [
+                    {
+                        "input": "filename='sample.txt'",
+                        "output": "{'characters': 20, 'words': 5, 'lines': 2}",
+                        "explanation": "Returns statistics about the contents of the file."
+                    }
+                ],
+                "template": """def get_file_stats(filename):
+    # Return a dictionary with character, word, and line counts for the file
+    # Return empty counts if the file doesn't exist
+    pass""",
+                "test_cases": [
+                    {"input": {"filename": "sample.txt"},
+                     "output": lambda x: isinstance(x, dict) and "characters" in x and "words" in x and "lines" in x},
+                    {"input": {"filename": "nonexistent.txt"}, "output": {"characters": 0, "words": 0, "lines": 0}}
+                ],
+                "hint": "Read the file and use string methods to count characters, words, and lines."
             }
         ]
     },
     13: {
-        "name": "Functions",
-        "description": "Learn advanced function techniques in Python.",
-        "min_problems_to_complete": 3,
+        "name": "Modules",
+        "description": "Learn to use Python's built-in modules.",
+        "min_problems_to_complete": 2,
         "problems": [
             {
-                "id": "circle_calculator",
-                "title": "Circle Calculator",
+                "id": "math_operations",
+                "title": "Math Module Operations",
                 "difficulty": "Easy",
-                "description": "Write a function to calculate the area and perimeter of a circle.",
+                "description": "Write a function that performs various mathematical operations using the math module.",
                 "examples": [
                     {
-                        "input": "radius=5",
-                        "output": "(78.54, 31.42)",
-                        "explanation": "Returns the area (π*r²) and perimeter (2*π*r) of a circle with radius 5."
+                        "input": "x=4",
+                        "output": "{'square_root': 2.0, 'cube_root': 1.59, 'cosine': 1.0}",
+                        "explanation": "Returns the results of different mathematical operations on the input number."
                     }
                 ],
-                "template": """def circle_calculations(radius):
-    # Calculate the area and perimeter of a circle
-    # Return a tuple (area, perimeter) rounded to 2 decimal places
+                "template": """def math_ops(x):
+    # Use the math module to calculate and return square root, cube root, and cosine(0)
+    import math
+
+    # Your code here
     pass""",
                 "test_cases": [
-                    {"input": {"radius": 5}, "output": (78.54, 31.42)},
-                    {"input": {"radius": 3}, "output": (28.27, 18.85)}
+                    {"input": {"x": 4},
+                     "output": lambda d: abs(d["square_root"] - 2.0) < 0.01 and abs(d["cosine"] - 1.0) < 0.01},
+                    {"input": {"x": 9}, "output": lambda d: abs(d["square_root"] - 3.0) < 0.01}
                 ],
-                "hint": "Use the formula area = π*r² and perimeter = 2*π*r. Use 3.14159 for π or import math and use math.pi."
+                "hint": "Import the math module and use math.sqrt(), math.pow() for cube root, and math.cos()."
             },
             {
-                "id": "palindrome_number",
-                "title": "Palindrome Number Checker",
+                "id": "random_generator",
+                "title": "Random Number Generator",
                 "difficulty": "Easy",
-                "description": "Create a function that checks if a number is a palindrome.",
+                "description": "Write a function that generates a list of random numbers using the random module.",
                 "examples": [
                     {
-                        "input": "num=12321",
-                        "output": "True",
-                        "explanation": "12321 reads the same forwards and backwards, so it's a palindrome."
+                        "input": "n=5, min_val=1, max_val=10",
+                        "output": "[3, 8, 5, 1, 9]",
+                        "explanation": "Returns a list of 5 random integers between 1 and 10."
                     }
                 ],
-                "template": """def is_palindrome_number(num):
-    # Check if the number is a palindrome
-    # Return True if it is, False otherwise
+                "template": """def generate_random_numbers(n, min_val, max_val):
+    # Generate a list of n random integers between min_val and max_val
+    import random
+
+    # Your code here
     pass""",
                 "test_cases": [
-                    {"input": {"num": 12321}, "output": True},
-                    {"input": {"num": 12345}, "output": False}
+                    {"input": {"n": 5, "min_val": 1, "max_val": 10},
+                     "output": lambda x: len(x) == 5 and all(1 <= num <= 10 for num in x)},
+                    {"input": {"n": 3, "min_val": -5, "max_val": 5},
+                     "output": lambda x: len(x) == 3 and all(-5 <= num <= 5 for num in x)}
                 ],
-                "hint": "Convert the number to a string and check if it equals its reverse, or compare the digits manually."
+                "hint": "Import the random module and use random.randint() in a loop to generate random numbers."
             },
             {
-                "id": "simple_interest",
-                "title": "Simple Interest Calculator",
+                "id": "datetime_converter",
+                "title": "Date and Time Converter",
                 "difficulty": "Medium",
-                "description": "Build a function with default parameters to calculate simple interest.",
+                "description": "Write a function that converts a date string to different formats using the datetime module.",
                 "examples": [
                     {
-                        "input": "principal=1000, rate=5, time=2",
-                        "output": "100.0",
-                        "explanation": "Calculates simple interest as principal * rate * time / 100."
+                        "input": "date_str='2023-01-15'",
+                        "output": "{'day_of_week': 'Sunday', 'month_name': 'January', 'formatted': '01/15/2023'}",
+                        "explanation": "Returns information about the given date in different formats."
                     }
                 ],
-                "template": """def calculate_simple_interest(principal, rate=5, time=1):
-    # Calculate simple interest with default parameters
-    # Return the interest amount
+                "template": """def convert_date(date_str):
+    # Convert the date string (YYYY-MM-DD) to different formats using datetime
+    from datetime import datetime
+
+    # Your code here
     pass""",
                 "test_cases": [
-                    {"input": {"principal": 1000, "rate": 5, "time": 2}, "output": 100.0},
-                    {"input": {"principal": 1000}, "output": 50.0}
+                    {"input": {"date_str": "2023-01-15"}, "output": lambda x: isinstance(x,
+                                                                                         dict) and "day_of_week" in x and "month_name" in x and "formatted" in x},
+                    {"input": {"date_str": "2022-12-25"},
+                     "output": lambda x: isinstance(x, dict) and x["day_of_week"] == "Sunday" and x[
+                         "month_name"] == "December"}
                 ],
-                "hint": "Use the formula interest = principal * rate * time / 100, with default values for rate and time."
-            },
-            {
-                "id": "recursive_fibonacci",
-                "title": "Recursive Fibonacci",
-                "difficulty": "Medium",
-                "description": "Write a recursive function to calculate the nth Fibonacci number.",
-                "examples": [
-                    {
-                        "input": "n=6",
-                        "output": "8",
-                        "explanation": "The 6th Fibonacci number is 8 (0, 1, 1, 2, 3, 5, 8)."
-                    }
-                ],
-                "template": """def fibonacci_recursive(n):
-    # Calculate the nth Fibonacci number recursively
-    # Return the result
-    pass""",
-                "test_cases": [
-                    {"input": {"n": 6}, "output": 8},
-                    {"input": {"n": 10}, "output": 55}
-                ],
-                "hint": "Use the recursive definition: F(n) = F(n-1) + F(n-2), with base cases F(0) = 0 and F(1) = 1."
-            },
-            {
-                "id": "args_kwargs",
-                "title": "Args and Kwargs",
-                "difficulty": "Medium",
-                "description": "Create a function that uses *args and **kwargs to print formatted information.",
-                "examples": [
-                    {
-                        "input": "args=['John', 25, 'Developer'], kwargs={'location': 'New York', 'department': 'IT'}",
-                        "output": "'Name: John, Age: 25, Occupation: Developer, Extra Info: location=New York, department=IT'",
-                        "explanation": "Formats the information using positional and keyword arguments."
-                    }
-                ],
-                "template": """def format_info(*args, **kwargs):
-    # Format the information using args and kwargs
-    # Return the formatted string
-    pass""",
-                "test_cases": [
-                    {"input": {"args": ["John", 25, "Developer"], "kwargs": {"location": "New York", "department": "IT"}},
-                     "output": lambda x: "John" in x and "25" in x and "Developer" in x and "New York" in x},
-                    {"input": {"args": ["Alice"], "kwargs": {"age": 30}},
-                     "output": lambda x: "Alice" in x and "age=30" in x}
-                ],
-                "hint": "Process args for positional arguments and kwargs for keyword arguments, then format them in a string."
+                "hint": "Use datetime.strptime() to parse the string, and various methods and properties to extract information."
             }
         ]
     },
     14: {
-        "name": "Modules",
-        "description": "Learn to use Python modules to organize and reuse code.",
-        "min_problems_to_complete": 3,
-        "problems": [
-            {
-                "id": "math_circle",
-                "title": "Math Module Circle",
-                "difficulty": "Easy",
-                "description": "Create a program that uses the math module to calculate the area of a circle.",
-                "examples": [
-                    {
-                        "input": "radius=5",
-                        "output": "78.54",
-                        "explanation": "Calculates the area of a circle using math.pi for more precision."
-                    }
-                ],
-                "template": """def calculate_circle_area(radius):
-    # Import the math module and calculate the area of a circle
-    # Return the area rounded to 2 decimal places
-    pass""",
-                "test_cases": [
-                    {"input": {"radius": 5}, "output": 78.54},
-                    {"input": {"radius": 3}, "output": 28.27}
-                ],
-                "hint": "Import the math module and use math.pi in the formula area = π*r²."
-            },
-            {
-                "id": "random_dice",
-                "title": "Random Dice Roll",
-                "difficulty": "Easy",
-                "description": "Write a program that uses the random module to simulate a dice roll.",
-                "examples": [
-                    {
-                        "input": "sides=6, rolls=3",
-                        "output": "[4, 2, 6]",
-                        "explanation": "Simulates rolling a 6-sided dice 3 times."
-                    }
-                ],
-                "template": """def roll_dice(sides=6, rolls=1):
-    # Import the random module and simulate dice rolls
-    # Return a list of roll results
-    pass""",
-                "test_cases": [
-                    {"input": {"sides": 6, "rolls": 3}, "output": lambda x: len(x) == 3 and all(1 <= i <= 6 for i in x)},
-                    {"input": {"sides": 20, "rolls": 2}, "output": lambda x: len(x) == 2 and all(1 <= i <= 20 for i in x)}
-                ],
-                "hint": "Import the random module and use random.randint(1, sides) to generate random numbers between 1 and sides."
-            },
-            {
-                "id": "datetime_age",
-                "title": "Age Calculator",
-                "difficulty": "Medium",
-                "description": "Build a program that uses the datetime module to calculate age from birth date.",
-                "examples": [
-                    {
-                        "input": "birth_year=1990, birth_month=5, birth_day=15",
-                        "output": "A valid age calculated from the birth date to the current date.",
-                        "explanation": "Calculates the age of a person born on May 15, 1990."
-                    }
-                ],
-                "template": """def calculate_age(birth_year, birth_month, birth_day):
-    # Import the datetime module and calculate age from birth date
-    # Return the age in years
-    pass""",
-                "test_cases": [
-                    {"input": {"birth_year": 1990, "birth_month": 5, "birth_day": 15}, "output": lambda x: isinstance(x, int) and x > 30},
-                    {"input": {"birth_year": 2000, "birth_month": 1, "birth_day": 1}, "output": lambda x: isinstance(x, int) and 20 <= x <= 30}
-                ],
-                "hint": "Import the datetime module, create a date object for the birth date, and find the difference from the current date."
-            },
-            {
-                "id": "guessing_game",
-                "title": "Number Guessing Game",
-                "difficulty": "Medium",
-                "description": "Create a program that uses the random module to implement a simple number guessing game.",
-                "examples": [
-                    {
-                        "input": "guesses=[25, 75, 62, 50], target=50",
-                        "output": "['Higher', 'Lower', 'Lower', 'Correct!']",
-                        "explanation": "Simulates a guessing game with feedback after each guess."
-                    }
-                ],
-                "template": """def play_guessing_game(guesses, target=None):
-    # Import the random module and implement a number guessing game
-    # If target is None, generate a random number between 1 and 100
-    # Return a list of feedback strings for each guess
-    pass""",
-                "test_cases": [
-                    {"input": {"guesses": [25, 75, 62, 50], "target": 50}, "output": ["Higher", "Lower", "Lower", "Correct!"]},
-                    {"input": {"guesses": [50, 25], "target": 30}, "output": ["Lower", "Higher"]}
-                ],
-                "hint": "Use random.randint(1, 100) to generate a random number. Compare each guess with the target and provide feedback."
-            },
-            {
-                "id": "email_validator",
-                "title": "Email Validator",
-                "difficulty": "Medium",
-                "description": "Write a program that uses the re module to validate an email address format.",
-                "examples": [
-                    {
-                        "input": "email='user@example.com'",
-                        "output": "True",
-                        "explanation": "The email follows the correct format pattern."
-                    }
-                ],
-                "template": """def validate_email(email):
-    # Import the re module and validate the email format
-    # Return True if valid, False otherwise
-    pass""",
-                "test_cases": [
-                    {"input": {"email": "user@example.com"}, "output": True},
-                    {"input": {"email": "invalid.email"}, "output": False}
-                ],
-                "hint": "Import the re module and use a regex pattern to validate the email format. A simple pattern is '^[\\w.-]+@[\\w.-]+\\.\\w+$'."
-            }
-        ]
-    },
-    15: {
-        "name": "File Handling",
-        "description": "Learn to work with files in Python.",
-        "min_problems_to_complete": 3,
-        "problems": [
-            {
-                "id": "count_lines",
-                "title": "Line Counter",
-                "difficulty": "Easy",
-                "description": "Write a program that reads a text file and counts the number of lines.",
-                "examples": [
-                    {
-                        "input": "file_path='sample.txt'",
-                        "output": "10",
-                        "explanation": "The file sample.txt contains 10 lines."
-                    }
-                ],
-                "template": """def count_file_lines(file_path):
-    # Read the file and count the number of lines
-    # Return the count
-    pass""",
-                "test_cases": [
-                    {"input": {"file_path": "sample.txt"}, "output": lambda x: isinstance(x, int) and x >= 0},
-                    {"input": {"file_path": "empty.txt"}, "output": 0}
-                ],
-                "hint": "Open the file in read mode, use a counter or the readlines() method to count the lines."
-            },
-            {
-                "id": "append_text",
-                "title": "Text Appender",
-                "difficulty": "Easy",
-                "description": "Create a program that appends user input to a text file.",
-                "examples": [
-                    {
-                        "input": "file_path='output.txt', text='Hello, World!'",
-                        "output": "True",
-                        "explanation": "Appends 'Hello, World!' to the file output.txt."
-                    }
-                ],
-                "template": """def append_to_file(file_path, text):
-    # Append the text to the specified file
-    # Return True if successful, False otherwise
-    pass""",
-                "test_cases": [
-                    {"input": {"file_path": "output.txt", "text": "Hello, World!"}, "output": True},
-                    {"input": {"file_path": "output.txt", "text": "Python is awesome"}, "output": True}
-                ],
-                "hint": "Open the file in append mode ('a') and write the text to it."
-            },
-            {
-                "id": "csv_analyzer",
-                "title": "CSV Analyzer",
-                "difficulty": "Medium",
-                "description": "Build a program that reads a CSV file and performs basic analysis on numerical data.",
-                "examples": [
-                    {
-                        "input": "file_path='data.csv', column='age'",
-                        "output": "{'min': 25, 'max': 45, 'avg': 35.0}",
-                        "explanation": "Analyzes the 'age' column in the CSV file."
-                    }
-                ],
-                "template": """def analyze_csv(file_path, column):
-    # Read the CSV file and analyze the specified column
-    # Return a dictionary with min, max, and avg values
-    pass""",
-                "test_cases": [
-                    {"input": {"file_path": "data.csv", "column": "age"}, "output": lambda x: isinstance(x, dict) and "min" in x and "max" in x and "avg" in x},
-                    {"input": {"file_path": "data.csv", "column": "salary"}, "output": lambda x: isinstance(x, dict) and "min" in x and "max" in x and "avg" in x}
-                ],
-                "hint": "Import the csv module to read the CSV file. Calculate min, max, and average values for the specified column."
-            },
-            {
-                "id": "file_copy",
-                "title": "File Copier",
-                "difficulty": "Medium",
-                "description": "Write a program that copies the contents of one file to another file.",
-                "examples": [
-                    {
-                        "input": "source='source.txt', destination='destination.txt'",
-                        "output": "True",
-                        "explanation": "Copies the contents from source.txt to destination.txt."
-                    }
-                ],
-                "template": """def copy_file(source, destination):
-    # Copy the contents from the source file to the destination file
-    # Return True if successful, False otherwise
-    pass""",
-                "test_cases": [
-                    {"input": {"source": "source.txt", "destination": "destination.txt"}, "output": True},
-                    {"input": {"source": "nonexistent.txt", "destination": "destination.txt"}, "output": False}
-                ],
-                "hint": "Open the source file in read mode and the destination file in write mode. Read from source and write to destination."
-            },
-            {
-                "id": "json_modifier",
-                "title": "JSON Modifier",
-                "difficulty": "Medium",
-                "description": "Create a program that reads a JSON file, modifies it, and writes it back.",
-                "examples": [
-                    {
-                        "input": "file_path='data.json', key='age', value=30",
-                        "output": "True",
-                        "explanation": "Modifies the 'age' field in the JSON file to 30."
-                    }
-                ],
-                "template": """def modify_json(file_path, key, value):
-    # Read the JSON file, modify the specified key-value pair, and write it back
-    # Return True if successful, False otherwise
-    pass""",
-                "test_cases": [
-                    {"input": {"file_path": "data.json", "key": "age", "value": 30}, "output": True},
-                    {"input": {"file_path": "nonexistent.json", "key": "name", "value": "John"}, "output": False}
-                ],
-                "hint": "Import the json module to read and write JSON files. Load the JSON, modify the key-value pair, and dump it back."
-            }
-        ]
-    },
-    16: {
-        "name": "Exception Handling",
-        "description": "Learn to handle exceptions in Python.",
-        "min_problems_to_complete": 3,
-        "problems": [
-            {
-                "id": "division_handler",
-                "title": "Division By Zero Handler",
-                "difficulty": "Easy",
-                "description": "Write a program that handles division by zero exceptions.",
-                "examples": [
-                    {
-                        "input": "a=5, b=0",
-                        "output": "'Cannot divide by zero'",
-                        "explanation": "Handles the division by zero exception and returns an error message."
-                    }
-                ],
-                "template": """def safe_division(a, b):
-    # Perform division and handle division by zero
-    # Return the result or an error message
-    #     pass""",
-"test_cases": [
-                    {"input": {"a": 5, "b": 0}, "output": "Cannot divide by zero"},
-                    {"input": {"a": 10, "b": 2}, "output": 5.0}
-                ],
-                "hint": "Use try-except to catch ZeroDivisionError."
-            },
-            {
-                "id": "file_handler",
-                "title": "File Not Found Handler",
-                "difficulty": "Easy",
-                "description": "Create a program that handles file not found exceptions.",
-                "examples": [
-                    {
-                        "input": "file_path='nonexistent.txt'",
-                        "output": "'File not found: nonexistent.txt'",
-                        "explanation": "Handles the file not found exception and returns an error message."
-                    }
-                ],
-                "template": """def safe_file_read(file_path):
-    # Read the file and handle file not found exception
-    # Return the file contents or an error message
-    pass""",
-                "test_cases": [
-                    {"input": {"file_path": "nonexistent.txt"}, "output": lambda x: "File not found" in x},
-                    {"input": {"file_path": "sample.txt"}, "output": lambda x: isinstance(x, str) and len(x) > 0}
-                ],
-                "hint": "Use try-except to catch FileNotFoundError."
-            },
-            {
-                "id": "multiple_exceptions",
-                "title": "Multiple Exception Types",
-                "difficulty": "Medium",
-                "description": "Build a program that handles multiple exception types with different error messages.",
-                "examples": [
-                    {
-                        "input": "operation='divide', a=5, b=0",
-                        "output": "'Division error: Cannot divide by zero'",
-                        "explanation": "Handles the division by zero exception with a specific error message."
-                    }
-                ],
-                "template": """def safe_operation(operation, a, b):
-    # Perform the specified operation and handle multiple exceptions
-    # Operations: 'add', 'subtract', 'multiply', 'divide', 'power'
-    # Return the result or an appropriate error message
-    pass""",
-                "test_cases": [
-                    {"input": {"operation": "divide", "a": 5, "b": 0}, "output": lambda x: "divide" in x.lower() and "zero" in x.lower()},
-                    {"input": {"operation": "invalid", "a": 5, "b": 2}, "output": lambda x: "operation" in x.lower() and "invalid" in x.lower()}
-                ],
-                "hint": "Use try-except to catch different exception types, such as ZeroDivisionError, ValueError, etc."
-            },
-            {
-                "id": "try_except_else_finally",
-                "title": "Try-Except-Else-Finally",
-                "difficulty": "Medium",
-                "description": "Write a program that uses try-except-else-finally blocks.",
-                "examples": [
-                    {
-                        "input": "file_path='sample.txt'",
-                        "output": "{'content': 'File content...', 'status': 'Successfully read from sample.txt'",
-                        "explanation": "Reads the file and returns its content with a success message."
-                    }
-                ],
-                "template": """def advanced_file_read(file_path):
-    # Read the file using try-except-else-finally blocks
-    # Return a dictionary with content and status message
-    pass""",
-                "test_cases": [
-                    {"input": {"file_path": "sample.txt"}, "output": lambda x: isinstance(x, dict) and "content" in x and "status" in x},
-                    {"input": {"file_path": "nonexistent.txt"}, "output": lambda x: isinstance(x, dict) and "error" in x and "status" in x}
-                ],
-                "hint": "Use try to attempt the file operation, except to catch exceptions, else for code to run if no exceptions, and finally for cleanup code."
-            },
-            {
-                "id": "custom_exception",
-                "title": "Custom Exception",
-                "difficulty": "Medium",
-                "description": "Create a program that implements a custom exception class.",
-                "examples": [
-                    {
-                        "input": "age=-5",
-                        "output": "'Invalid age: Age cannot be negative'",
-                        "explanation": "Raises and handles a custom exception for invalid age."
-                    }
-                ],
-                "template": """def validate_age(age):
-    # Implement a custom exception class for invalid age
-    # Raise the exception if age is negative
-    # Return age if valid, or an error message if invalid
-    pass""",
-                "test_cases": [
-                    {"input": {"age": -5}, "output": lambda x: "invalid" in x.lower() and "age" in x.lower() and "negative" in x.lower()},
-                    {"input": {"age": 25}, "output": 25}
-                ],
-                "hint": "Create a custom exception class that inherits from Exception. Raise your custom exception when age is negative."
-            }
-        ]
-    },
-17: {
-        "name": "OOP - Classes & Objects",
-        "description": "Learn object-oriented programming concepts in Python.",
-        "min_problems_to_complete": 3,
+        "name": "Classes and Objects",
+        "description": "Learn object-oriented programming with classes in Python.",
+        "min_problems_to_complete": 2,
         "problems": [
             {
                 "id": "rectangle_class",
                 "title": "Rectangle Class",
                 "difficulty": "Easy",
-                "description": "Create a simple Rectangle class with methods to calculate area and perimeter.",
+                "description": "Create a Rectangle class with methods to calculate area and perimeter.",
                 "examples": [
                     {
-                        "input": "Rectangle(length=5, width=3)",
+                        "input": "Rectangle(width=5, height=3)",
                         "output": "Area: 15, Perimeter: 16",
-                        "explanation": "Creates a Rectangle object with length 5 and width 3, then calculates its area and perimeter."
+                        "explanation": "Creates a Rectangle object with width 5 and height 3, then calculates its area and perimeter."
                     }
                 ],
                 "template": """class Rectangle:
-    # Implement a Rectangle class with methods to calculate area and perimeter
+    # Create a Rectangle class with attributes for width and height
+    # Include methods to calculate area and perimeter
     pass
 
-def test_rectangle(length, width):
+def test_rectangle(width, height):
     # Create a Rectangle object and test its methods
-    # Return the area and perimeter as a string
+    # Return a string with the area and perimeter
     pass""",
                 "test_cases": [
-                    {"input": {"length": 5, "width": 3}, "output": lambda x: "Area: 15" in x and "Perimeter: 16" in x},
-                    {"input": {"length": 7, "width": 2}, "output": lambda x: "Area: 14" in x and "Perimeter: 18" in x}
+                    {"input": {"width": 5, "height": 3}, "output": "Area: 15, Perimeter: 16"},
+                    {"input": {"width": 4, "height": 4}, "output": "Area: 16, Perimeter: 16"}
                 ],
-                "hint": "Create a class with __init__ method to initialize length and width. Implement methods to calculate area and perimeter."
+                "hint": "Define __init__ to set width and height, then create area() and perimeter() methods."
             },
             {
                 "id": "bank_account",
-                "title": "Bank Account",
+                "title": "Bank Account Class",
                 "difficulty": "Easy",
-                "description": "Build a BankAccount class with deposit, withdraw, and display balance methods.",
+                "description": "Create a BankAccount class with methods to deposit, withdraw, and check balance.",
                 "examples": [
                     {
-                        "input": "BankAccount(initial_balance=100).deposit(50).withdraw(30).get_balance()",
-                        "output": "120",
-                        "explanation": "Creates a BankAccount with initial balance 100, deposits 50, withdraws 30, and returns the final balance of 120."
+                        "input": "BankAccount(1000).deposit(500).withdraw(200).get_balance()",
+                        "output": "1300",
+                        "explanation": "Creates a BankAccount with initial balance 1000, deposits 500, withdraws 200, and returns the final balance."
                     }
                 ],
                 "template": """class BankAccount:
-    # Implement a BankAccount class with deposit, withdraw, and display balance methods
+    # Create a BankAccount class with an initial balance
+    # Include methods to deposit, withdraw, and get balance
     pass
 
-def test_bank_account(initial_balance, deposits, withdrawals):
+def test_bank_account(initial_balance, deposit_amount, withdraw_amount):
     # Create a BankAccount object and test its methods
     # Return the final balance
     pass""",
                 "test_cases": [
-                    {"input": {"initial_balance": 100, "deposits": [50], "withdrawals": [30]}, "output": 120},
-                    {"input": {"initial_balance": 200, "deposits": [100, 50], "withdrawals": [75, 25]}, "output": 250}
+                    {"input": {"initial_balance": 1000, "deposit_amount": 500, "withdraw_amount": 200}, "output": 1300},
+                    {"input": {"initial_balance": 100, "deposit_amount": 50, "withdraw_amount": 150}, "output": 0}
                 ],
-                "hint": "Create a class with __init__ method to initialize balance. Implement deposit, withdraw, and get_balance methods."
+                "hint": "Define __init__ to set the initial balance, then implement deposit(), withdraw(), and get_balance() methods."
             },
             {
-                "id": "student_class",
-                "title": "Student Class",
+                "id": "simple_stack",
+                "title": "Stack Class",
                 "difficulty": "Medium",
-                "description": "Write a Student class to store and manipulate student data (name, roll number, marks).",
+                "description": "Create a Stack class with methods to push, pop, and check if empty.",
                 "examples": [
                     {
-                        "input": "Student('John', 101, [85, 90, 95]).get_average()",
-                        "output": "90.0",
-                        "explanation": "Creates a Student object with name 'John', roll number 101, and marks [85, 90, 95], then calculates the average marks."
+                        "input": "Stack().push(1).push(2).pop()",
+                        "output": "2",
+                        "explanation": "Creates a Stack, pushes 1 and 2 onto it, then pops and returns the top element (2)."
                     }
                 ],
-                "template": """class Student:
-    # Implement a Student class to store and manipulate student data
+                "template": """class Stack:
+    # Create a Stack class with methods to push, pop, and is_empty
     pass
 
-def test_student(name, roll_number, marks):
-    # Create a Student object and test its methods
-    # Return a dictionary with student info
+def test_stack(operations):
+    # Create a Stack object and test its methods based on the operations list
+    # Operations can be: 'push X', 'pop', 'is_empty'
+    # Return a list of results
     pass""",
                 "test_cases": [
-                    {"input": {"name": "John", "roll_number": 101, "marks": [85, 90, 95]}, "output": lambda x: isinstance(x, dict) and x.get("average") == 90.0},
-                    {"input": {"name": "Alice", "roll_number": 102, "marks": [75, 80, 85]}, "output": lambda x: isinstance(x, dict) and x.get("average") == 80.0}
+                    {"input": {"operations": ["push 1", "push 2", "pop", "is_empty"]},
+                     "output": [None, None, 2, False]},
+                    {"input": {"operations": ["is_empty", "push 5", "is_empty"]}, "output": [True, None, False]}
                 ],
-                "hint": "Create a class with __init__ method to initialize name, roll_number, and marks. Implement methods to calculate average, grade, etc."
+                "hint": "Use a list to store the stack elements. push() adds to the end, pop() removes and returns the last element, is_empty() checks if the list is empty."
+            }
+        ]
+    },
+    15: {
+        "name": "Inheritance",
+        "description": "Learn about inheritance in object-oriented programming.",
+        "min_problems_to_complete": 2,
+        "problems": [
+            {
+                "id": "animal_inheritance",
+                "title": "Animal Inheritance",
+                "difficulty": "Easy",
+                "description": "Create a base Animal class and derived Dog and Cat classes.",
+                "examples": [
+                    {
+                        "input": "Dog('Buddy').speak()",
+                        "output": "'Buddy says Woof!'",
+                        "explanation": "Creates a Dog object with name 'Buddy' and calls its speak method."
+                    }
+                ],
+                "template": """class Animal:
+    # Create a base Animal class with a name attribute and speak method
+    pass
+
+class Dog(Animal):
+    # Create a Dog class that inherits from Animal
+    pass
+
+class Cat(Animal):
+    # Create a Cat class that inherits from Animal
+    pass
+
+def test_animals(animal_type, name):
+    # Create an animal of the specified type and test its methods
+    # Return the result of calling speak()
+    pass""",
+                "test_cases": [
+                    {"input": {"animal_type": "dog", "name": "Buddy"}, "output": "Buddy says Woof!"},
+                    {"input": {"animal_type": "cat", "name": "Whiskers"}, "output": "Whiskers says Meow!"}
+                ],
+                "hint": "Define the Animal class with an __init__ method that takes a name parameter. Override the speak method in derived classes."
             },
             {
-                "id": "car_class",
-                "title": "Car Class",
+                "id": "shape_inheritance",
+                "title": "Shape Inheritance",
                 "difficulty": "Medium",
-                "description": "Create a Car class with attributes and methods that simulate a car's behavior.",
+                "description": "Create a base Shape class with derived Circle and Rectangle classes.",
                 "examples": [
                     {
-                        "input": "Car('Toyota', 'Camry', 2020, 0).accelerate(30).accelerate(20).brake(10).get_speed()",
-                        "output": "40",
-                        "explanation": "Creates a Car object, accelerates twice, brakes once, and returns the final speed."
+                        "input": "Circle(radius=5).area()",
+                        "output": "78.54",
+                        "explanation": "Creates a Circle object with radius 5 and calculates its area."
                     }
                 ],
-                "template": """class Car:
-    # Implement a Car class with attributes and methods that simulate a car's behavior
+                "template": """class Shape:
+    # Create a base Shape class with an area method
     pass
 
-def test_car(make, model, year, initial_speed, accelerations, brakes):
-    # Create a Car object and test its methods
-    # Return a dictionary with car info
+class Circle(Shape):
+    # Create a Circle class that inherits from Shape
+    pass
+
+class Rectangle(Shape):
+    # Create a Rectangle class that inherits from Shape
+    pass
+
+def test_shapes(shape_type, **kwargs):
+    # Create a shape of the specified type and test its methods
+    # Return the area of the shape
     pass""",
                 "test_cases": [
-                    {"input": {"make": "Toyota", "model": "Camry", "year": 2020, "initial_speed": 0, "accelerations": [30, 20], "brakes": [10]}, "output": lambda x: isinstance(x, dict) and x.get("speed") == 40},
-                    {"input": {"make": "Honda", "model": "Civic", "year": 2019, "initial_speed": 0, "accelerations": [40], "brakes": [15]}, "output": lambda x: isinstance(x, dict) and x.get("speed") == 25}
+                    {"input": {"shape_type": "circle", "radius": 5}, "output": lambda x: abs(x - 78.54) < 0.1},
+                    {"input": {"shape_type": "rectangle", "width": 4, "height": 5}, "output": 20}
                 ],
-                "hint": "Create a class with __init__ method to initialize make, model, year, and speed. Implement methods to accelerate, brake, and get_speed."
+                "hint": "Define the Shape class with an abstract area method. Implement specific area calculations in each derived class."
             },
             {
-                "id": "encapsulation",
-                "title": "Encapsulation",
+                "id": "vehicle_inheritance",
+                "title": "Vehicle Inheritance",
                 "difficulty": "Medium",
-                "description": "Build a complex class with proper encapsulation, using private attributes and getter/setter methods.",
+                "description": "Create a base Vehicle class with derived Car and Motorcycle classes.",
                 "examples": [
                     {
-                        "input": "BankAccount('John', 1000).deposit(500).withdraw(200).get_info()",
-                        "output": "{'holder': 'John', 'balance': 1300, 'transaction_count': 2}",
-                        "explanation": "Creates a BankAccount object with private attributes, performs operations, and returns account info."
+                        "input": "Car('Toyota', 'Camry', 4).info()",
+                        "output": "'Toyota Camry with 4 doors'",
+                        "explanation": "Creates a Car object and returns information about it."
                     }
                 ],
-                "template": """class BankAccountEncapsulated:
-    # Implement a BankAccount class with private attributes and getter/setter methods
+                "template": """class Vehicle:
+    # Create a base Vehicle class with make and model attributes
     pass
 
-def test_encapsulation(holder, initial_balance, deposits, withdrawals):
-    # Create a BankAccountEncapsulated object and test its methods
-    # Return the account info
+class Car(Vehicle):
+    # Create a Car class that inherits from Vehicle, with an additional doors attribute
+    pass
+
+class Motorcycle(Vehicle):
+    # Create a Motorcycle class that inherits from Vehicle, with an additional type attribute
+    pass
+
+def test_vehicles(vehicle_type, make, model, **kwargs):
+    # Create a vehicle of the specified type and test its methods
+    # Return the result of calling info()
     pass""",
                 "test_cases": [
-                    {"input": {"holder": "John", "initial_balance": 1000, "deposits": [500], "withdrawals": [200]}, "output": lambda x: isinstance(x, dict) and x.get("balance") == 1300 and x.get("transaction_count") == 2},
-                    {"input": {"holder": "Alice", "initial_balance": 2000, "deposits": [300, 200], "withdrawals": [100]}, "output": lambda x: isinstance(x, dict) and x.get("balance") == 2400 and x.get("transaction_count") == 3}
+                    {"input": {"vehicle_type": "car", "make": "Toyota", "model": "Camry", "doors": 4},
+                     "output": "Toyota Camry with 4 doors"},
+                    {"input": {"vehicle_type": "motorcycle", "make": "Honda", "model": "CBR", "type": "sport"},
+                     "output": "Honda CBR (sport motorcycle)"}
                 ],
-                "hint": "Use the double underscore prefix (__) for private attributes. Implement getter/setter methods to access/modify these attributes."
+                "hint": "Define the Vehicle class with make and model attributes. Add specific attributes and override methods in derived classes."
+            }
+        ]
+    },
+    16: {
+        "name": "Comprehensions",
+        "description": "Learn about dictionary and set comprehensions in Python.",
+        "min_problems_to_complete": 2,
+        "problems": [
+            {
+                "id": "dict_comp",
+                "title": "Dictionary Comprehension",
+                "difficulty": "Easy",
+                "description": "Write a function that generates a dictionary of numbers and their squares using dictionary comprehension.",
+                "examples": [
+                    {
+                        "input": "n=5",
+                        "output": "{1: 1, 2: 4, 3: 9, 4: 16, 5: 25}",
+                        "explanation": "Returns a dictionary with numbers from 1 to 5 as keys and their squares as values."
+                    }
+                ],
+                "template": """def number_squares(n):
+    # Generate a dictionary of numbers and their squares using dictionary comprehension
+    pass""",
+                "test_cases": [
+                    {"input": {"n": 5}, "output": {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}},
+                    {"input": {"n": 3}, "output": {1: 1, 2: 4, 3: 9}}
+                ],
+                "hint": "Use dictionary comprehension with the format {x: x**2 for x in range(1, n+1)}."
+            },
+            {
+                "id": "set_comp",
+                "title": "Set Comprehension",
+                "difficulty": "Easy",
+                "description": "Write a function that generates a set of even numbers up to n using set comprehension.",
+                "examples": [
+                    {
+                        "input": "n=10",
+                        "output": "{2, 4, 6, 8, 10}",
+                        "explanation": "Returns a set of even numbers from 1 to 10."
+                    }
+                ],
+                "template": """def even_numbers_set(n):
+    # Generate a set of even numbers up to n using set comprehension
+    pass""",
+                "test_cases": [
+                    {"input": {"n": 10}, "output": {2, 4, 6, 8, 10}},
+                    {"input": {"n": 5}, "output": {2, 4}}
+                ],
+                "hint": "Use set comprehension with the format {x for x in range(2, n+1, 2)}."
+            },
+            {
+                "id": "dict_filtering",
+                "title": "Dictionary Filtering",
+                "difficulty": "Medium",
+                "description": "Write a function that filters a dictionary to keep only key-value pairs where the value meets a condition.",
+                "examples": [
+                    {
+                        "input": "data={'a': 1, 'b': 2, 'c': 3, 'd': 4}, min_value=3",
+                        "output": "{'c': 3, 'd': 4}",
+                        "explanation": "Returns a dictionary with only key-value pairs where the value is >= 3."
+                    }
+                ],
+                "template": """def filter_dict(data, min_value):
+    # Filter the dictionary to keep only pairs where value >= min_value
+    # Use dictionary comprehension
+    pass""",
+                "test_cases": [
+                    {"input": {"data": {'a': 1, 'b': 2, 'c': 3, 'd': 4}, "min_value": 3}, "output": {'c': 3, 'd': 4}},
+                    {"input": {"data": {'x': 10, 'y': 20, 'z': 30}, "min_value": 15}, "output": {'y': 20, 'z': 30}}
+                ],
+                "hint": "Use dictionary comprehension with a condition: {k: v for k, v in data.items() if v >= min_value}."
+            }
+        ]
+    },
+    17: {
+        "name": "Lambda Functions",
+        "description": "Learn about lambda functions and functional programming in Python.",
+        "min_problems_to_complete": 2,
+        "problems": [
+            {
+                "id": "simple_lambda",
+                "title": "Simple Lambda Function",
+                "difficulty": "Easy",
+                "description": "Write a lambda function that squares a number, and use it in a function.",
+                "examples": [
+                    {
+                        "input": "x=5",
+                        "output": "25",
+                        "explanation": "Returns the square of 5, which is 25, using a lambda function."
+                    }
+                ],
+                "template": """def apply_square(x):
+    # Create a lambda function that squares a number
+    # Apply it to x and return the result
+    pass""",
+                "test_cases": [
+                    {"input": {"x": 5}, "output": 25},
+                    {"input": {"x": 3}, "output": 9}
+                ],
+                "hint": "Define a lambda function like lambda n: n**2, then apply it to x."
+            },
+            {
+                "id": "sort_tuples",
+                "title": "Sort Tuples",
+                "difficulty": "Easy",
+                "description": "Write a function that sorts a list of tuples by the second element using a lambda function.",
+                "examples": [
+                    {
+                        "input": "tuples=[(1, 5), (3, 1), (2, 3)]",
+                        "output": "[(3, 1), (2, 3), (1, 5)]",
+                        "explanation": "Returns the list of tuples sorted by the second element in each tuple."
+                    }
+                ],
+                "template": """def sort_by_second(tuples):
+    # Sort the list of tuples by the second element
+    # Use a lambda function with the built-in sorted function
+    pass""",
+                "test_cases": [
+                    {"input": {"tuples": [(1, 5), (3, 1), (2, 3)]}, "output": [(3, 1), (2, 3), (1, 5)]},
+                    {"input": {"tuples": [(1, 1), (2, 2), (3, 3)]}, "output": [(1, 1), (2, 2), (3, 3)]}
+                ],
+                "hint": "Use sorted() with a lambda function as the key parameter: sorted(tuples, key=lambda x: x[1])."
+            },
+            {
+                "id": "lambda_in_filter",
+                "title": "Lambda with Filter",
+                "difficulty": "Medium",
+                "description": "Write a function that filters a list to keep only positive even numbers using lambda and filter.",
+                "examples": [
+                    {
+                        "input": "numbers=[-2, -1, 0, 1, 2, 3, 4]",
+                        "output": "[2, 4]",
+                        "explanation": "Returns only the positive even numbers from the list."
+                    }
+                ],
+                "template": """def filter_positive_even(numbers):
+    # Filter the list to keep only positive even numbers
+    # Use lambda with the filter function
+    pass""",
+                "test_cases": [
+                    {"input": {"numbers": [-2, -1, 0, 1, 2, 3, 4]}, "output": [2, 4]},
+                    {"input": {"numbers": [5, 7, 9]}, "output": []}
+                ],
+                "hint": "Use filter() with a lambda function that checks if a number is positive and even: filter(lambda x: x > 0 and x % 2 == 0, numbers)."
             }
         ]
     },
     18: {
-        "name": "OOP - Inheritance",
-        "description": "Learn about inheritance in object-oriented programming.",
-        "min_problems_to_complete": 3,
+        "name": "Generators",
+        "description": "Learn about generators and the yield statement in Python.",
+        "min_problems_to_complete": 2,
         "problems": [
             {
-                "id": "shape_hierarchy",
-                "title": "Shape Hierarchy",
+                "id": "simple_generator",
+                "title": "Simple Generator",
                 "difficulty": "Easy",
-                "description": "Create a base Shape class and derived Circle and Rectangle classes.",
+                "description": "Write a generator function that yields numbers from 1 to n.",
                 "examples": [
                     {
-                        "input": "Circle(radius=5).area()",
-                        "output": "78.54",
-                        "explanation": "Creates a Circle object with radius 5, then calculates its area."
+                        "input": "n=5",
+                        "output": "[1, 2, 3, 4, 5]",
+                        "explanation": "Returns a list of numbers from 1 to 5 generated by the generator."
                     }
                 ],
-                "template": """class Shape:
-    # Implement a base Shape class
+                "template": """def generate_numbers(n):
+    # Create a generator that yields numbers from 1 to n
+    pass
 
-class Circle(Shape):
-    # Implement a Circle class inheriting from Shape
-
-class Rectangle(Shape):
-    # Implement a Rectangle class inheriting from Shape
-
-def test_shapes(shape_type, **kwargs):
-    # Create a Shape object based on shape_type and test its methods
-    # Return the area and perimeter
+def test_generator(n):
+    # Test the generator and return the results as a list
     pass""",
                 "test_cases": [
-                    {"input": {"shape_type": "circle", "radius": 5}, "output": lambda x: isinstance(x, dict) and abs(x.get("area") - 78.54) < 0.01},
-                    {"input": {"shape_type": "rectangle", "length": 4, "width": 3}, "output": lambda x: isinstance(x, dict) and x.get("area") == 12 and x.get("perimeter") == 14}
+                    {"input": {"n": 5}, "output": [1, 2, 3, 4, 5]},
+                    {"input": {"n": 3}, "output": [1, 2, 3]}
                 ],
-                "hint": "Create a base Shape class with methods that derived classes will override. Implement Circle and Rectangle classes that inherit from Shape."
+                "hint": "Use a for loop with the range function and the yield statement to generate each number."
             },
             {
-                "id": "employee_hierarchy",
-                "title": "Employee Hierarchy",
-                "difficulty": "Easy",
-                "description": "Build a simple Employee hierarchy with Manager and Developer subclasses.",
-                "examples": [
-                    {
-                        "input": "Manager('John', 5000, 'IT', 3).get_salary()",
-                        "output": "7000",
-                        "explanation": "Creates a Manager object with base salary 5000 and 3 subordinates, then calculates the total salary."
-                    }
-                ],
-                "template": """class Employee:
-    # Implement a base Employee class
-
-class Manager(Employee):
-    # Implement a Manager class inheriting from Employee
-
-class Developer(Employee):
-    # Implement a Developer class inheriting from Employee
-
-def test_employees(employee_type, name, base_salary, **kwargs):
-    # Create an Employee object based on employee_type and test its methods
-    # Return a dictionary with employee info
-    pass""",
-                "test_cases": [
-                    {"input": {"employee_type": "manager", "name": "John", "base_salary": 5000, "department": "IT", "subordinates": 3}, "output": lambda x: isinstance(x, dict) and x.get("total_salary") == 7000},
-                    {"input": {"employee_type": "developer", "name": "Alice", "base_salary": 4000, "language": "Python", "experience": 5}, "output": lambda x: isinstance(x, dict) and x.get("total_salary") == 6000}
-                ],
-                "hint": "Create a base Employee class with common attributes and methods. Implement Manager and Developer classes that inherit from Employee, with additional attributes and overridden methods."
-            },
-            {
-                "id": "multilevel_inheritance",
-                "title": "Multilevel Inheritance",
+                "id": "fibonacci_generator",
+                "title": "Fibonacci Generator",
                 "difficulty": "Medium",
-                "description": "Write a program demonstrating multilevel inheritance.",
+                "description": "Write a generator function that yields Fibonacci numbers up to n terms.",
                 "examples": [
                     {
-                        "input": "Vehicle -> Car -> SportsCar",
-                        "output": "SportsCar('Ferrari', 'F8', 2021, 340).get_info()",
-                        "explanation": "Demonstrates multilevel inheritance with Vehicle as base class, Car inheriting from Vehicle, and SportsCar inheriting from Car."
+                        "input": "n=6",
+                        "output": "[0, 1, 1, 2, 3, 5]",
+                        "explanation": "Returns the first 6 Fibonacci numbers generated by the generator."
                     }
                 ],
-                "template": """class Vehicle:
-    # Implement a base Vehicle class
+                "template": """def fibonacci_generator(n):
+    # Create a generator that yields the first n Fibonacci numbers
+    pass
 
-class Car(Vehicle):
-    # Implement a Car class inheriting from Vehicle
-
-class SportsCar(Car):
-    # Implement a SportsCar class inheriting from Car
-
-def test_multilevel_inheritance(make, model, year, top_speed):
-    # Create a SportsCar object and test its methods
-    # Return a dictionary with vehicle info
+def test_fibonacci(n):
+    # Test the generator and return the results as a list
     pass""",
                 "test_cases": [
-                    {"input": {"make": "Ferrari", "model": "F8", "year": 2021, "top_speed": 340}, "output": lambda x: isinstance(x, dict) and x.get("make") == "Ferrari" and x.get("top_speed") == 340},
-                    {"input": {"make": "Lamborghini", "model": "Aventador", "year": 2020, "top_speed": 350}, "output": lambda x: isinstance(x, dict) and x.get("make") == "Lamborghini" and x.get("top_speed") == 350}
+                    {"input": {"n": 6}, "output": [0, 1, 1, 2, 3, 5]},
+                    {"input": {"n": 8}, "output": [0, 1, 1, 2, 3, 5, 8, 13]}
                 ],
-                "hint": "Create a base Vehicle class, a Car class that inherits from Vehicle, and a SportsCar class that inherits from Car. Each class should have its own attributes and methods."
+                "hint": "Initialize two variables for the first two Fibonacci numbers (0 and 1), then use a loop to generate and yield each subsequent number."
             },
             {
-                "id": "method_override",
-                "title": "Method Overriding",
+                "id": "infinite_generator",
+                "title": "Infinite Generator",
                 "difficulty": "Medium",
-                "description": "Create a program demonstrating method overriding and super() function usage.",
+                "description": "Write an infinite generator function that yields powers of 2, and a function to get the first n values.",
                 "examples": [
                     {
-                        "input": "Animal -> Bird -> Penguin",
-                        "output": "Penguin().move() outputs 'Waddles and swims'",
-                        "explanation": "Demonstrates method overriding where Penguin overrides the move() method inherited from Bird and Animal."
+                        "input": "n=5",
+                        "output": "[1, 2, 4, 8, 16]",
+                        "explanation": "Returns the first 5 powers of 2 (2^0 to 2^4) generated by the infinite generator."
                     }
                 ],
-                "template": """class Animal:
-    # Implement a base Animal class with a move() method
+                "template": """def powers_of_two():
+                        # Create an infinite generator that yields powers of 2
+                        pass
 
-class Bird(Animal):
-    # Implement a Bird class inheriting from Animal with an overridden move() method
-    # Use super() to call the parent class method
-
-class Penguin(Bird):
-    # Implement a Penguin class inheriting from Bird with an overridden move() method
-    # Use super() to call the parent class method
-
-def test_method_override(animal_type):
-    # Create an Animal object based on animal_type and test its methods
-    # Return the move behavior
-    pass""",
+                    def get_first_n_powers(n):
+                        # Get the first n values from the powers_of_two generator
+                        pass""",
                 "test_cases": [
-                    {"input": {"animal_type": "animal"}, "output": lambda x: isinstance(x, dict) and x.get("move") == "Moves"},
-                    {"input": {"animal_type": "bird"}, "output": lambda x: isinstance(x, dict) and "fly" in x.get("move").lower()},
-                    {"input": {"animal_type": "penguin"}, "output": lambda x: isinstance(x, dict) and "waddle" in x.get("move").lower() and "swim" in x.get("move").lower()}
+                    {"input": {"n": 5}, "output": [1, 2, 4, 8, 16]},
+                    {"input": {"n": 3}, "output": [1, 2, 4]}
                 ],
-                "hint": "Override the move() method in each derived class. Use super().move() to call the parent class method before adding specific behavior."
-            },
-            {
-                "id": "university_system",
-                "title": "University System",
-                "difficulty": "Hard",
-                "description": "Build a complex inheritance hierarchy for a university system (Person -> Student/Faculty -> Undergrad/Grad/Professor).",
-                "examples": [
-                    {
-                        "input": "Undergrad('John', 20, '12345', 'Computer Science', 3).get_info()",
-                        "output": "{'name': 'John', 'age': 20, 'id': '12345', 'major': 'Computer Science', 'year': 3, 'type': 'Undergraduate Student'}",
-                        "explanation": "Creates an Undergrad object and returns its information."
-                    }
-                ],
-                "template": """class Person:
-    # Implement a base Person class
-
-class Student(Person):
-    # Implement a Student class inheriting from Person
-
-class Faculty(Person):
-    # Implement a Faculty class inheriting from Person
-
-class Undergrad(Student):
-    # Implement an Undergrad class inheriting from Student
-
-class Grad(Student):
-    # Implement a Grad class inheriting from Student
-
-class Professor(Faculty):
-    # Implement a Professor class inheriting from Faculty
-
-def test_university_system(person_type, **kwargs):
-    # Create a Person object based on person_type and test its methods
-    # Return a dictionary with person info
-    pass""",
-                "test_cases": [
-                    {"input": {"person_type": "undergrad", "name": "John", "age": 20, "id": "12345", "major": "Computer Science", "year": 3}, "output": lambda x: isinstance(x, dict) and x.get("type") == "Undergraduate Student" and x.get("major") == "Computer Science"},
-                    {"input": {"person_type": "professor", "name": "Dr. Smith", "age": 45, "id": "P9876", "department": "Physics", "rank": "Associate"}, "output": lambda x: isinstance(x, dict) and x.get("type") == "Professor" and x.get("department") == "Physics"}
-                ],
-                "hint": "Create a hierarchy of classes starting with Person. Student and Faculty inherit from Person. Undergrad and Grad inherit from Student. Professor inherits from Faculty."
+                "hint": "Use an infinite loop with a counter variable and the yield statement. In the second function, use a counter to limit how many values to take from the generator."
             }
         ]
     },
     19: {
-        "name": "OOP - Polymorphism",
-        "description": "Learn about polymorphism in object-oriented programming.",
-        "min_problems_to_complete": 3,
+        "name": "Regular Expressions",
+        "description": "Learn to use regular expressions for pattern matching in Python.",
+        "min_problems_to_complete": 2,
         "problems": [
             {
-                "id": "animal_sounds",
-                "title": "Animal Sounds",
+                "id": "validate_email",
+                "title": "Email Validator",
                 "difficulty": "Easy",
-                "description": "Create a program demonstrating method overriding with different animal sound methods.",
+                "description": "Write a function that validates if a string is a valid email address using regex.",
                 "examples": [
                     {
-                        "input": "Dog().make_sound()",
-                        "output": "'Woof!'",
-                        "explanation": "Different animal classes override the make_sound() method with their specific sounds."
+                        "input": "email='user@example.com'",
+                        "output": "True",
+                        "explanation": "Returns True because 'user@example.com' is a valid email format."
                     }
                 ],
-                "template": """class Animal:
-    # Implement a base Animal class with a make_sound() method
-
-class Dog(Animal):
-    # Implement a Dog class inheriting from Animal
-
-class Cat(Animal):
-    # Implement a Cat class inheriting from Animal
-
-class Cow(Animal):
-    # Implement a Cow class inheriting from Animal
-
-def test_animal_sounds(animal_type):
-    # Create an Animal object based on animal_type and test its make_sound method
-    # Return the sound
-    pass""",
+                "template": """def is_valid_email(email):
+                        # Validate if the string is a valid email address format
+                        # Use the re module
+                        import re
+                        pass""",
                 "test_cases": [
-                    {"input": {"animal_type": "dog"}, "output": lambda x: "woof" in x.lower()},
-                    {"input": {"animal_type": "cat"}, "output": lambda x: "meow" in x.lower()},
-                    {"input": {"animal_type": "cow"}, "output": lambda x: "moo" in x.lower()}
+                    {"input": {"email": "user@example.com"}, "output": True},
+                    {"input": {"email": "invalid-email"}, "output": False},
+                    {"input": {"email": "user@example"}, "output": False}
                 ],
-                "hint": "Create a base Animal class with a make_sound() method. Override this method in each derived class to return the specific animal sound."
+                "hint": "Use re.match() with a pattern that checks for a username, followed by @, followed by a domain with at least one dot."
             },
             {
-                "id": "shape_area",
-                "title": "Shape Area Methods",
+                "id": "extract_numbers",
+                "title": "Number Extractor",
                 "difficulty": "Easy",
-                "description": "Build a shape hierarchy with a common area() method implemented differently in each subclass.",
+                "description": "Write a function that extracts all numbers from a string using regex.",
                 "examples": [
                     {
-                        "input": "Circle(radius=5).area()",
-                        "output": "78.54",
-                        "explanation": "Different shape classes implement the area() method according to their specific formulas."
+                        "input": "text='The price is $25.99 for 3 items.'",
+                        "output": "['25.99', '3']",
+                        "explanation": "Returns all numbers found in the string."
                     }
                 ],
-                "template": """class Shape:
-    # Implement a base Shape class with an area() method
-
-class Circle(Shape):
-    # Implement a Circle class inheriting from Shape
-
-class Rectangle(Shape):
-    # Implement a Rectangle class inheriting from Shape
-
-class Triangle(Shape):
-    # Implement a Triangle class inheriting from Shape
-
-def test_shape_areas(shape_type, **kwargs):
-    # Create a Shape object based on shape_type and test its area method
-    # Return the area
-    pass""",
+                "template": """def extract_numbers(text):
+                        # Extract all numbers from the string using regex
+                        # Return a list of strings
+                        import re
+                        pass""",
                 "test_cases": [
-                    {"input": {"shape_type": "circle", "radius": 5}, "output": lambda x: abs(x - 78.54) < 0.01},
-                    {"input": {"shape_type": "rectangle", "length": 4, "width": 3}, "output": 12},
-                    {"input": {"shape_type": "triangle", "base": 6, "height": 4}, "output": 12}
+                    {"input": {"text": "The price is $25.99 for 3 items."}, "output": ["25.99", "3"]},
+                    {"input": {"text": "No numbers here!"}, "output": []}
                 ],
-                "hint": "Create a base Shape class with an area() method. Override this method in each derived class to calculate the area using the appropriate formula."
+                "hint": "Use re.findall() with a pattern that matches numbers with optional decimal parts."
             },
             {
-                "id": "operator_overloading",
-                "title": "Operator Overloading",
+                "id": "replace_pattern",
+                "title": "Pattern Replacer",
                 "difficulty": "Medium",
-                "description": "Write a program that implements operator overloading for a custom complex number class.",
+                "description": "Write a function that replaces all dates in a string with a specified format.",
                 "examples": [
                     {
-                        "input": "ComplexNumber(3, 4) + ComplexNumber(2, 5)",
-                        "output": "ComplexNumber(5, 9)",
-                        "explanation": "Overloads the + operator to add two complex numbers."
+                        "input": "text='Meeting on 2023-01-15 and 2023-02-20.', format='MM/DD/YYYY'",
+                        "output": "'Meeting on 01/15/2023 and 02/20/2023.'",
+                        "explanation": "Replaces YYYY-MM-DD dates with MM/DD/YYYY format."
                     }
                 ],
-                "template": """class ComplexNumber:
-    # Implement a ComplexNumber class with operator overloading
-    pass
-
-def test_complex_numbers(a_real, a_imag, b_real, b_imag, operation):
-    # Create two ComplexNumber objects and test the specified operation
-    # Return the result as a dictionary
-    pass""",
+                "template": """def replace_dates(text, format='MM/DD/YYYY'):
+                        # Replace all dates in YYYY-MM-DD format with the specified format
+                        # Use the re module
+                        import re
+                        pass""",
                 "test_cases": [
-                    {"input": {"a_real": 3, "a_imag": 4, "b_real": 2, "b_imag": 5, "operation": "add"}, "output": lambda x: isinstance(x, dict) and x.get("real") == 5 and x.get("imag") == 9},
-                    {"input": {"a_real": 3, "a_imag": 4, "b_real": 2, "b_imag": 5, "operation": "subtract"}, "output": lambda x: isinstance(x, dict) and x.get("real") == 1 and x.get("imag") == -1}
+                    {"input": {"text": "Meeting on 2023-01-15 and 2023-02-20.", "format": "MM/DD/YYYY"},
+                     "output": "Meeting on 01/15/2023 and 02/20/2023."},
+                    {"input": {"text": "Event on 2023-01-15.", "format": "DD-MM-YYYY"},
+                     "output": "Event on 15-01-2023."}
                 ],
-                "hint": "Implement special methods like __add__, __sub__, __mul__, and __truediv__ to overload operators for your ComplexNumber class."
-            },
-            {
-                "id": "duck_typing",
-                "title": "Duck Typing",
-                "difficulty": "Medium",
-                "description": "Create a program demonstrating duck typing in Python.",
-                "examples": [
-                    {
-                        "input": "process_speakers([Person(), Duck(), Radio()])",
-                        "output": "All objects with a speak() method are processed, regardless of their type.",
-                        "explanation": "Demonstrates duck typing by processing objects based on behavior rather than type."
-                    }
-                ],
-                "template": """class Person:
-    # Implement a Person class with a speak() method
-
-class Duck:
-    # Implement a Duck class with a speak() method
-
-class Radio:
-    # Implement a Radio class with a speak() method
-
-class TV:
-    # Implement a TV class without a speak() method
-
-def process_speakers(objects):
-    # Process all objects that have a speak() method
-    # Return a list of outputs from each speak() method
-    pass""",
-                "test_cases": [
-                    {"input": {"objects": ["person", "duck", "radio", "tv"]}, "output": lambda x: isinstance(x, list) and len(x) == 3},
-                    {"input": {"objects": ["person", "duck"]}, "output": lambda x: isinstance(x, list) and len(x) == 2 and "person" in str(x[0]).lower() and "duck" in str(x[1]).lower()}
-                ],
-                "hint": "Implement classes with a speak() method. In the process_speakers function, try to call speak() on each object without checking its type, handling AttributeError for objects without the method."
-            },
-            {
-                "id": "abstract_classes",
-                "title": "Abstract Base Classes",
-                "difficulty": "Hard",
-                "description": "Build a program that implements abstract base classes and methods.",
-                "examples": [
-                    {
-                        "input": "Shape is abstract -> Circle, Rectangle implement required methods",
-                        "output": "Circle and Rectangle provide implementations for the abstract methods in Shape.",
-                        "explanation": "Demonstrates the use of abstract base classes and methods that derived classes must implement."
-                    }
-                ],
-                "template": """from abc import ABC, abstractmethod
-
-class Shape(ABC):
-    # Implement an abstract Shape class with abstract methods
-
-class Circle(Shape):
-    # Implement a Circle class inheriting from Shape
-
-class Rectangle(Shape):
-    # Implement a Rectangle class inheriting from Shape
-
-def test_abstract_classes(shape_type, **kwargs):
-    # Create a Shape object based on shape_type and test its methods
-    # Return a dictionary with the results
-    pass""",
-                "test_cases": [
-                    {"input": {"shape_type": "circle", "radius": 5}, "output": lambda x: isinstance(x, dict) and abs(x.get("area") - 78.54) < 0.01 and abs(x.get("perimeter") - 31.42) < 0.01},
-                    {"input": {"shape_type": "rectangle", "length": 4, "width": 3}, "output": lambda x: isinstance(x, dict) and x.get("area") == 12 and x.get("perimeter") == 14}
-                ],
-                "hint": "Use the abc module to create an abstract base class with @abstractmethod decorators. Derived classes must implement all abstract methods."
+                "hint": "Use re.sub() with a pattern that captures the year, month, and day parts of dates, then rearrange them in the replacement string."
             }
         ]
     },
-20: {
-        "name": "Advanced Python",
-        "description": "Learn advanced Python programming concepts.",
-        "min_problems_to_complete": 3,
+    20: {
+        "name": "Decorators",
+        "description": "Learn about function decorators in Python.",
+        "min_problems_to_complete": 2,
         "problems": [
             {
-                "id": "decorators",
-                "title": "Decorators",
-                "difficulty": "Medium",
-                "description": "Write a program that implements decorators to modify function behavior.",
+                "id": "timer_decorator",
+                "title": "Timer Decorator",
+                "difficulty": "Easy",
+                "description": "Write a decorator that measures and prints the execution time of a function.",
                 "examples": [
                     {
-                        "input": "@timer\ndef slow_function():",
-                        "output": "The function took 2.5 seconds to execute.",
-                        "explanation": "Uses a decorator to measure and display the execution time of a function."
+                        "input": "@timer\ndef slow_function()",
+                        "output": "Function executed in 2.5 seconds",
+                        "explanation": "The decorator measures how long the function takes to execute."
                     }
                 ],
                 "template": """def timer(func):
-    # Implement a timer decorator that measures function execution time
-    pass
+                        # Create a decorator that measures execution time
+                        pass
 
-def debug(func):
-    # Implement a debug decorator that prints function arguments and return value
-    pass
-
-def test_decorators(number, iterations):
-    # Define a function and apply decorators to it
-    # Return the results
-    pass""",
+                    def test_timer():
+                        # Test the decorator with a simple function
+                        # Return a string indicating success
+                        pass""",
                 "test_cases": [
-                    {"input": {"number": 10, "iterations": 1000000}, "output": lambda x: isinstance(x, dict) and "time" in x and "result" in x},
-                    {"input": {"number": 5, "iterations": 500000}, "output": lambda x: isinstance(x, dict) and "time" in x and "result" in x}
+                    {"input": {}, "output": lambda x: isinstance(x, str) and "success" in x.lower()}
                 ],
-                "hint": "Create a decorator function that wraps another function, adding functionality before and after the wrapped function call."
+                "hint": "Define a wrapper function inside the decorator that uses time.time() to measure the execution time."
             },
             {
-                "id": "generators",
-                "title": "Generators",
+                "id": "debug_decorator",
+                "title": "Debug Decorator",
+                "difficulty": "Easy",
+                "description": "Write a decorator that prints the function name and arguments before execution.",
+                "examples": [
+                    {
+                        "input": "@debug\ndef greet(name)",
+                        "output": "Calling function 'greet' with args=('John',), kwargs={}",
+                        "explanation": "The decorator prints debugging information when the function is called."
+                    }
+                ],
+                "template": """def debug(func):
+                        # Create a decorator that prints function name and arguments
+                        pass
+
+                    def test_debug():
+                        # Test the decorator with a simple function
+                        # Return a string indicating success
+                        pass""",
+                "test_cases": [
+                    {"input": {}, "output": lambda x: isinstance(x, str) and "success" in x.lower()}
+                ],
+                "hint": "Define a wrapper function that prints the function name (func.__name__) and the arguments before calling the function."
+            },
+            {
+                "id": "retry_decorator",
+                "title": "Retry Decorator",
                 "difficulty": "Medium",
-                "description": "Create a program that uses generators to efficiently work with large data sequences.",
+                "description": "Write a decorator that retries a function if it raises an exception.",
                 "examples": [
                     {
-                        "input": "for num in fibonacci_generator(10):",
-                        "output": "0, 1, 1, 2, 3, 5, 8, 13, 21, 34",
-                        "explanation": "Uses a generator to produce Fibonacci numbers one at a time without storing the entire sequence in memory."
+                        "input": "@retry(max_attempts=3)\ndef unreliable_function()",
+                        "output": "Successfully executed after 2 attempts",
+                        "explanation": "The decorator retries the function up to 3 times if it raises exceptions."
                     }
                 ],
-                "template": """def fibonacci_generator(n):
-    # Implement a generator function that yields Fibonacci numbers
-    pass
+                "template": """def retry(max_attempts=3):
+                        # Create a decorator that retries a function if it raises an exception
+                        pass
 
-def prime_generator(max_num):
-    # Implement a generator function that yields prime numbers up to max_num
-    pass
-
-def test_generators(generator_type, limit):
-    # Test the specified generator function
-    # Return a list of the generated values
-    pass""",
+                    def test_retry():
+                        # Test the decorator with a function that sometimes fails
+                        # Return a string indicating success
+                        pass""",
                 "test_cases": [
-                    {"input": {"generator_type": "fibonacci", "limit": 10}, "output": [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]},
-                    {"input": {"generator_type": "prime", "limit": 20}, "output": [2, 3, 5, 7, 11, 13, 17, 19]}
+                    {"input": {}, "output": lambda x: isinstance(x, str) and "success" in x.lower()}
                 ],
-                "hint": "Use the yield keyword to create generator functions. Generators produce values on-demand without storing the entire sequence in memory."
-            },
-            {
-                "id": "context_managers",
-                "title": "Context Managers",
-                "difficulty": "Medium",
-                "description": "Write a program that implements a custom context manager.",
-                "examples": [
-                    {
-                        "input": "with Timer() as t: slow_function()",
-                        "output": "The code block took 2.5 seconds to execute.",
-                        "explanation": "Uses a custom context manager to measure the execution time of a code block."
-                    }
-                ],
-                "template": """class Timer:
-    # Implement a context manager that measures execution time
-    pass
-
-class TempFile:
-    # Implement a context manager that creates a temporary file and cleans it up
-    pass
-
-def test_context_managers(context_manager_type, **kwargs):
-    # Test the specified context manager
-    # Return the results
-    pass""",
-                "test_cases": [
-                    {"input": {"context_manager_type": "timer", "iterations": 1000000}, "output": lambda x: isinstance(x, dict) and "time" in x},
-                    {"input": {"context_manager_type": "tempfile", "content": "Test content"}, "output": lambda x: isinstance(x, dict) and "content" in x and x.get("content") == "Test content"}
-                ],
-                "hint": "Implement __enter__ and __exit__ methods in your context manager class. The __enter__ method sets up the context and returns a value, and the __exit__ method performs cleanup."
-            },
-            {
-                "id": "lambda_functions",
-                "title": "Lambda Functions",
-                "difficulty": "Medium",
-                "description": "Create a program that uses lambda functions for data processing.",
-                "examples": [
-                    {
-                        "input": "sorted(products, key=lambda x: x['price'])",
-                        "output": "Products sorted by price from lowest to highest.",
-                        "explanation": "Uses a lambda function as a key for sorting a list of product dictionaries by price."
-                    }
-                ],
-                "template": """def process_data(data, operations):
-    # Process the data using lambda functions
-    # Operations: 'filter', 'map', 'sort', 'reduce'
-    # Return the processed data
-    pass
-
-def test_lambda_functions(data, operations):
-    # Test lambda functions for data processing
-    # Return the processed data
-    pass""",
-                "test_cases": [
-                    {"input": {"data": [{"name": "A", "price": 10}, {"name": "B", "price": 5}, {"name": "C", "price": 15}], "operations": ["sort_by_price"]}, "output": lambda x: isinstance(x, list) and len(x) == 3 and x[0]["price"] == 5 and x[2]["price"] == 15},
-                    {"input": {"data": [1, 2, 3, 4, 5], "operations": ["filter_even", "map_square"]}, "output": [4, 16]}
-                ],
-                "hint": "Use lambda functions with built-in functions like filter(), map(), sorted(), and reduce() to process data concisely."
-            },
-            {
-                "id": "threading_basics",
-                "title": "Threading Basics",
-                "difficulty": "Hard",
-                "description": "Build a program that demonstrates basic threading concepts in Python.",
-                "examples": [
-                    {
-                        "input": "run tasks concurrently with threads",
-                        "output": "Multiple tasks executed concurrently, reducing overall execution time.",
-                        "explanation": "Uses threading to run multiple tasks concurrently instead of sequentially."
-                    }
-                ],
-                "template": """import threading
-import time
-
-def run_threads(num_threads, task_duration):
-    # Implement a function that creates and runs multiple threads
-    # Compare execution time with sequential execution
-    # Return the results
-    pass
-
-def test_threading(num_threads, task_duration):
-    # Test threading with the specified parameters
-    # Return the results
-    pass""",
-                "test_cases": [
-                    {"input": {"num_threads": 4, "task_duration": 0.1}, "output": lambda x: isinstance(x, dict) and "threaded_time" in x and "sequential_time" in x and x.get("threaded_time") < x.get("sequential_time")},
-                    {"input": {"num_threads": 2, "task_duration": 0.2}, "output": lambda x: isinstance(x, dict) and "threaded_time" in x and "sequential_time" in x}
-                ],
-                "hint": "Use the threading module to create and start multiple threads. Each thread should execute a function that simulates work by sleeping for the specified duration."
+                "hint": "Define a decorator factory that takes max_attempts as a parameter. Inside, define a decorator that uses a try-except block to catch exceptions and retry the function."
             }
         ]
     }
 }
-
 def run_test_cases(code, test_cases):
     """Execute test cases and return results"""
     results = []

@@ -232,7 +232,7 @@ LEVELS = {
     1: {
         "name": "Introduction to Python",
         "description": "Learn the very basics of Python programming and execution.",
-        "## **min_problems_to_complete**": 3,
+        "min_problems_to_complete": 3,
         "problems": [
             {
                 "id": "hello_world",

@@ -424,7 +424,7 @@ def display_level_overview(level_num):
 
     problem_ids = [problem['id'] for problem in level["problems"]]
     placeholders = ", ".join(["?"] * len(problem_ids))
-z
+
     c.execute(f"""
         SELECT COUNT(DISTINCT problem_id) 
         FROM submissions 

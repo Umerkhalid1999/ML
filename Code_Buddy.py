@@ -239,30 +239,21 @@ LEVELS = {
                 "title": "Hello, World!",
                 "difficulty": "Easy",
                 "description": "Write a function that returns the string 'Hello, World!'",
-                "test_cases": [
-                    {"input": {}, "output": lambda x: isinstance(x, str) and "hello" in x.lower()}
-                ]
+                "output": "Hello, World!"
             },
             {
                 "id": "name_greeting",
                 "title": "Name Greeting",
                 "difficulty": "Easy",
                 "description": "Write a function that takes a name as input and returns a greeting.",
-                "test_cases": [
-                    {"input": {"name": "John"}, "output": lambda x: isinstance(x, str) and "john" in x.lower()},
-                    {"input": {"name": "Alice"}, "output": lambda x: isinstance(x, str) and "alice" in x.lower()}
-                ]
+                "output": "Hello, {name}!"
             },
             {
                 "id": "sum_two_numbers",
                 "title": "Sum Two Numbers",
                 "difficulty": "Easy",
                 "description": "Write a function that calculates the sum of two numbers.",
-                "test_cases": [
-                    {"input": {"a": 5, "b": 3}, "output": lambda x: isinstance(x, (int, float)) and x == 8},
-                    {"input": {"a": -1, "b": 1}, "output": lambda x: isinstance(x, (int, float)) and x == 0},
-                    {"input": {"a": 2.5, "b": 2.5}, "output": lambda x: isinstance(x, (int, float)) and abs(x - 5.0) < 0.01}
-                ]
+                "output": "The sum of {a} and {b} is {sum}"
             }
         ]
     },
@@ -276,26 +267,19 @@ LEVELS = {
                 "title": "Check Type",
                 "difficulty": "Easy",
                 "description": "Write a function that returns the type of the input as a string.",
-                "test_cases": [
-                    {"input": {"value": 42}, "output": lambda x: x in ["int", "<class 'int'>"]},
-                    {"input": {"value": "hello"}, "output": lambda x: x in ["str", "<class 'str'>"]},
-                    {"input": {"value": 3.14}, "output": lambda x: x in ["float", "<class 'float'>"]}
-                ]
+                "output": "The type of {value} is {type}"
             },
             {
                 "id": "convert_to_int",
                 "title": "Convert to Integer",
                 "difficulty": "Easy",
                 "description": "Write a function that converts a string to an integer.",
-                "test_cases": [
-                    {"input": {"text": "42"}, "output": lambda x: isinstance(x, int) and x == 42},
-                    {"input": {"text": "-10"}, "output": lambda x: isinstance(x, int) and x == -10},
-                    {"input": {"text": "invalid"}, "output": lambda x: x is None or isinstance(x, str)}
-                ]
+                "output": "The integer value of '{text}' is {integer_value}"
             }
         ]
     }
 }
+
 
 def run_test_cases(code, test_cases):
     """Execute test cases and return results"""

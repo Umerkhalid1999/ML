@@ -230,75 +230,120 @@ def save_submission(user_id, problem_id, code, passed, execution_time):
 # Complete Python Curriculum with 20 Levels
 # Complete Python Curriculum with 20 Levels - Simplified
 LEVELS = {
-    1: {
-        "name": "Introduction to Python",
-        "description": "Learn the very basics of Python programming and execution.",
-        "min_problems_to_complete": 2,
-        "problems": [
-            {
-                "id": "hello_world",
-                "title": "Hello, World!",
-                "difficulty": "Easy",
-                "description": "Write a function that returns the string 'Hello, World!'",
-                "examples": [
-                    {
-                        "input": "",
-                        "output": "'Hello, World!'",
-                        "explanation": "Your function should return the string 'Hello, World!'"
-                    }
-                ],
-                "template": """def hello_world():
+1: {
+    "name": "Introduction to Python",
+    "description": "Learn the very basics of Python programming and execution.",
+    "min_problems_to_complete": 2,
+    "problems": [
+        {
+            "id": "hello_world",
+            "title": "Hello, World!",
+            "difficulty": "Easy",
+            "description": "Write a function that returns the string 'Hello, World!' This is traditionally the first program written when learning a new language.",
+            "examples": [
+                {
+                    "input": "",
+                    "output": "'Hello, World!'",
+                    "explanation": "Your function should return the string 'Hello, World!'"
+                }
+            ],
+            "template": """def hello_world():
     # Write your code here to return "Hello, World!"
     pass""",
-                "test_cases": [
-                    {"input": {}, "output": "Hello, World!"}
-                ],
-                "hint": "Use the return statement to return the string."
-            },
-            {
-                "id": "name_greeting",
-                "title": "Name Greeting",
-                "difficulty": "Easy",
-                "description": "Write a function that takes a name as input and returns a greeting.",
-                "examples": [
-                    {
-                        "input": "name='John'",
-                        "output": "'Hello, John!'",
-                        "explanation": "Returns a greeting with the provided name."
-                    }
-                ],
-                "template": """def greet(name):
-    # Return a greeting with the name
+            "test_cases": [
+                {"input": {}, "output": "Hello, World!"}
+            ],
+            "hint": "Use the return statement to return the string."
+        },
+        {
+            "id": "python_versions",
+            "title": "Python 2 vs Python 3",
+            "difficulty": "Easy",
+            "description": "Write a function that returns a dictionary listing 3 key differences between Python 2 and Python 3. This is important knowledge for any Python programmer.",
+            "examples": [
+                {
+                    "input": "",
+                    "output": "{'difference1': 'Print is a statement in Python 2 but a function in Python 3', 'difference2': 'Division of integers returns integer in Python 2 but float in Python 3', 'difference3': 'Strings are stored as ASCII in Python 2 but Unicode in Python 3'}",
+                    "explanation": "Returns a dictionary with 3 key differences between Python 2 and Python 3."
+                }
+            ],
+            "template": """def python_differences():
+    # Return a dictionary with 3 key differences between Python 2 and Python 3
+    # The keys should be 'difference1', 'difference2', 'difference3'
+    # The values should be clear explanations of each difference
     pass""",
-                "test_cases": [
-                    {"input": {"name": "John"}, "output": "Hello, John!"},
-                    {"input": {"name": "Alice"}, "output": "Hello, Alice!"}
-                ],
-                "hint": "Use string concatenation or f-strings to include the name in the greeting."
-            },
-            {
-                "id": "sum_two_numbers",
-                "title": "Sum Two Numbers",
-                "difficulty": "Easy",
-                "description": "Write a function that calculates the sum of two numbers.",
-                "examples": [
-                    {
-                        "input": "a=5, b=3",
-                        "output": "8",
-                        "explanation": "Returns the sum of 5 and 3, which is 8."
-                    }
-                ],
-                "template": """def add(a, b):
-    # Calculate and return the sum of a and b
+            "test_cases": [
+                {"input": {}, "output": lambda x: isinstance(x, dict) and len(x) >= 3 and all(key in x for key in ['difference1', 'difference2', 'difference3'])}
+            ],
+            "hint": "Focus on differences in print syntax, integer division, and string handling."
+        },
+        {
+            "id": "string_formatting",
+            "title": "String Formatting",
+            "difficulty": "Easy",
+            "description": "Write a function that demonstrates three different ways to format strings in Python: using the % operator, the format() method, and f-strings (introduced in Python 3.6).",
+            "examples": [
+                {
+                    "input": "name='John', age=30",
+                    "output": "{'percent': 'My name is John and I am 30 years old.', 'format': 'My name is John and I am 30 years old.', 'f_string': 'My name is John and I am 30 years old.'}",
+                    "explanation": "Returns a dictionary with the same sentence formatted in three different ways."
+                }
+            ],
+            "template": """def string_formatting_ways(name, age):
+    # Return a dictionary with the same sentence formatted in three different ways
+    # Keys should be 'percent', 'format', and 'f_string'
     pass""",
-                "test_cases": [
-                    {"input": {"a": 5, "b": 3}, "output": 8},
-                    {"input": {"a": -1, "b": 1}, "output": 0}
-                ],
-                "hint": "Use the + operator to add the two numbers."
-            }
-        ]
-    },
+            "test_cases": [
+                {"input": {"name": "John", "age": 30}, "output": lambda x: isinstance(x, dict) and 'percent' in x and 'format' in x and 'f_string' in x and all('John' in v and '30' in v for v in x.values())}
+            ],
+            "hint": "Use %s/%d for percent formatting, {}/.format() for the format method, and f'{}' for f-strings."
+        },
+        {
+            "id": "indentation_importance",
+            "title": "Indentation Importance",
+            "difficulty": "Easy",
+            "description": "Write a function that demonstrates the importance of indentation in Python by returning two different results based on indentation.",
+            "examples": [
+                {
+                    "input": "condition=True",
+                    "output": "{'indented': 'This will only execute if condition is True', 'not_indented': 'This will always execute regardless of condition'}",
+                    "explanation": "Demonstrates how indentation affects execution flow in Python."
+                }
+            ],
+            "template": """def demonstrate_indentation(condition):
+    # Return a dictionary showing how indentation affects code execution
+    # Keys should be 'indented' and 'not_indented'
+    # Use an if statement to demonstrate this principle
+    pass""",
+            "test_cases": [
+                {"input": {"condition": True}, "output": lambda x: isinstance(x, dict) and 'indented' in x and 'not_indented' in x},
+                {"input": {"condition": False}, "output": lambda x: isinstance(x, dict) and x.get('indented') == None and 'not_indented' in x}
+            ],
+            "hint": "Use an if statement and pay attention to what happens when code is indented under the if versus outside the block."
+        },
+        {
+            "id": "basic_data_types",
+            "title": "Basic Data Types",
+            "difficulty": "Easy",
+            "description": "Write a function that demonstrates the basic Python data types (int, float, str, bool, list) by creating a variable of each type and returning them in a dictionary.",
+            "examples": [
+                {
+                    "input": "",
+                    "output": "{'integer': 42, 'float': 3.14, 'string': 'hello', 'boolean': True, 'list': [1, 2, 3]}",
+                    "explanation": "Returns a dictionary with examples of each basic Python data type."
+                }
+            ],
+            "template": """def basic_types():
+    # Create examples of each basic Python data type
+    # Return them in a dictionary with keys 'integer', 'float', 'string', 'boolean', and 'list'
+    pass""",
+            "test_cases": [
+                {"input": {}, "output": lambda x: isinstance(x, dict) and isinstance(x.get('integer'), int) and isinstance(x.get('float'), float) and isinstance(x.get('string'), str) and isinstance(x.get('boolean'), bool) and isinstance(x.get('list'), list)}
+            ],
+            "hint": "Create a variable of each type and add them to a dictionary with the specified keys."
+        }
+    ]
+},
     2: {
         "name": "Variables & Data Types",
         "description": "Learn about different data types in Python and how to use variables.",

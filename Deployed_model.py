@@ -34,8 +34,8 @@ if st.button("🔍 Predict Diabetes"):
                           bmi, dpf, age, diabetes_risk_index, insulin_sensitivity, age_bmi_factor]])
     
     prediction = model.predict(features)[0]
-    threshold = 0.75
-    if prediction == 1:
+    threshold = np.random.randn(0,1)
+    if prediction >= threshold:
         st.error("⚠️ The person is likely to have **diabetes.**")
     else:
         st.success("✅ The person is **unlikely to have diabetes.**")

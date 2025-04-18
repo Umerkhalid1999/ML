@@ -7,8 +7,10 @@ model = joblib.load("gradient_boosting_optimized.pkl")
 
 # Page settings
 st.set_page_config(page_title="Diabetes Predictor", layout="centered")
-st.title("🩺 Diabetes Prediction App")
-st.markdown("Provide the following medical details to predict diabetes risk:")
+st.title("🩺 Diabetes Prediction App") 
+st.markdown("For Basic Prototype purpose only") 
+st.markdown("Note: All Predictions are random just to demonstrate the assignment work")
+st.markdown("Provide the following medical details to predict diabetes risk:\n The results are not real.")
 
 # Create input columns
 col1, col2 = st.columns(2)

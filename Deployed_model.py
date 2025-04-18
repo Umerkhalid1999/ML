@@ -35,7 +35,7 @@ if st.button("🔍 Predict Diabetes"):
     
     prediction = model.predict(features)[0]
     threshold = 0.75
-    if prediction > threshold:
+    if prediction >= threshold:
         st.error("⚠️ The person is likely to have **diabetes.**")
     else:
         st.success("✅ The person is **unlikely to have diabetes.**")
